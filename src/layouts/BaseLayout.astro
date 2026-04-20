@@ -1,0 +1,147 @@
+---
+import '../styles/global.css';
+import '../styles/design-system.css';
+import '../styles/components/index.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import DealTimerBar from '../components/DealTimerBar.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  seo?: {
+    title?: string;
+    metaDesc?: string;
+    metaRobotsNoindex?: string;
+    metaRobotsNofollow?: string;
+    opengraphTitle?: string;
+    opengraphDescription?: string;
+    opengraphImage?: { sourceUrl?: string };
+    twitterTitle?: string;
+    twitterDescription?: string;
+    twitterImage?: { sourceUrl?: string };
+  };
+}
+
+const {
+  title = 'Litescaler — Hosting that stays out of your way',
+  description = 'Fast, reliable, and secure hosting for modern applications. NVMe SSD storage, global CDN, and 99.99% uptime.',
+  seo = {}
+} = Astro.props;
+
+const seoTitle = seo?.title || seo?.opengraphTitle || seo?.twitterTitle || title;
+const seoDescription = seo?.metaDesc || seo?.opengraphDescription || seo?.twitterDescription || description;
+const seoImage = seo?.opengraphImage?.sourceUrl || seo?.twitterImage?.sourceUrl || '';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script is:inline>
+      document.documentElement.setAttribute('data-theme', 'light');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{seoTitle}</title>
+    <meta name="title" content={seoTitle} />
+    <meta name="description" content={seoDescription} />
+    
+    <!-- SEO Meta Tags from WordPress -->
+    {seo?.metaRobotsNoindex && <meta name="robots" content={`${seo.metaRobotsNoindex}, ${seo.metaRobotsNofollow || 'follow'}`} />}
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={seo?.opengraphTitle || seoTitle} />
+    <meta property="og:description" content={seo?.opengraphDescription || seoDescription} />
+    {seoImage && <meta property="og:image" content={seoImage} />}
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seo?.twitterTitle || seoTitle} />
+    <meta name="twitter:description" content={seo?.twitterDescription || seoDescription} />
+    {seoImage && <meta name="twitter:image" content={seoImage} />}
+    
+    <!-- Inject WordPress SEO directly if available -->
+    <Fragment set:html={seo?.yoast_head || seo?.rank_math_head || ''} />
+
+    <!-- Locomotive Scroll CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Fixed elements MUST be outside the scroll container to work with Locomotive's transforms -->
+    <div class="global-bg light-bg" aria-hidden="true"></div>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <DealTimerBar />
+    <Header />
+
+    <!-- Smooth scroll container -->
+    <div data-scroll-container id="main-scroll-container">
+      <main id="main-content" data-scroll-section>
+        <slot />
+      </main>
+      <Footer data-scroll-section />
+    </div>
+
+    <script>
+      import LocomotiveScroll from 'locomotive-scroll';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const scroll = new LocomotiveScroll({
+          el: document.querySelector('[data-scroll-container]'),
+          smooth: true,
+          multiplier: 1.2,
+          lerp: 0.1,
+          touchMultiplier: 2,
+          tablet: { smooth: true },
+          smartphone: { smooth: true }
+        });
+
+        // Update scroll on window resize
+        window.addEventListener('resize', () => scroll.update());
+        
+        // Update on SPA nav if applicable
+        document.addEventListener('astro:page-load', () => scroll.update());
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  .global-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  /* Light mode: clean static background */
+  .light-bg {
+    background-color: #ffffff;
+    background-image:
+      radial-gradient(ellipse 100% 60% at 50% 0%, rgba(15, 23, 42, 0.03) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 50% at 80% 100%, rgba(15, 23, 42, 0.02) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 10% 80%, rgba(15, 23, 42, 0.01) 0%, transparent 40%);
+  }
+
+
+  #main-scroll-container {
+    position: relative;
+    z-index: 1;
+  }
+</style>

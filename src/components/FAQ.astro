@@ -1,0 +1,222 @@
+---
+// Premium, polished FAQ section with smooth height animations using grid-template-rows technique.
+// No more abrupt jumps with native <details>, but high-fidelity CSS transitions.
+---
+
+<section class="py-32 px-6 bg-white w-full relative z-20 overflow-hidden" id="faq" data-scroll>
+  <!-- Background Accents for a Premium Feel -->
+  <div class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-50/50 rounded-full blur-[120px] -z-10 opacity-60"></div>
+  <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-50/50 rounded-full blur-[120px] -z-10 opacity-60"></div>
+
+  <div class="max-w-4xl mx-auto w-full">
+    
+    <div class="text-center mb-20 space-y-4">
+      <span class="inline-block font-semibold text-sm uppercase tracking-[0.2em] mb-2" style="font-family: 'Poppins', sans-serif; color: #2380F4;">Help Center</span>
+      <h2 class="text-6xl md:text-[90px] font-medium text-center text-[#0f172a] leading-[1.05] tracking-tight" style="font-family: 'Poppins', sans-serif;">
+        Web Hosting <span style="color: #2380F4;">FAQs</span>
+      </h2>
+      <p class="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+        Everything you need to know about Litescaler's high-performance AI and GPU infrastructure.
+      </p>
+    </div>
+
+    <div class="flex flex-col w-full gap-4">
+
+      <!-- FAQ ITEM 1 -->
+      <div class="faq-item group border border-slate-100 bg-slate-50/30 rounded-3xl overflow-hidden transition-all duration-300 hover:border-blue-100 hover:bg-slate-50">
+        <button class="faq-trigger w-full flex justify-between items-center py-8 px-8 md:px-10 text-left outline-none">
+          <span class="text-[32px] md:text-[26px] font-blold text-[#1e293b] pr-8 transition-colors group-hover:text-[#2380F4]" style="font-family: 'Poppins', sans-serif;">
+            Is Litescaler a global company?
+          </span>
+          <div class="faq-icon-wrapper relative w-10 h-10 flex items-center justify-center rounded-full bg-white border border-slate-200 transition-all duration-500 group-hover:border-[#2380F4]">
+            <svg class="faq-icon transition-transform duration-500 w-5 h-5 text-slate-400 group-hover:text-[#2380F4]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line class="line-1" x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-content grid transition-all duration-500 ease-in-out px-8 md:px-10">
+          <div class="overflow-hidden">
+            <div class="pb-8 text-slate-600 text-[18px] md:text-[20px] leading-relaxed max-w-[90%] font-light">
+              Yes, Litescaler serves customers worldwide. We provide industry-leading AI and GPU infrastructure with data centers strategically located globally for maximum performance and low latency.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ ITEM 2 -->
+      <div class="faq-item group border border-slate-100 bg-slate-50/30 rounded-3xl overflow-hidden transition-all duration-300 hover:border-indigo-100 hover:bg-slate-50">
+        <button class="faq-trigger w-full flex justify-between items-center py-8 px-8 md:px-10 text-left outline-none">
+          <span class="text-[22px] md:text-[26px] font-medium text-[#1e293b] pr-8 transition-colors group-hover:text-indigo-700" style="font-family: 'Poppins', sans-serif;">
+            What features do I get with Litescaler cloud?
+          </span>
+          <div class="faq-icon-wrapper relative w-10 h-10 flex items-center justify-center rounded-full bg-white border border-slate-200 transition-all duration-500 group-hover:border-indigo-400">
+            <svg class="faq-icon transition-transform duration-500 w-5 h-5 text-slate-400 group-hover:text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line class="line-1" x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-content grid transition-all duration-500 ease-in-out px-8 md:px-10">
+          <div class="overflow-hidden">
+            <div class="pb-8 text-slate-600 text-[18px] md:text-[20px] leading-relaxed max-w-[90%] font-light">
+              Our cloud platform comes packed with features including high-performance GPUs, NVMe storage, instant provisioning, robust API access, isolated networking, and a seamless developer dashboard.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ ITEM 3 -->
+      <div class="faq-item group border border-slate-100 bg-slate-50/30 rounded-3xl overflow-hidden transition-all duration-300 hover:border-indigo-100 hover:bg-slate-50">
+        <button class="faq-trigger w-full flex justify-between items-center py-8 px-8 md:px-10 text-left outline-none">
+          <span class="text-[22px] md:text-[26px] font-medium text-[#1e293b] pr-8 transition-colors group-hover:text-indigo-700" style="font-family: 'Poppins', sans-serif;">
+            How is Litescaler's technical support?
+          </span>
+          <div class="faq-icon-wrapper relative w-10 h-10 flex items-center justify-center rounded-full bg-white border border-slate-200 transition-all duration-500 group-hover:border-indigo-400">
+            <svg class="faq-icon transition-transform duration-500 w-5 h-5 text-slate-400 group-hover:text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line class="line-1" x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-content grid transition-all duration-500 ease-in-out px-8 md:px-10">
+          <div class="overflow-hidden">
+            <div class="pb-8 text-slate-600 text-[18px] md:text-[20px] leading-relaxed max-w-[90%] font-light">
+              We take pride in our highly rated engineering support. Our expert team is available 24/7/365 via ticketing system or dedicated Slack channels to resolve your infrastructure issues instantly.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ ITEM 4 -->
+      <div class="faq-item group border border-slate-100 bg-slate-50/30 rounded-3xl overflow-hidden transition-all duration-300 hover:border-indigo-100 hover:bg-slate-50">
+        <button class="faq-trigger w-full flex justify-between items-center py-8 px-8 md:px-10 text-left outline-none">
+          <span class="text-[22px] md:text-[26px] font-medium text-[#1e293b] pr-8 transition-colors group-hover:text-indigo-700" style="font-family: 'Poppins', sans-serif;">
+            Can I migrate my infrastructure to Litescaler?
+          </span>
+          <div class="faq-icon-wrapper relative w-10 h-10 flex items-center justify-center rounded-full bg-white border border-slate-200 transition-all duration-500 group-hover:border-indigo-400">
+            <svg class="faq-icon transition-transform duration-500 w-5 h-5 text-slate-400 group-hover:text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line class="line-1" x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-content grid transition-all duration-500 ease-in-out px-8 md:px-10">
+          <div class="overflow-hidden">
+            <div class="pb-8 text-slate-600 text-[18px] md:text-[20px] leading-relaxed max-w-[90%] font-light">
+              Absolutely! Our migration specialists will help you seamlessly transfer your workloads, datasets, and containerized applications with zero downtime and dedicated hands-on assistance every step of the way.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ ITEM 5 -->
+      <div class="faq-item group border border-slate-100 bg-slate-50/30 rounded-3xl overflow-hidden transition-all duration-300 hover:border-indigo-100 hover:bg-slate-50">
+        <button class="faq-trigger w-full flex justify-between items-center py-8 px-8 md:px-10 text-left outline-none">
+          <span class="text-[22px] md:text-[26px] font-medium text-[#1e293b] pr-8 transition-colors group-hover:text-indigo-700" style="font-family: 'Poppins', sans-serif;">
+            Why choose Litescaler?
+          </span>
+          <div class="faq-icon-wrapper relative w-10 h-10 flex items-center justify-center rounded-full bg-white border border-slate-200 transition-all duration-500 group-hover:border-indigo-400">
+            <svg class="faq-icon transition-transform duration-500 w-5 h-5 text-slate-400 group-hover:text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line class="line-1" x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-content grid transition-all duration-500 ease-in-out px-8 md:px-10">
+          <div class="overflow-hidden">
+            <div class="pb-8 text-slate-600 text-[18px] md:text-[20px] leading-relaxed max-w-[90%] font-light">
+              Litescaler delivers unmatched AI computing performance, enterprise-grade reliability, and secure infrastructure at competitive prices. We combine scalable compute with robust network architecture to power your AI models.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ ITEM 6 -->
+      <div class="faq-item group border border-slate-100 bg-slate-50/30 rounded-3xl overflow-hidden transition-all duration-300 hover:border-indigo-100 hover:bg-slate-50">
+        <button class="faq-trigger w-full flex justify-between items-center py-8 px-8 md:px-10 text-left outline-none">
+          <span class="text-[22px] md:text-[26px] font-medium text-[#1e293b] pr-8 transition-colors group-hover:text-indigo-700" style="font-family: 'Poppins', sans-serif;">
+            Can I upgrade my Litescaler plan later?
+          </span>
+          <div class="faq-icon-wrapper relative w-10 h-10 flex items-center justify-center rounded-full bg-white border border-slate-200 transition-all duration-500 group-hover:border-indigo-400">
+            <svg class="faq-icon transition-transform duration-500 w-5 h-5 text-slate-400 group-hover:text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line class="line-1" x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-content grid transition-all duration-500 ease-in-out px-8 md:px-10">
+          <div class="overflow-hidden">
+            <div class="pb-8 text-slate-600 text-[18px] md:text-[20px] leading-relaxed max-w-[90%] font-light">
+              Yes, your infrastructure can scale infinitely with your business. You can easily upgrade your GPU instances, add block storage, or expand bandwidth instantly and directly from your client dashboard.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  /* Core Animation Logic: Grid Fr technique for smooth height */
+  .faq-item {
+     border-radius: 32px !important;
+  }
+  .faq-content {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+
+  .faq-item.is-active .faq-content {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-top: -10px; /* Slight tuck for better hierarchy */
+  }
+
+  .faq-item.is-active .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-item.is-active .faq-icon-wrapper {
+    background-color: #2380F4; /* branded blue */
+    border-color: #2380F4;
+  }
+
+  .faq-item.is-active .faq-icon {
+    color: white;
+  }
+
+  /* Plus to Cross Morph */
+  .faq-item.is-active .line-1 {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      
+      trigger?.addEventListener('click', () => {
+        const isActive = item.classList.contains('is-active');
+        
+        // Close others for a cleaner accordion feel (optional, remove this loop to allow multiple open)
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) otherItem.classList.remove('is-active');
+        });
+        
+        // Toggle current
+        item.classList.toggle('is-active');
+      });
+    });
+  }
+
+  // Run on first load
+  initFAQ();
+
+  // Re-run on View Transitions navigation (if using Astro View Transitions)
+  document.addEventListener('astro:after-swap', initFAQ);
+</script>

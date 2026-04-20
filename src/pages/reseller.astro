@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MigrationSection from '../components/MigrationSection.astro';
+import FAQ from '../components/FAQ.astro';
+import Pricing from '../components/Pricing.astro';
+import { Package, Users, Settings, Wrench, CreditCard, Shield, Zap, Globe } from 'lucide-react';
+import { Image } from 'astro:assets';
+import eimg1 from '../assets/eimg1.png';
+import '../styles/pages/reseller.css';
+
+const title = 'White-Label Reseller Hosting — LiteScaler';
+const description = 'Start your own hosting business today. 100% white-labeled reseller hosting with WHMCS, overselling enabled, and LiteSpeed Enterprise performance.';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- ═══════════════════════════════════════════════════
+       HERO  — Agency Dark Theme
+  ═══════════════════════════════════════════════════ -->
+  <section class="rh-hero">
+    <div class="rh-hero__container">
+      <div class="rh-hero__grid">
+
+        <!-- Left: Content Block -->
+        <div class="rh-hero__content">
+          <p class="rh-hero__tag">Up to 60% off agency hosting</p>
+
+          <h1 class="rh-hero__title">
+            Professional hosting<br/>built for agencies
+          </h1>
+
+          <ul class="rh-hero__list">
+            <li>
+              <svg class="rh-hero__check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Keep sites protected with full website isolation
+            </li>
+            <li>
+              <svg class="rh-hero__check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Access sharing per site for smooth collaboration
+            </li>
+            <li>
+              <svg class="rh-hero__check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Up to 40% increased website speed
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.6; margin-left: 4px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </li>
+          </ul>
+
+          <div class="rh-hero__cta-row">
+            <a href="#pricing" class="rh-btn-primary">Start now</a>
+          </div>
+
+          <p class="rh-hero__guarantee">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            30-day money-back guarantee
+          </p>
+        </div>
+
+        <!-- Right: Visual Column -->
+        <div class="rh-hero__visual">
+          <div class="rh-hero__grid-bg"></div>
+          <div class="rh-hero__visual-inner">
+            <div class="rh-hero__bg-glow"></div>
+            <!-- Dashboard Mockup Photo -->
+            <img src="/src/assets/reseller1.png" alt="Agency Hosting Dashboard" class="rh-hero__dash-img" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Reseller Features Section -->
+  <section class="reseller-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Business Features</span>
+        <h2 class="section-title">Professional tools to grow your brand</h2>
+      </div>
+
+      <div class="reseller-features-grid">
+        <div class="reseller-feature-card">
+          <div class="feature-icon-box">
+            <Package size={24} />
+          </div>
+          <h3 class="feature-title">100% White-Labeled</h3>
+          <p class="feature-desc">Your clients see your brand, not ours. Fully customizable nameservers and control panel logos for a seamless brand experience.</p>
+        </div>
+
+        <div class="reseller-feature-card">
+          <div class="feature-icon-box">
+            <CreditCard size={24} />
+          </div>
+          <h3 class="feature-title">Free WHMCS</h3>
+          <p class="feature-desc">Automate your billing, support, and domain registrations with the industry-standard WHMCS client management platform.</p>
+        </div>
+
+        <div class="reseller-feature-card">
+          <div class="feature-icon-box">
+            <Zap size={24} />
+          </div>
+          <h3 class="feature-title">Overselling Enabled</h3>
+          <p class="feature-desc">Maximize your profits by allocating more resources than you have physically, allowing you to scale up as your revenue grows.</p>
+        </div>
+
+        <div class="reseller-feature-card">
+          <div class="feature-icon-box">
+            <Globe size={24} />
+          </div>
+          <h3 class="feature-title">Global Datacenters</h3>
+          <p class="feature-desc">Serve clients globally from our multi-location infrastructure, ensuring the lowest latency for your client's websites.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Management Section -->
+  <section class="reseller-section reseller-section-light">
+    <div class="section-container">
+      <div class="reseller-features-grid" style="align-items: center;">
+        <div class="content-col">
+          <span class="section-tag">Control</span>
+          <h2 class="section-title">Manage hundreds of sites with ease</h2>
+          <p class="reseller-hero-subtitle" style="margin: 0 0 32px 0; text-align: left;">
+            Our Reseller dashboard gives you complete control over client resource limits, suspension, and account creation without touching the command line.
+          </p>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
+            <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+              <span style="color: #2380F4;"><Settings size={18} /></span> Comprehensive WHM Access
+            </li>
+            <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+              <span style="color: #2380F4;"><Users size={18} /></span> Unlimited Account Creation
+            </li>
+            <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+              <span style="color: #2380F4;"><Wrench size={18} /></span> Advanced Migration Tools
+            </li>
+          </ul>
+        </div>
+        <div class="image-col">
+          <div style="background: #f8fafc; padding: 60px; border-radius: 40px; display: flex; justify-content: center; align-items: center;">
+             <Users size={120} color="#2380F4" opacity={0.2} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <MigrationSection />
+
+  <Pricing />
+
+  <FAQ />
+  
+</BaseLayout>

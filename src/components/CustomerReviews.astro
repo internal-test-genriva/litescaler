@@ -1,0 +1,301 @@
+---
+import { Star, MessageSquareQuote } from 'lucide-react';
+
+// Import avatars
+import vineetImg from '../assets/avatars/vineet.png';
+import jaisonImg from '../assets/avatars/jaison.png';
+import swagatikaImg from '../assets/avatars/swagatika.png';
+import fatimaImg from '../assets/avatars/fatima.png';
+import aaravImg from '../assets/avatars/aarav.png';
+import bhupendraImg from '../assets/avatars/bhupendra.png';
+
+const row1 = [
+  { img: vineetImg, name: 'Vineet B.', handle: '@vineet_tech', rating: 5, text: 'LiteScaler constantly delivers on their promises of uptime and excellent service.' },
+  { img: jaisonImg, name: 'Jaison J.', handle: '@jaison_dev', rating: 5, text: 'Outstanding expertise & support. They resolved my issue swiftly.' },
+  { img: swagatikaImg, name: 'Swagatika S.', handle: '@swagatika_s', rating: 5, text: 'Serious Speed for Serious Business. LiteScaler is super-fast.' },
+  { img: fatimaImg, name: 'Fatima K.', handle: '@fatima_k', rating: 5, text: 'Support was instant and fixed my WP issue in minutes.' },
+  { img: aaravImg, name: 'Aarav P.', handle: '@aarav_codes', rating: 5, text: 'The best hosting I\'ve used in years. Simply incredible performance.' }
+];
+
+const row2 = [
+  { img: bhupendraImg, name: 'Bhupendra M.', handle: '@bhupendra_m', rating: 5, text: 'Hassle-free Management. Excellent security features.' },
+  { img: aaravImg, name: 'Aarav P.', handle: '@aarav_codes', rating: 5, text: 'The best hosting I\'ve used in years. Simply incredible performance.' },
+  { img: vineetImg, name: 'Vineet B.', handle: '@vineet_tech', rating: 5, text: 'LiteScaler constantly delivers on their promises of uptime and excellent service.' },
+  { img: swagatikaImg, name: 'Swagatika S.', handle: '@swagatika_s', rating: 5, text: 'Serious Speed for Serious Business. LiteScaler is super-fast.' },
+  { img: jaisonImg, name: 'Jaison J.', handle: '@jaison_dev', rating: 5, text: 'Outstanding expertise & support. They resolved my issue swiftly.' }
+];
+
+// Combine the array with itself for infinite scroll
+const track1 = [...row1, ...row1, ...row1];
+const track2 = [...row2, ...row2, ...row2];
+---
+
+<section class="customer-reviews">
+  <div class="container">
+    <div class="header">
+      <div class="badge"><MessageSquareQuote size={14} /> <span>Social Proof</span></div>
+      <h2 class="title">They succeeded online - </br> <span class="accent-text">now it’s your turn</span></h2>
+      <p class="subtitle">Join a community of experts who refuse to compromise on speed and security.</p>
+    </div>
+  </div>
+  <div class="reviews-wrapper">
+    <!-- Gradient edges to hide track scrolling in/out -->
+    <div class="fade-left"></div>
+    <div class="fade-right"></div>
+
+    <div class="marquee-row scroll-left">
+      <div class="marquee-track">
+        {track1.map((review) => (
+          <div class="review-card">
+            <div class="card-header">
+              <div class="user-info">
+                <div class="avatar">
+                  <img src={review.img.src} alt={review.name} />
+                </div>
+                <div class="name-handle">
+                  <h4 class="user-name">{review.name}</h4>
+                  <span class="user-handle">{review.handle}</span>
+                </div>
+              </div>
+              <div class="stars">
+                {[...Array(review.rating)].map(() => (
+                  <Star size={14} fill="#2380F4" color="#2380F4" />
+                ))}
+              </div>
+            </div>
+            <p class="review-text">{review.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="marquee-row scroll-right">
+      <div class="marquee-track">
+        {track2.map((review) => (
+          <div class="review-card">
+            <div class="card-header">
+              <div class="user-info">
+                <div class="avatar">
+                  <img src={review.img.src} alt={review.name} />
+                </div>
+                <div class="name-handle">
+                  <h4 class="user-name">{review.name}</h4>
+                  <span class="user-handle">{review.handle}</span>
+                </div>
+              </div>
+              <div class="stars">
+                {[...Array(review.rating)].map(() => (
+                  <Star size={14} fill="#2380F4" color="#2380F4" />
+                ))}
+              </div>
+            </div>
+            <p class="review-text">{review.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<style>
+  .customer-reviews {
+    background-color: transparent; /* Assuming dark theme inherited */
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+    padding: 0 24px;
+  }
+
+  /* Header Styles */
+  .header { text-align: center; margin-bottom: 80px; }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    padding: 6px 16px;
+    border-radius: 99px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border: 1px solid var(--color-border);
+  }
+  .title { font-family: 'Poppins'; font-size: 52px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 20px; letter-spacing: -1.5px; line-height: 1.1; }
+  .accent-text { color: var(--color-accent); }
+  .gradient-text { background: var(--text-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { color: var(--color-text-secondary); font-size: 18px; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+  .reviews-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100vw; /* Take up full viewport width */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Fade overlays for the edges */
+  .fade-left, .fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 15%;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .fade-left {
+    left: 0;
+    background: linear-gradient(to right, var(--color-accent) 0%, transparent 100%);
+    opacity: 0.15; /* Subtler blue fade */
+  }
+
+  .fade-right {
+    right: 0;
+    background: linear-gradient(to left, var(--color-accent) 0%, transparent 100%);
+    opacity: 0.15; /* Subtler blue fade */
+  }
+
+  .marquee-row {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    will-change: transform;
+    /* We have 3 copies of content, so we want to animate from 0 to -33.33% to create a seamless loop.
+       Since 1 section is exactly 1/3 of the track width, moving it 1 section to the left provides the loop. */
+  }
+
+  .scroll-left .marquee-track {
+    animation: scroll-left-anim 40s linear infinite;
+  }
+
+  .scroll-right .marquee-track {
+    animation: scroll-right-anim 40s linear infinite;
+    /* Start at an offset so it doesn't line up exactly with others */
+    transform: translateX(-33.3333%); 
+  }
+
+  .marquee-row:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll-left-anim {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.3333%); }
+  }
+
+  @keyframes scroll-right-anim {
+    0% { transform: translateX(-33.3333%); }
+    100% { transform: translateX(0); }
+  }
+
+  .review-card {
+    background: #ffffff;
+    border-radius: 32px !important;
+    padding: 24px;
+    min-width: 380px;
+    max-width: 380px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.2s;
+  }
+
+  .review-card:hover {
+    transform: scale(1.02);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .name-handle {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-name {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .user-handle {
+    font-size: 13px;
+    color: #64748b;
+  }
+
+  .stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .review-text {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: #475569;
+  }
+
+  @media (max-width: 768px) {
+    .title { font-size: 38px; }
+    .header { margin-bottom: 40px; }
+    .review-card {
+      min-width: 300px;
+      max-width: 300px;
+      padding: 20px;
+    }
+    
+    .fade-left, .fade-right {
+      width: 10%;
+    }
+  }
+
+</style>
+

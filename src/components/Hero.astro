@@ -1,0 +1,1270 @@
+---
+import "../styles/global.css";
+import { Search } from 'lucide-react';
+---
+
+<section class="hero">
+  <video autoplay loop muted playsinline class="hero-video">
+    <source src="/hero-bg.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-container">
+    <div class="hero-content">
+      
+      <h1 class="hero-title">
+        Deploy Faster.<br/>Scale Instantly.
+      </h1>
+      
+      <p class="hero-subtitle">
+        Power your growth with industry-leading performance. Scale your business instantly with our enterprise-grade infrastructure designed for modern developers.
+      </p>
+
+      <div class="hero-pricing-action">
+        <span class="pricing-label">Starting at</span>
+        <div class="pricing-display">
+          <span class="currency">₹</span>
+          <span class="amount">99.00</span>
+          <span class="period">/mo</span>
+        </div>
+      </div>
+
+      <!-- Domain Search -->
+      <div class="hero-search" id="domainSearchSection">
+        <form class="search-form" id="domainSearchForm" autocomplete="off">
+          <div class="hero-search-input-wrapper" id="searchInputWrapper">
+            <span class="hero-search-icon" aria-hidden="true">
+              <Search size={17} />
+            </span>
+            <input
+              type="text"
+              id="heroDomainInput"
+              name="domain"
+              placeholder="Find your perfect domain (e.g. mysite.com)"
+              class="hero-search-input"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button type="submit" class="hero-search-btn" id="searchBtn">
+              <span class="btn-text">Search</span>
+              <span class="btn-loading" style="display:none">
+                <svg class="spinner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+                  <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Results Container -->
+        <div class="search-results" id="searchResults" style="display: none;">
+          <div class="results-header">
+            <span class="results-title">Domain Results</span>
+            <button type="button" class="results-close" id="closeResults" aria-label="Close results">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M18 6L6 18M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+          <div class="results-list" id="resultsList"></div>
+          <div class="results-footer">
+            <a href="#" class="results-cta" id="continueSearch">Continue searching →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review Badges Row -->
+      <div class="reviews-row">
+
+        <!-- Trustpilot Badge -->
+        <div class="review-badge" aria-label="Trustpilot rating: 4.9 out of 5, Excellent">
+          <div class="rb-logo-row">
+            <svg class="tp-star-mark" xmlns="http://www.w3.org/2000/svg" viewBox="20 248 146 148" aria-hidden="true">
+              <path fill="#00b67a" d="M164.2 300.7h-54.9l-16.9-52.2-17 52.2-54.9-.1 44.4 32.3-17 52.2 44.4-32.3 44.4 32.3-16.9-52.2z"/>
+              <path fill="#005128" d="m123.6 344.7-3.8-11.8-27.4 19.9z"/>
+            </svg>
+            <span class="rb-wordmark">Trustpilot</span>
+          </div>
+          <span class="rb-divider" aria-hidden="true"></span>
+          <div class="rb-rating-row">
+            <div class="rb-stars" aria-label="5 stars">
+              <span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class="tp-star-tile"><rect width="40" height="40" rx="3" fill="#00b67a"/><path fill="#fff" d="M20 28.7 12.1 33l1.5-8.9L7 18l8.9-1.3 4.1-8.2 4.1 8.2L33 18l-6.6 6.1 1.5 8.9z"/></svg></span>
+              <span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class="tp-star-tile"><rect width="40" height="40" rx="3" fill="#00b67a"/><path fill="#fff" d="M20 28.7 12.1 33l1.5-8.9L7 18l8.9-1.3 4.1-8.2 4.1 8.2L33 18l-6.6 6.1 1.5 8.9z"/></svg></span>
+              <span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class="tp-star-tile"><rect width="40" height="40" rx="3" fill="#00b67a"/><path fill="#fff" d="M20 28.7 12.1 33l1.5-8.9L7 18l8.9-1.3 4.1-8.2 4.1 8.2L33 18l-6.6 6.1 1.5 8.9z"/></svg></span>
+              <span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class="tp-star-tile"><rect width="40" height="40" rx="3" fill="#00b67a"/><path fill="#fff" d="M20 28.7 12.1 33l1.5-8.9L7 18l8.9-1.3 4.1-8.2 4.1 8.2L33 18l-6.6 6.1 1.5 8.9z"/></svg></span>
+              <span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class="tp-star-tile"><rect width="40" height="40" rx="3" fill="#00b67a"/><path fill="#fff" d="M20 28.7 12.1 33l1.5-8.9L7 18l8.9-1.3 4.1-8.2 4.1 8.2L33 18l-6.6 6.1 1.5 8.9z"/></svg></span>
+            </div>
+            <span class="rb-score"><strong>4.9</strong></span>
+            <span class="rb-label">Excellent</span>
+          </div>
+        </div>
+
+        <!-- Separator between badges -->
+        <span class="badge-sep" aria-hidden="true"></span>
+
+        <!-- Google Reviews Badge -->
+        <div class="review-badge" aria-label="Google rating: 4.8 out of 5">
+          <div class="rb-logo-row">
+            <svg class="google-g" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.17 22.56 15.36 22.56 12.25z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            <span class="rb-wordmark">Google</span>
+          </div>
+          <span class="rb-divider" aria-hidden="true"></span>
+          <div class="rb-rating-row">
+            <div class="rb-stars" aria-label="4.8 stars">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="google-star" aria-hidden="true"><path d="M10 1l2.39 4.84L18 6.72l-4 3.9.94 5.5L10 13.77l-4.94 2.35.94-5.5-4-3.9 5.61-.88z" fill="#FBBC05"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="google-star" aria-hidden="true"><path d="M10 1l2.39 4.84L18 6.72l-4 3.9.94 5.5L10 13.77l-4.94 2.35.94-5.5-4-3.9 5.61-.88z" fill="#FBBC05"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="google-star" aria-hidden="true"><path d="M10 1l2.39 4.84L18 6.72l-4 3.9.94 5.5L10 13.77l-4.94 2.35.94-5.5-4-3.9 5.61-.88z" fill="#FBBC05"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="google-star" aria-hidden="true"><path d="M10 1l2.39 4.84L18 6.72l-4 3.9.94 5.5L10 13.77l-4.94 2.35.94-5.5-4-3.9 5.61-.88z" fill="#FBBC05"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="google-star" aria-hidden="true"><path d="M10 1l2.39 4.84L18 6.72l-4 3.9.94 5.5L10 13.77l-4.94 2.35.94-5.5-4-3.9 5.61-.88z" fill="#FBBC05"/></svg>
+            </div>
+            <span class="rb-score"><strong>4.8</strong></span>
+            <span class="rb-label">Reviews</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  
+</section>
+
+<script>
+/**
+ * Domain Search Functionality
+ * 
+ * SECURITY NOTE: This calls WHMCS directly from client-side.
+ * For production, configure CORS in WHMCS or use a server-side proxy.
+ * 
+ * Required WHMCS Configuration:
+ * 1. Enable API access in WHMCS Admin
+ * 2. Add your domain to allowed CORS origins (if required)
+ * 3. Use API credentials with limited permissions
+ */
+
+// ===================== CONFIGURATION =====================
+// WHMCS URL for cart links - this is needed for the Buy button
+const WHMCS_URL = 'https://billing.litescaler.com';
+
+const WHMCS_CONFIG = {
+  // url: 'https://billing.litescaler.com', // No longer needed - using server proxy
+  // apiIdentifier: 'mIWJ6TjOac1kRXEav9rG3Iksam6pErsy',
+  // apiSecret: 'i81VTe5gQZP1r6P7hqBu26RceilQVQUG'
+};
+
+// ===================== DOM ELEMENTS =====================
+const searchForm = document.getElementById('domainSearchForm');
+const searchInput = document.getElementById('heroDomainInput');
+const searchBtn = document.getElementById('searchBtn');
+const btnText = searchBtn?.querySelector('.btn-text');
+const btnLoading = searchBtn?.querySelector('.btn-loading');
+const searchResults = document.getElementById('searchResults');
+const resultsList = document.getElementById('resultsList');
+const closeResults = document.getElementById('closeResults');
+const continueSearch = document.getElementById('continueSearch');
+
+// State
+let isSearching = false;
+
+// ===================== UTILITIES =====================
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, function (ch) {
+    switch (ch) {
+      case '&': return '&amp;';
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '"': return '&quot;';
+      case "'": return '&#39;';
+      default: return ch;
+    }
+  });
+}
+
+function formatPrice(price, prefix = '₹', suffix = '') {
+  if (price === null || price === 0) return 'TBD';
+  const formatted = price.toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  return String(prefix ?? '') + formatted + String(suffix ?? '');
+}
+
+function setLoading(loading) {
+  if (!searchBtn || !btnText || !btnLoading) return;
+  isSearching = loading;
+  if (loading) {
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'inline-flex';
+    searchBtn.disabled = true;
+  } else {
+    btnText.style.display = 'inline';
+    btnLoading.style.display = 'none';
+    searchBtn.disabled = false;
+  }
+}
+
+function showError(message) {
+  if (!resultsList || !searchResults) return;
+  resultsList.innerHTML = '<div class="result-item error">' +
+    '<div class="result-icon error">' +
+      '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>' +
+    '</div>' +
+    '<div class="result-info">' +
+      '<span class="result-domain error-text">' + escapeHtml(message) + '</span>' +
+    '</div>' +
+  '</div>';
+  searchResults.style.display = 'block';
+}
+
+function parseWhmcsResponse(whmcsData, domain) {
+  const result = {
+    domain: domain,
+    available: false,
+    premium: false,
+    price: null,
+    currency: 'INR',
+    currencyPrefix: '₹',
+    currencySuffix: '',
+    renewalPrice: null,
+    registrationPeriod: 1,
+    error: null
+  };
+
+  // WHMCS DomainWhois returns status: "available" | "unavailable" | "error"
+  // "error" with empty whois usually means the TLD is supported but domain is available
+  const status = typeof whmcsData?.status === 'string' ? whmcsData.status.toLowerCase() : '';
+  const whoisText = typeof whmcsData?.whois === 'string' ? whmcsData.whois.toLowerCase() : '';
+  const isErrorStatus = status === 'error';
+  const hasWhoisData = whoisText.length > 10;
+
+  if (isErrorStatus && !hasWhoisData) {
+    // status=error + empty whois = domain is available (TLD supported but no registration)
+    result.available = true;
+  } else if (status === 'available') {
+    result.available = true;
+  } else if (status === 'unavailable') {
+    result.available = false;
+  } else if (hasWhoisData) {
+    // Fallback: check whois text for availability indicators
+    if (
+      whoisText.includes('no match for') ||
+      whoisText.includes('not found') ||
+      whoisText.includes('no data found') ||
+      whoisText.includes('status: free') ||
+      whoisText.includes('domain not found')
+    ) {
+      result.available = true;
+    }
+  }
+
+  // Pricing comes from our server endpoint (WHMCS GetTLDPricing)
+  // Convert USD to INR (approximately 83 INR per USD)
+  const USD_TO_INR = 83.0;
+  
+  if (whmcsData?.currency) {
+    if (typeof whmcsData.currency.code === 'string') result.currency = whmcsData.currency.code;
+    if (typeof whmcsData.currency.prefix === 'string') result.currencyPrefix = whmcsData.currency.prefix;
+    if (typeof whmcsData.currency.suffix === 'string') result.currencySuffix = whmcsData.currency.suffix;
+  }
+
+  if (whmcsData?.tldPricing) {
+    const register1 = whmcsData.tldPricing.register1;
+    const renew1 = whmcsData.tldPricing.renew1;
+    // Convert USD to INR for display
+    if (typeof register1 === 'number' && Number.isFinite(register1)) {
+      result.price = Math.round(register1 * USD_TO_INR);
+    }
+    if (typeof renew1 === 'number' && Number.isFinite(renew1)) {
+      result.renewalPrice = Math.round(renew1 * USD_TO_INR);
+    }
+  }
+
+  return result;
+}
+
+function renderResults(results) {
+  if (!resultsList || !searchResults) return;
+  
+  if (results.length === 0) {
+    showError('No domains found. Please try a different search.');
+    return;
+  }
+
+  const html = results.map(function(result) {
+    if (result.error) {
+      return '<div class="result-item error">' +
+        '<div class="result-icon error">' +
+          '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>' +
+        '</div>' +
+        '<div class="result-info">' +
+          '<span class="result-domain error-text">' + escapeHtml(result.error) + '</span>' +
+        '</div>' +
+      '</div>';
+    }
+
+    const isAvailable = result.available;
+    const domain = result.domain;
+    const price = result.price;
+    
+    // Extract TLD for badge
+    const tldMatch = domain.match(/\.[a-z]{2,}(?:\.[a-z]{2,})?$/i);
+    const tld = tldMatch ? tldMatch[0].replace('.', '').toUpperCase() : '';
+
+    let actionHtml;
+    if (isAvailable) {
+      actionHtml = '<span class="result-price">' + formatPrice(price, result.currencyPrefix, result.currencySuffix) + '<span class="price-period">/yr</span></span>' +
+        '<button class="result-btn" data-domain="' + domain + '">Buy Now</button>';
+    } else {
+      actionHtml = '<span class="result-unavailable">—</span>';
+    }
+
+    let iconSvg;
+    if (isAvailable) {
+      iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+    } else {
+      iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>';
+    }
+
+    let statusHtml = isAvailable ? '' : '<span class="result-status">Already taken</span>';
+
+    return '<div class="result-item ' + (isAvailable ? 'available' : 'unavailable') + '">' +
+      '<div class="result-icon ' + (isAvailable ? 'available' : 'unavailable') + '">' + iconSvg + '</div>' +
+      '<div class="result-info">' +
+        '<div class="result-domain-row"><span class="result-domain">' + escapeHtml(domain) + '</span>' + (tld ? '<span class="result-tld-badge">' + escapeHtml(tld) + '</span>' : '') + '</div>' + statusHtml +
+      '</div>' +
+      '<div class="result-action">' + actionHtml + '</div>' +
+    '</div>';
+  }).join('');
+
+  resultsList.innerHTML = html;
+  searchResults.style.display = 'block';
+
+  // Add click handlers for Buy buttons
+  document.querySelectorAll('.result-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      const domain = e.target.getAttribute('data-domain');
+      if (domain) {
+        const cartUrl = WHMCS_URL + '/cart.php?a=add&domain=' + encodeURIComponent(domain);
+        window.open(cartUrl, '_blank');
+      }
+    });
+  });
+}
+
+function hideResults() {
+  if (searchResults) {
+    searchResults.style.display = 'none';
+  }
+  if (searchInput) {
+    searchInput.value = '';
+  }
+}
+
+// ===================== MAIN SEARCH HANDLER =====================
+
+async function handleSearch(e) {
+  e.preventDefault();
+  
+  if (isSearching) return;
+
+  const domain = searchInput?.value?.trim().toLowerCase();
+  
+  if (!domain) {
+    showError('Please enter a domain name');
+    return;
+  }
+
+  if (domain.length < 3) {
+    showError('Domain must be at least 3 characters');
+    return;
+  }
+
+  const cleanDomain = domain
+    .replace(/^https?:\/\//, '')
+    .replace(/^www\./, '')
+    .replace(/[^a-z0-9.-]/g, '');
+
+  if (!cleanDomain || cleanDomain.length < 3) {
+    showError('Please enter a valid domain name');
+    return;
+  }
+
+  setLoading(true);
+  hideResults();
+
+  try {
+    // Call our server-side proxy instead of WHMCS directly
+    const response = await fetch('/api/domain-check', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ domain: cleanDomain })
+    });
+
+    if (!response.ok) {
+      let payload = null;
+      try {
+        payload = await response.json();
+      } catch {
+        // ignore
+      }
+
+      const details = payload?.details ? ` — ${payload.details}` : '';
+      const body = payload?.body ? ` — ${String(payload.body).slice(0, 240)}` : '';
+      showError(`Unable to connect. Please verify WHMCS configuration.${details}${body}`);
+      return;
+    }
+
+    const whmcsData = await response.json();
+    
+    const result = parseWhmcsResponse(whmcsData, cleanDomain);
+    
+    renderResults([result]);
+
+  } catch (error) {
+    console.error('Domain search error:', error);
+    showError('Unable to connect. Please verify WHMCS configuration.');
+  } finally {
+    setLoading(false);
+  }
+}
+
+// ===================== EVENT LISTENERS =====================
+
+if (searchForm) {
+  searchForm.addEventListener('submit', handleSearch);
+}
+
+if (closeResults) {
+  closeResults.addEventListener('click', hideResults);
+}
+
+if (continueSearch) {
+  continueSearch.addEventListener('click', function(e) {
+    e.preventDefault();
+    hideResults();
+    if (searchInput) searchInput.focus();
+  });
+}
+
+document.addEventListener('astro:page-load', function() {
+  const newSearchForm = document.getElementById('domainSearchForm');
+  const newSearchInput = document.getElementById('heroDomainInput');
+  const newCloseResults = document.getElementById('closeResults');
+  const newContinueSearch = document.getElementById('continueSearch');
+
+  if (newSearchForm) {
+    newSearchForm.addEventListener('submit', handleSearch);
+  }
+  if (newCloseResults) {
+    newCloseResults.addEventListener('click', hideResults);
+  }
+  if (newContinueSearch) {
+    newContinueSearch.addEventListener('click', function(e) {
+      e.preventDefault();
+      hideResults();
+      if (newSearchInput) newSearchInput.focus();
+    });
+  }
+});
+</script>
+
+<style>
+  /* Hero Section */
+  .hero {
+    position: relative;
+    min-height: 115vh;
+    background-color: transparent;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    padding: calc(72px + var(--timer-bar-height, 0px) + 18vh) 0 10vh;
+  }
+
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Background Effects */
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+
+  /* Container */
+  .hero-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+  }
+
+  /* Content */
+  .hero-content {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  /* Title */
+  .hero-title {
+    font-size: 48px;
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    margin-top: 0;
+    max-width: 900px;
+    white-space: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-sizing: content-box;
+  }
+
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 64px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-title {
+      font-size: 72px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .hero-title {
+      font-size: 84px;
+    }
+  }
+
+  .hero-title-accent {
+    color: #34d399;
+  }
+
+  .hero-title-gradient {
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    white-space: nowrap;
+  }
+
+  /* Pricing Action Container */
+  .hero-pricing-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+    margin-bottom: 56px;
+    position: relative;
+  }
+
+  .pricing-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: static;
+  }
+
+  /* Price Text - Pure White and High Contrast */
+  .pricing-display {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    color: #ffffff;
+    font-family: inherit;
+  }
+
+  .pricing-display .currency {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+
+  .pricing-display .amount {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #ffffff;
+  }
+
+  .pricing-display .period {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* CTA Buttons */
+  .hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .hero-btn-primary, .hero-btn-secondary {
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .hero-btn-primary {
+    background: var(--btn-primary-bg);
+    color: #fff;
+    border: 1px solid var(--btn-primary-bg);
+  }
+  
+  .hero-btn-primary:hover {
+    background: var(--btn-primary-hover);
+    transform: translateY(-1px);
+  }
+
+  .hero-btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .hero-btn-secondary:hover {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Subtitle */
+  .hero-subtitle {
+    font-size: 19px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 48px;
+    max-width: 750px;
+    line-height: 1.4;
+    font-weight: 300;
+  }
+
+  @media (min-width: 768px) {
+    .hero-subtitle {
+      font-size: 21px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-subtitle {
+      font-size: 17px;
+    }
+  }
+
+  .hero-subtitle-highlight {
+    color: #fff;
+    font-weight: 500;
+  }
+
+  /* Search */
+  .hero-search {
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-search {
+      max-width: 720px;
+    }
+  }
+
+  .hero-search-input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 8px 8px 8px 28px;
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .hero-search-icon {
+    padding-right: 16px;
+    padding-left: 0;
+    color: #8b95a5;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: var(--color-text-primary);
+    font-size: 16px;
+    font-weight: 400;
+    outline: none;
+    width: 100%;
+  }
+
+  .hero-search-input::placeholder {
+    color: #8b95a5;
+  }
+
+  .hero-search-btn {
+    display: inline-flex;
+    padding: 0 36px;
+    height: 56px;
+    background: var(--metallic-gradient);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.35);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-search-btn:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .hero-search-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+  }
+
+  /* Search button loading spinner */
+  .hero-search-btn .spinner {
+    width: 18px;
+    height: 18px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Search Results Dropdown */
+  .search-results {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    z-index: 100;
+    animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-12px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+    background: rgba(59, 130, 246, 0.03);
+  }
+
+  .results-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #94a3b8;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .results-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .results-close:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f8fafc;
+  }
+
+  .results-list {
+    max-height: 380px;
+    overflow-y: auto;
+    padding: 8px 0;
+  }
+
+  .results-list::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .results-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .results-list::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.3);
+    border-radius: 3px;
+  }
+
+  .result-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    margin: 0 8px;
+    border-radius: 10px;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+  }
+
+  .result-item:last-child {
+    border-bottom: none;
+  }
+
+  .result-item:hover {
+    background: rgba(59, 130, 246, 0.06);
+    border-color: rgba(59, 130, 246, 0.1);
+  }
+
+  .result-item.error {
+    padding: 20px 20px;
+    background: rgba(251, 191, 36, 0.05);
+    border-color: rgba(251, 191, 36, 0.1);
+    margin: 0 8px;
+    border-radius: 10px;
+  }
+
+  .result-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  .result-icon.available {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(16, 185, 129, 0.15) 100%);
+    color: #22c55e;
+  }
+
+  .result-icon.unavailable {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(220, 38, 38, 0.1) 100%);
+    color: #ef4444;
+  }
+
+  .result-icon.error {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.15) 0%, rgba(245, 158, 11, 0.1) 100%);
+    color: #fbbf24;
+  }
+
+  .result-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .result-domain {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .result-domain.error-text {
+    color: #fbbf24;
+    font-size: 14px;
+  }
+
+  .result-domain-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .result-tld-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  .result-status {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 500;
+  }
+
+  .result-action {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .result-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #22c55e;
+    white-space: nowrap;
+  }
+
+  .price-period {
+    font-size: 12px;
+    font-weight: 500;
+    color: #94a3b8;
+    margin-left: 2px;
+  }
+
+  .result-btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  }
+
+  .result-btn:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .result-unavailable {
+    font-size: 14px;
+    color: #94a3b8;
+    font-weight: 500;
+  }
+
+  .results-footer {
+    padding: 14px 20px;
+    border-top: 1px solid rgba(59, 130, 246, 0.08);
+    text-align: center;
+    background: rgba(59, 130, 246, 0.02);
+  }
+
+  .results-cta {
+    font-size: 13px;
+    font-weight: 500;
+    color: #60a5fa;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .results-cta:hover {
+    color: #93c5fd;
+    gap: 8px;
+  }
+
+  /* Review Badges Row */
+  .reviews-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .review-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    backdrop-filter: none;
+    transition: all 0.2s ease;
+    cursor: default;
+  }
+  .review-badge:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .badge-sep {
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+  }
+
+  .rb-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tp-star-mark {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .google-g {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .rb-wordmark {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  .rb-divider {
+    display: block;
+    width: 1px;
+    height: 26px;
+    background: rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+  }
+
+  .rb-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .rb-stars {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+  }
+
+  .tp-star-tile {
+    width: 18px;
+    height: 18px;
+    display: block;
+    border-radius: 2px;
+  }
+
+  .google-star {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+
+  .rb-score {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: -0.01em;
+  }
+
+  .rb-score strong { font-weight: 700; }
+
+  .rb-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .hero {
+      min-height: 75vh;
+      padding: 0px 0 30px;
+    }
+
+    .hero-search {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      min-height: 70vh;
+      padding: 0px 0 20px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+    }
+
+    .pricing-display .currency {
+      font-size: 20px;
+    }
+
+    .pricing-display .amount {
+      font-size: 36px;
+    }
+
+    .pricing-display .period {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Counter animation function
+  const startCount = (target: number, duration: number, element: HTMLElement) => {
+    let start = 0;
+    const increment = (target / (duration / 16)) || 1;
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        element.innerText = target.toString();
+        clearInterval(timer);
+      } else {
+        element.innerText = Math.floor(start).toString();
+      }
+    }, 16);
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initial entrance animations removed per request
+
+    // Observation for counts
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+          const countTo = parseInt(target.getAttribute('data-count') || '0');
+          if (countTo > 0) {
+            startCount(countTo, 2000, target);
+            observer.unobserve(target);
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.count-up').forEach(el => observer.observe(el));
+  });
+</script>

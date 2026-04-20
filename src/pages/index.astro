@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import DashboardPreview from '../components/DashboardPreview.astro';
+import PowerFeatures from '../components/PowerFeatures.astro';
+import Features from '../components/Features.astro';
+import Performance from '../components/Performance.astro';
+import PowefulFeature from '../components/PowerfulFeature.astro'
+import WhyChooseUs from '../components/WhyChooseUs.astro'
+import CloudflareIntegration from '../components/CloudflareIntegration.astro'
+import MigrationSection from '../components/MigrationSection.astro'
+import EmailFeatures from '../components/EmailFeatures.astro'
+import ScrollFeatures from '../components/ScrollFeatures.astro'
+import UseCaseSection from '../components/UseCaseSection.astro'
+import FAQ from '../components/FAQ.astro'
+import Pricing from '../components/Pricing.astro'
+import CustomerReviews from '../components/CustomerReviews.astro'
+import PromoBanner from '../components/PromoBanner.astro'
+
+const title = 'Litescaler — Hosting that stays out of your way';
+const description = 'Fast, reliable, and secure hosting for modern applications. NVMe SSD storage, global CDN, and 99.99% uptime.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Hero />
+  <Pricing />
+  <CustomerReviews />
+  <DashboardPreview />
+  <PowerFeatures />
+  <MigrationSection />
+  <EmailFeatures />
+  <ScrollFeatures />
+  <UseCaseSection />
+  <FAQ />
+  <PromoBanner />
+  
+</BaseLayout>

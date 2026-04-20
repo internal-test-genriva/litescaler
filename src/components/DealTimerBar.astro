@@ -1,0 +1,164 @@
+---
+---
+<div id="deal-timer-bar" class="deal-timer-bar">
+  <div class="deal-timer-content">
+    <span class="deal-text">Limited-time</span>
+    <span class="deal-badge">DEAL</span>
+    <span class="deal-text">ends in</span>
+    <div class="timer" id="countdown-timer">
+      <span class="time-block">05</span>
+      <span class="time-sep">:</span>
+      <span class="time-block">23</span>
+      <span class="time-sep">:</span>
+      <span class="time-block">59</span>
+      <span class="time-sep">:</span>
+      <span class="time-block">50<span class="time-unit">s</span></span>
+    </div>
+    <a href="/hosting" class="deal-link">Explore&nbsp;→</a>
+  </div>
+</div>
+
+<script>
+  function startCountdown() {
+    const timerEl = document.getElementById('countdown-timer');
+    if (!timerEl) return;
+
+    // Set end date to 5 days from now for demo purposes
+    let endDate = new Date();
+    endDate.setDate(endDate.getDate() + 5);
+
+    function updateTimer() {
+      const now = new Date();
+      const diff = endDate.getTime() - now.getTime();
+
+      if (diff <= 0) return;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      timerEl.innerHTML = `
+        <span class="time-block">${days.toString().padStart(2, '0')}</span>
+        <span class="time-sep">:</span>
+        <span class="time-block">${hours.toString().padStart(2, '0')}</span>
+        <span class="time-sep">:</span>
+        <span class="time-block">${minutes.toString().padStart(2, '0')}</span>
+        <span class="time-sep">:</span>
+        <span class="time-block">${seconds.toString().padStart(2, '0')}<span class="time-unit">s</span></span>
+      `;
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  }
+
+  // Run on first load
+  document.addEventListener('DOMContentLoaded', () => {
+    startCountdown();
+  });
+  
+  // Re-run height calculation when Astro swaps the page
+  document.addEventListener('astro:page-load', () => {
+    startCountdown();
+  });
+</script>
+
+<style is:global>
+  :root {
+    --timer-bar-height: 40px;
+  }
+</style>
+
+<style>
+  .deal-timer-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--timer-bar-height);
+    background-color: var(  --accent-color); /* Tertiary Black */
+    color: var(--color-bg-primary); /* White Text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 16px;
+    z-index: 10000;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .deal-timer-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .deal-text {
+    color: var(--color-bg-secondary);
+    font-size: 12px;
+  }
+
+  .deal-badge {
+    background: #ffffff;
+    color: #2380F4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .timer {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .time-block {
+    font-weight: 700;
+    color: var(--color-bg-primary);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .time-sep {
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  .time-unit {
+    color: var(--color-text-muted);
+    font-size: 11px;
+    margin-left: 1px;
+    font-weight: 500;
+  }
+
+  .deal-link {
+    color: var(--color-bg-primary);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 8px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    padding-bottom: 1px;
+    transition: all 0.2s ease;
+  }
+
+  .deal-link:hover {
+    border-bottom-color: var(--color-bg-primary);
+  }
+
+  @media (max-width: 640px) {
+    .deal-text:first-child {
+      display: none;
+    }
+    .deal-timer-content {
+      gap: 6px;
+    }
+  }
+
+</style>

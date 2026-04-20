@@ -1,0 +1,286 @@
+---
+import { Terminal, ShieldCheck, Lock, Check, Zap, Fingerprint } from 'lucide-react';
+---
+
+<section class="security-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge">Security Core</span>
+      <h2 class="main-title">Encrypted at the <span class="gradient-text">Root Level</span></h2>
+      <p class="section-desc">We don't just host your data; we fortify it. From hardware-level SSH encryption to automated SSL handshakes, your project is wrapped in enterprise-grade protection.</p>
+    </div>
+
+    <div class="security-grid">
+      
+      <div class="security-card reveal-left">
+        <div class="visual-area">
+          <div class="terminal-shell">
+            <div class="shell-header">
+              <div class="controls"><span></span><span></span><span></span></div>
+              <div class="path">root@litescaler:~</div>
+            </div>
+            <div class="shell-body">
+              <div class="typewriter">
+                <p class="line-1"><span class="cmd">></span> ssh admin@server -p 22</p>
+                <p class="line-2"><span class="success">Access Granted.</span> Establishing RSA-4096 tunnel...</p>
+                <p class="line-3"><span class="cmd">></span> systemctl status security</p>
+                <p class="line-4">Active: <span class="active">protected</span> (since 2026)</p>
+              </div>
+            </div>
+          </div>
+          <div class="floating-icon"><Fingerprint size={32} /></div>
+        </div>
+        
+        <div class="content-area">
+          <div class="icon-glow"><Terminal size={24} /></div>
+          <h3>Full Root-Level SSH Access</h3>
+          <p>Unleash the full potential of your development workflow. Manage your environment with precision using secure shell access, designed for developers who demand total command over their stack.</p>
+          <div class="tag-group">
+            <span class="tag"><Check size={14} /> Git & WP-CLI</span>
+            <span class="tag"><Check size={14} /> RSA Encryption</span>
+            <span class="tag"><Check size={14} /> Custom Scripts</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="security-card reveal-left">
+        <div class="visual-area">
+           <div class="terminal-shell">
+            <div class="shell-header">
+              <div class="controls"><span></span><span></span><span></span></div>
+              <div class="path">root@litescaler:~</div>
+            </div>
+            <div class="shell-body">
+              <div class="typewriter">
+                <p class="line-1"><span class="cmd">></span> curl -I https://site.com</p>
+                <p class="line-2"><span class="success">HTTP/2 200 OK</span></p>
+                <p class="line-3"><span class="cmd">></span> ./waf-cli --enable</p>
+                <p class="line-4">Status: <span class="active">Mitigating Attack</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="content-area">
+          <div class="icon-glow"><Zap size={24} /></div>
+          <h3>Enterprise DDoS Mitigation</h3>
+          <p>Our intelligent Web Application Firewall (WAF) and Anycast network absorb terabits of attack traffic, keeping your site online even during massive surges.</p>
+          <div class="tag-group">
+            <span class="tag"><Check size={14} /> Layer 7 Protection</span>
+            <span class="tag"><Check size={14} /> 0.3s Latency</span>
+            <span class="tag"><Check size={14} /> Always-On</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="security-card reveal-right highlight-emerald">
+        <div class="visual-area">
+          <div class="ssl-shield-wrap">
+            <div class="halo-ring"></div>
+            <div class="main-shield">
+              <ShieldCheck size={64} strokeWidth={1} />
+            </div>
+            <div class="url-badge">
+              <Lock size={14} />
+              <span>Verified HTTPS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-area">
+          <div class="icon-glow"><ShieldCheck size={24} /></div>
+          <h3>Always-On SSL Encryption</h3>
+          <p>Build instant trust with your visitors. Every site on our network is automatically outfitted with high-bit Let's Encrypt certificates, ensuring data integrity and an SEO advantage out of the box.</p>
+          <div class="tag-group">
+            <span class="tag"><Check size={14} /> Auto-Renew</span>
+            <span class="tag"><Check size={14} /> Multi-Domain</span>
+            <span class="tag"><Check size={14} /> 256-Bit Tech</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .security-section {
+    background-color: transparent;
+    color: var(--color-text-primary);
+    padding: 120px 24px;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow: hidden;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* Header Styles */
+  .section-header { text-align: center; margin-bottom: 80px; }
+  .badge { 
+    background: rgba(35, 128, 244, 0.1); 
+    color: #2380F4; 
+    padding: 6px 16px; 
+    border-radius: 99px; 
+    font-size: 13px; 
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid rgba(35, 128, 244, 0.2);
+  }
+  .main-title { font-size: 48px; font-weight: 800; margin: 20px 0; letter-spacing: -1px; color: var(--color-text-primary); }
+  .gradient-text {
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .section-desc { color: var(--color-text-secondary); max-width: 600px; margin: 0 auto; font-size: 18px; line-height: 1.6; }
+
+  /* Grid & Cards */
+  .security-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .security-card {
+    background: #ffffff;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
+    border-radius: 32px !important;
+    padding: 40px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+
+  .security-card:hover {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* VISUAL: Terminal Shell */
+  .terminal-shell {
+    background: #000;
+    border-radius: 24px !important;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+  .shell-header {
+    background: #1e293b;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .controls { display: flex; gap: 6px; }
+  .controls span { width: 10px; height: 10px; border-radius: 50%; background: #334155; }
+  .path { font-size: 11px; color: #64748b; font-family: monospace; }
+  .shell-body { padding: 25px; font-family: 'Fira Code', monospace; font-size: 13px; line-height: 1.8; }
+  .cmd { color: #2380F4; }
+  .success { color: #fbbf24; }
+  .active { color: #10b981; font-weight: bold; text-decoration: underline; }
+
+  /* VISUAL: SSL Shield */
+  .ssl-shield-wrap {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .main-shield { color: #10b981; filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.3)); z-index: 2; }
+  .halo-ring {
+    position: absolute;
+    width: 160px; height: 160px;
+    border: 2px dashed rgba(16, 185, 129, 0.2);
+    border-radius: 50%;
+    animation: rotate 10s linear infinite;
+  }
+  .url-badge {
+    position: absolute;
+    bottom: 20px;
+    background: #10b981;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 99px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    z-index: 3;
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.4);
+  }
+
+  /* Content Styling */
+  .visual-area {
+    margin-bottom: 32px;
+    margin-left: -40px;
+    margin-right: -40px;
+    margin-top: -40px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .content-area {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .icon-glow {
+    width: 50px; height: 50px;
+    background: rgba(35, 128, 244, 0.1);
+    color: #2380F4;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px;
+    box-shadow: 0 0 20px rgba(35, 128, 244, 0.1);
+  }
+  .highlight-emerald .icon-glow { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+
+  h3 { font-size: 28px; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px; color: var(--color-text-primary); }
+  p { color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 30px; font-size: 15px; }
+
+  .tag-group { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tag {
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-text-primary);
+  }
+
+  /* Animations */
+  @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  
+  .reveal-left { opacity: 0; transform: translateX(-30px); transition: all 1s ease-out; }
+  .reveal-right { opacity: 0; transform: translateX(30px); transition: all 1s ease-out; }
+  .is-visible { opacity: 1; transform: translateX(0); }
+
+  @media (max-width: 1024px) {
+    .security-grid { grid-template-columns: 1fr; }
+    .main-title { font-size: 36px; }
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>

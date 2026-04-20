@@ -1,0 +1,188 @@
+---
+/* CTA Section with Scroll-Triggered Count-up */
+const { link = "#" } = Astro.props;
+---
+
+<section class="cta-wrapper">
+  <div class="cta-banner">
+    <div class="tech-grid-overlay"></div>
+    <div class="blue-glow-left"></div>
+    
+    <div class="cta-content">
+      <div class="stats-side">
+        <span class="eyebrow">Hosting Excellence</span>
+        <h2 class="stat-number" data-target="1000000">0</h2>
+        <p class="stat-label">Websites & Apps hosted globally</p>
+      </div>
+
+      <div class="action-side">
+        <div class="text-wrap">
+          <p class="tagline">Speed is the New Standard.</p>
+          <p class="sub-tagline">We're only missing yours!</p>
+        </div>
+        <a href={link} class="btn-primary">
+          Get Started Now
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const animateCount = (el) => {
+    const target = parseInt(el.getAttribute('data-target'));
+    const duration = 2000; // 2 seconds
+    let startTimestamp = null;
+
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      
+      // Easing function for a smoother finish (easeOutExpo)
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      
+      const currentCount = Math.floor(easeProgress * target);
+      
+      // Formatting for Indian Numbering System: 10,00,000
+      el.innerText = currentCount.toLocaleString('en-IN') + "+";
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  };
+
+  // The Observer Logic
+  const observerOptions = {
+    root: null, // use the viewport
+    threshold: 0.3, // Trigger when 30% of the section is visible
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      // ONLY start if the element is entering the screen
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        // Stop observing once the animation has started once
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Select the element and start watching it
+  const targetEl = document.querySelector('.stat-number');
+  if (targetEl) {
+    observer.observe(targetEl);
+  }
+</script>
+
+<style>
+  .cta-wrapper {
+    padding: 100px 24px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta-banner {
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+    min-height: 340px;
+    background-color: var(--color-bg-primary); /* Explicit White */
+    border: 1px solid var(--color-border); /* Subtle dark border for white bg */
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .tech-grid-overlay {
+    position: absolute;
+    inset: 0;
+    /* Changed color to a very light indigo so it shows on white */
+    background-image: radial-gradient(var(--color-accent-soft) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding: 60px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Removed color: #fff; from here */
+  }
+
+  .stat-number { 
+    font-size: 72px; 
+    font-weight: 800; 
+    line-height: 1; 
+    margin-bottom: 8px;
+    /* Gradient from black to Indigo */
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .eyebrow { 
+    color: var(--color-accent); 
+    font-weight: 700; 
+    font-size: 14px; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+  }
+
+  /* FIXED: Set to solid black */
+  .stat-label { 
+    color: var(--color-text-primary); 
+    font-size: 20px; 
+    font-weight: 500; 
+  }
+
+  .action-side { text-align: right; }
+
+  /* FIXED: Changed to black for white background */
+  .tagline { 
+    font-size: 28px; 
+    font-weight: 800; 
+    color: var(--color-text-primary); 
+  }
+
+  .sub-tagline { 
+    font-size: 18px; 
+    color: var(--color-text-secondary); /* Slightly darker gray for better readability on white */
+    margin-bottom: 32px; 
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--btn-primary-bg);
+    color: #fff; /* Button text stays white */
+    padding: 18px 42px;
+    border-radius: 16px !important;
+    font-weight: 700;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+  }
+
+  @media (max-width: 1024px) {
+    .cta-content { flex-direction: column; text-align: center; gap: 50px; padding: 60px 30px; }
+    .action-side { text-align: center; }
+  }
+</style>

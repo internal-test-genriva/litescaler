@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Global Styles
+   Glassmorphism design system base styles
+   ========================================================================== */
+
+@import "tailwindcss";
+@import './design-system.css';
+
+/* --------------------------------------------------------------------------
+   Global Theme Transition
+   Smooth visual transition on theme swap for every element
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.2s ease,
+    box-shadow 0.3s ease,
+    opacity 0.3s ease;
+}
+
+img, video, svg {
+  transition: opacity 0.3s ease;
+}
+
+
+/* ==========================================================================
+   Component Styles
+   ========================================================================== */
+@import './components/button.css';
+@import './components/card.css';

@@ -1,0 +1,548 @@
+/* ================================================================
+   ABOUT PAGE — New Minimalist Aesthetic (Reference-Inspired)
+   ================================================================ */
+
+:root {
+  --ab-primary: #0f172a;
+  --ab-accent: #2380F4;
+  --ab-text-sec: #475569;
+  --ab-bg-alt: #f1f7ff;
+  /* Very light blue for benefits */
+  --ab-border: rgba(15, 23, 42, 0.08);
+  --ab-container-w: 1200px;
+}
+
+/* ── Container ── */
+.ab-container {
+  max-width: var(--ab-container-w);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .ab-container {
+    padding: 0 24px;
+  }
+}
+
+/* ================================================================
+   1. HERO SECTION
+   ================================================================ */
+.ab-new-hero {
+  padding: 170px 0 100px;
+  background: #fff;
+  text-align: center;
+}
+
+.ab-main-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--ab-primary);
+  margin: 0 0 24px 0;
+  /* Clear margin-top */
+  letter-spacing: -0.03em;
+}
+
+.ab-blue-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ab-accent);
+  margin-bottom: 24px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ab-hero-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--ab-text-sec);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ================================================================
+   2. STORY SECTION
+   ================================================================ */
+.ab-new-story {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.ab-story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.ab-story-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--ab-primary);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.ab-story-content p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--ab-text-sec);
+  margin-bottom: 20px;
+}
+
+.ab-txt-blue {
+  color: var(--ab-accent);
+  font-weight: 600;
+}
+
+/* Story Visual */
+.ab-story-visual {
+  position: relative;
+}
+
+.ab-image-frame {
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.1);
+  background: #f8fafc;
+}
+
+.ab-team-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.ab-image-frame:hover .ab-team-img {
+  transform: scale(1.03);
+}
+
+/* ================================================================
+   3. BENEFITS SECTION
+   ================================================================ */
+.ab-new-benefits {
+  padding: 120px 0;
+  background: var(--ab-bg-alt);
+  text-align: center;
+}
+
+.ab-benefits-header {
+  margin-bottom: 80px;
+}
+
+.ab-benefits-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--ab-primary);
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.ab-benefits-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: var(--ab-text-sec);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.ab-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.ab-benefit-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ab-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: transform 0.3s ease;
+}
+
+.ic-green {
+  background: #ecfdf5;
+  color: #10b981;
+}
+
+.ic-blue {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+.ic-orange {
+  background: #fff7ed;
+  color: #f97316;
+}
+
+.ab-benefit-card:hover .ab-icon-circle {
+  transform: translateY(-8px);
+}
+
+.ab-benefit-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ab-primary);
+  margin-bottom: 12px;
+}
+
+.ab-benefit-card p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: var(--ab-text-sec);
+  line-height: 1.6;
+}
+
+/* ================================================================
+   RESPONSIVE OVERRIDES
+   ================================================================ */
+@media (max-width: 1024px) {
+  .ab-story-grid {
+    gap: 40px;
+  }
+
+  .ab-main-title {
+    font-size: 42px;
+  }
+
+  .ab-story-title {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 900px) {
+  .ab-story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ab-benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .ab-new-hero { padding: 170px 0 100px; }
+  .ab-new-story { padding: 60px 0; }
+  .ab-new-benefits { padding: 80px 0; }
+}
+
+/* ================================================================
+   4. CORE VALUES SECTION
+   ================================================================ */
+.ab-values {
+  padding: 120px 0;
+  background: #fff;
+}
+
+.ab-section-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.ab-section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--ab-primary);
+  margin-bottom: 20px;
+}
+
+.ab-section-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: var(--ab-text-sec);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.ab-values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.ab-value-card {
+  padding: 40px 30px;
+  border-radius: 24px;
+  background: #fff;
+  border: 1px solid var(--ab-border);
+  transition: all 0.3s ease;
+}
+
+.ab-value-card:hover {
+  border-color: var(--ab-accent);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.04);
+  transform: translateY(-5px);
+}
+
+.ab-value-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--ab-bg-alt);
+  color: var(--ab-accent);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.ab-value-card h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ab-primary);
+  margin-bottom: 15px;
+}
+
+.ab-value-card p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ab-text-sec);
+}
+
+/* ================================================================
+   5. INFRASTRUCTURE SECTION
+   ================================================================ */
+.ab-infra {
+  padding: 120px 0;
+  background: var(--ab-bg-alt);
+}
+
+.ab-infra-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.ab-infra-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--ab-text-sec);
+  margin: 24px 0 40px;
+}
+
+.ab-infra-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.ab-stat-num {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--ab-accent);
+  margin-bottom: 8px;
+}
+
+.ab-stat-txt {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ab-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ab-map-img {
+  width: 100%;
+  border-radius: 32px;
+  box-shadow: 0 40px 80px rgba(15, 23, 42, 0.15);
+}
+
+/* ================================================================
+   6. CTA BANNER
+   ================================================================ */
+.ab-cta-section {
+  padding: 120px 0 160px;
+  background: #fff;
+}
+
+.ab-cta-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  padding: 100px 60px;
+  border-radius: 40px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2);
+}
+
+.ab-cta-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.ab-cta-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #94a3b8;
+  margin-bottom: 48px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ab-cta-btns {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.ab-btn-primary {
+  background: var(--ab-accent);
+  color: #fff;
+  padding: 18px 36px;
+  border-radius: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ab-btn-outline {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  padding: 18px 36px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.ab-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(35, 128, 244, 0.3);
+}
+
+.ab-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .ab-values-grid { grid-template-columns: repeat(2, 1fr); }
+  .ab-infra-grid { grid-template-columns: 1fr; gap: 60px; }
+  .ab-cta-title { font-size: 32px; }
+}
+
+@media (max-width: 640px) {
+  .ab-values-grid { grid-template-columns: 1fr; }
+  .ab-infra-stats { grid-template-columns: 1fr; }
+  .ab-cta-banner { padding: 60px 30px; }
+  .ab-cta-btns { flex-direction: column; }
+}
+/* ================================================================
+   7. WHAT DEFINES US SECTION
+   ================================================================ */
+.ab-defines {
+  padding: 120px 0;
+  background: #fff;
+  text-align: center;
+}
+
+.ab-defines-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.ab-define-card {
+  flex: 0 1 calc(33.333% - 20px);
+  min-width: 320px;
+  background: #fff;
+  border: 1px solid var(--ab-border);
+  border-radius: 20px;
+  padding: 50px 35px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ab-define-card:hover {
+  border-color: var(--ab-accent);
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.06);
+  transform: translateY(-8px);
+}
+
+.ab-define-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Icon Color Variants */
+.ab-define-icon.ic-green { background: #f0fdf4; color: #10b981; }
+.ab-define-icon.ic-blue { background: #eff6ff; color: #2380F4; }
+.ab-define-icon.ic-orange { background: #fff7ed; color: #f97316; }
+.ab-define-icon.ic-pink { background: #fdf2f8; color: #db2777; }
+.ab-define-icon.ic-teal { background: #f0fdfa; color: #0d9488; }
+
+.ab-define-card h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ab-primary);
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+
+.ab-define-card p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ab-text-sec);
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  .ab-define-card {
+    flex: 0 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .ab-defines { padding: 80px 0; }
+  .ab-define-card {
+    flex: 0 1 100%;
+    min-width: 0;
+  }
+}

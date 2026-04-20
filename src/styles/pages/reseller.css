@@ -1,0 +1,253 @@
+/* --- Reseller Hosting Page Styles --- */
+
+/* ================================================================
+   1. HERO — Agency Layout (Dark Theme)
+   ================================================================ */
+.rh-hero {
+  background: #09090b; /* Very dark, almost black background */
+  position: relative;
+  padding: 160px 0 130px;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Ambient Glows */
+.rh-hero::before {
+  content: '';
+  position: absolute;
+  top: 10%; right: 0;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(35, 128, 244, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.rh-hero__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.rh-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ── Left column ── */
+.rh-hero__content { display: flex; flex-direction: column; }
+
+.rh-hero__tag {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #2380F4; /* Primary blue */
+  margin: 0 0 20px;
+  letter-spacing: 0;
+}
+
+.rh-hero__title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 4vw, 3.8rem);
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 32px;
+}
+
+/* Checklist */
+.rh-hero__list {
+  list-style: none;
+  padding: 0; margin: 0 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.rh-hero__list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: #fafafa;
+  font-weight: 400;
+}
+.rh-hero__check-icon { 
+  flex-shrink: 0; 
+  color: #10b981; /* Precise green used in reference */
+}
+
+/* CTA row */
+.rh-hero__cta-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.rh-btn-primary {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 16px 44px;
+  background: #2380F4; /* Blue button */
+  color: #fff;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px; font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.rh-btn-primary:hover {
+  background: #1558c4;
+  transform: translateY(-2px);
+}
+
+.rh-hero__guarantee {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+/* ── Right column: Dash Mockup ── */
+.rh-hero__visual {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+/* Subtle grid background on the right */
+.rh-hero__grid-bg {
+  position: absolute;
+  inset: -20%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 1;
+  mask-image: linear-gradient(to left, black, transparent);
+  -webkit-mask-image: linear-gradient(to left, black, transparent);
+}
+
+.rh-hero__visual-inner {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  z-index: 2;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+  transition: transform 0.5s ease;
+}
+.rh-hero__visual-inner:hover {
+  transform: perspective(1000px) rotateY(-2deg) rotateX(0deg);
+}
+
+.rh-hero__bg-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%; height: 120%;
+  background: radial-gradient(ellipse at center, rgba(35, 128, 244, 0.2) 0%, transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.rh-hero__dash-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 2;
+  border-radius: 12px;
+}
+
+/* --- Feature Sections --- */
+.reseller-section {
+  padding: 120px 0;
+  background: #030712;
+  color: #ffffff;
+}
+
+.reseller-section-light {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.section-tag {
+  color: #2380F4;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.reseller-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.reseller-feature-card {
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  transition: all 0.3s ease;
+}
+
+.reseller-feature-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+}
+
+.feature-icon-box {
+  width: 56px;
+  height: 56px;
+  background: rgba(35, 128, 244, 0.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: #2380F4;
+}
+
+@media (max-width: 1024px) {
+  .rh-hero__grid { grid-template-columns: 1fr; gap: 40px; }
+  .rh-hero__visual { display: none; }
+  .rh-hero__title { font-size: 3rem; }
+  .reseller-features-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .rh-hero { padding: 120px 0 80px; }
+  .rh-hero__title { font-size: 2.5rem; }
+}

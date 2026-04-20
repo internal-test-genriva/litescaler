@@ -1,0 +1,313 @@
+---
+import Person from '../assets/person.png'; // Ensure this exists in your assets
+---
+
+<section class="support-section">
+  <div class="glow-blur"></div>
+  
+  <div class="glass-card">
+      <div class="grid-layout">
+        
+        <div class="content-side">
+          <div class="badge">Human-Powered Support</div>
+          <h2 class="title">Reliable support, <br/><span class="text-gradient">happier customers.</span></h2>
+          <p class="description">
+            Our team proactively resolves issues, handles migrations, and tunes performance 
+            so your site stays fast and you can focus on growing the business.
+          </p>
+
+          <ul class="support-features">
+            <li class="feature-item">
+              <div class="icon-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <span class="feature-label">24/7 Support in English & Hindi</span>
+                <p class="feature-sub">Live chat, email, and ticket assistance available instantly.</p>
+              </div>
+            </li>
+
+            <li class="feature-item">
+              <div class="icon-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <span class="feature-label">Response under 30 seconds</span>
+                <p class="feature-sub">Prompt and friendly humans, not just automated bots.</p>
+              </div>
+            </li>
+
+            <li class="feature-item">
+              <div class="icon-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <span class="feature-label">Full Migration Assistance</span>
+                <p class="feature-sub">We handle plugin conflicts, recovery, and initial setup.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="visual-side">
+          <div class="chat-widget">
+            <div class="bubble user-bubble">
+              I want to migrate my website to your hosting.
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-header">
+                <div class="agent-info">
+                  <span class="agent-name">Nikhil</span>
+                  <span class="agent-tag">Support Specialist</span>
+                </div>
+                <div class="online-indicator"></div>
+              </div>
+              <p class="agent-msg">Yes, we’ll handle the full migration for free — no downtime included. 🚀</p>
+            </div>
+
+            <div class="chat-input-area">
+              <img src={Person.src} alt="Nikhil" class="agent-avatar" />
+              <div class="typing-indicator">
+                <span></span><span></span><span></span>
+                <small>Nikhil is typing...</small>
+              </div>
+            </div>
+
+            <div class="happiness-stats">
+              <div class="stat-circle">
+                <svg viewBox="0 0 36 36" class="circular-chart">
+                  <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="circle" stroke-dasharray="96, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <span class="stat-num">96%</span>
+              </div>
+              <div class="stat-text">
+                <strong>Happiness Score</strong>
+                <p>21,916 ratings</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</section>
+
+<style>
+  .support-section {
+    position: relative;
+    padding: 120px 24px;
+    background-color: transparent;
+    overflow: hidden;
+  }
+
+  .glow-blur {
+    position: absolute;
+    bottom: -10%;
+    right: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .glass-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 40px;
+    padding: 80px;
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .grid-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  /* Content Styling */
+  .badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--color-success-soft);
+    color: var(--color-success);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--color-text-primary);
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .text-gradient {
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .description {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 48px;
+    max-width: 500px;
+    line-height: 1.6;
+  }
+
+  .support-features {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .feature-item {
+    display: flex;
+    gap: 20px;
+  }
+
+  .icon-check {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: #22c55e;
+  }
+
+  .feature-label {
+    display: block;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+  }
+
+  .feature-sub {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+  }
+
+  /* Chat Simulation Widget */
+  .visual-side {
+    position: relative;
+  }
+
+  .chat-widget {
+    position: relative;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 40px !important;
+    padding: 40px;
+    box-shadow: 0 50px 100px -20px rgba(0,0,0,0.15);
+  }
+
+  .user-bubble {
+    background: #e2e8f0;
+    color: #1e293b;
+    padding: 16px 24px;
+    border-radius: 20px 20px 4px 20px;
+    font-size: 14px;
+    width: fit-content;
+    margin-bottom: 24px;
+    border: 1px solid #cbd5e1;
+    animation: slideInUp 0.5s ease forwards;
+  }
+
+  .agent-card {
+    background: var(--color-bg-secondary);
+    padding: 24px;
+    border-radius: 32px !important;
+    margin-bottom: 32px;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    animation: slideInUp 0.5s ease 0.3s forwards;
+    opacity: 0;
+    color: var(--color-text-primary);
+  }
+
+  .agent-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .agent-name { font-weight: 700; font-size: 14px; }
+  .agent-tag { font-size: 10px; opacity: 0.8; margin-left: 8px; background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px; }
+
+  .online-indicator { width: 8px; height: 8px; background: var(--color-success); border-radius: 50%; box-shadow: 0 0 10px var(--color-success); }
+
+  .agent-msg { font-size: 15px; line-height: 1.5; }
+
+  .chat-input-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .agent-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-info);
+  }
+
+  .typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .typing-indicator span {
+    width: 4px; height: 4px; background: #64748b; border-radius: 50%;
+    animation: typing 1.4s infinite;
+  }
+  .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+  
+  .typing-indicator small { margin-left: 8px; color: #64748b; font-size: 12px; }
+
+  /* Happiness Stats Overlay */
+  .happiness-stats {
+    position: absolute;
+    bottom: -40px;
+    right: -20px;
+    background: #fff;
+    color: #020617;
+    padding: 20px 30px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .circular-chart { width: 44px; height: 44px; }
+  .circle-bg { fill: none; stroke: #f1f5f9; stroke-width: 3; }
+  .circle { fill: none; stroke: #22c55e; stroke-width: 3; stroke-linecap: round; }
+
+  .stat-circle { position: relative; }
+  .stat-num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; }
+
+  .stat-text strong { display: block; font-size: 14px; }
+  .stat-text p { font-size: 12px; color: #64748b; }
+
+  @keyframes typing { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes slideInUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+  @media (max-width: 1024px) {
+    .grid-layout { grid-template-columns: 1fr; gap: 60px; }
+    .glass-card { padding: 40px; }
+    .title { font-size: 2.5rem; }
+    .happiness-stats { position: relative; bottom: auto; right: auto; margin-top: 40px; width: 100%; justify-content: center; }
+  }
+</style>

@@ -1,0 +1,1589 @@
+/* --- WordPress Hosting Page Styles --- */
+
+.wp-hero {
+  padding: 180px 0 80px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.wp-hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* --- Left Column: Content --- */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.discount-badge {
+  color: #2380F4;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.wp-hero-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 45px;
+  font-weight: 500;
+  color: #0f172a;
+  line-height: 1.2;
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+
+.feature-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 44px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+  color: #334155;
+  font-weight: 500;
+}
+
+.check-icon {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-icon {
+  color: #94a3b8;
+  cursor: help;
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+}
+
+.btn-start-now {
+  background: #2380F4;
+  color: #ffffff;
+  padding: 18px 56px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px rgba(35, 128, 244, 0.25);
+  text-align: center;
+}
+
+.btn-start-now:hover {
+  background: #1d6ed8;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(35, 128, 244, 0.35);
+}
+
+.guarantee-text {
+  margin-top: 24px;
+  font-size: 14px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+/* --- Right Column: Visual --- */
+.hero-visual {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visual-bg-shape {
+  display: none;
+}
+
+.main-subject-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 850px;
+}
+
+.person-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Floating Elements */
+.floating-card {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+  z-index: 10;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pagespeed-card {
+  bottom: -20px;
+  left: -60px;
+  width: 180px;
+  flex-direction: column;
+  padding: 24px;
+  align-items: center;
+}
+
+.ps-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 12px;
+}
+
+.ps-score-wrap {
+  position: relative;
+  width: 88px;
+  height: 88px;
+}
+
+.ps-score {
+  font-size: 28px;
+  font-weight: 800;
+  color: #10b981;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circular-chart {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+}
+
+.circle {
+  stroke: #10b981;
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+}
+
+.search-bar-card {
+  top: 20px;
+  right: -40px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  width: 300px;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.dot-in {
+  font-weight: 800;
+  background: #2380F4;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 11px;
+}
+
+.wp-floating-logo {
+  top: 140px;
+  left: -50px;
+  background: #000;
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.security-badge {
+  top: 50px;
+  left: -50px;
+  background: #2380F4;
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+/* --- Trust Strip --- */
+.hero-trust-strip {
+  border-top: 1px solid #f1f5f9;
+  padding: 40px 0;
+  background: #fcfcfd;
+}
+
+.trust-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #0f172a;
+  font-size: 14px;
+}
+
+.tp-stars-container {
+  display: flex;
+  gap: 3px;
+}
+
+.tp-star-tile {
+  width: 24px;
+  height: 24px;
+}
+
+.tp-label {
+  font-weight: 700;
+  font-size: 16px;
+  color: #0f172a;
+}
+
+.tp-reviews {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.tp-logo-branded {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  color: #0f172a;
+}
+
+.tp-star-logo {
+  width: 22px;
+  height: 22px;
+}
+
+.trust-divider {
+  width: 1px;
+  height: 24px;
+  background: #e2e8f0;
+  margin: 0 16px;
+}
+
+.trust-wp {
+  opacity: 0.9;
+  font-size: 15px;
+}
+
+/* --- Feature Sections --- */
+.wp-section {
+  padding: 120px 0;
+  background: #030712;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+.wp-section-light {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.section-tag {
+  color: #2380F4;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.wp-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.wp-feature-card {
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  transition: all 0.3s ease;
+}
+
+.wp-feature-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+}
+
+.feature-icon-box {
+  width: 56px;
+  height: 56px;
+  background: rgba(35, 128, 244, 0.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: #2380F4;
+}
+
+.feature-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.feature-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+}
+
+.content-col,
+.image-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .wp-hero-title {
+    font-size: 42px;
+  }
+
+  .hero-visual {
+    margin-top: 80px;
+    height: auto;
+  }
+
+  .floating-card {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 20px auto;
+    width: 100% !important;
+    max-width: 300px;
+  }
+
+  .wp-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wp-hero-title {
+    font-size: 36px;
+  }
+
+  .wp-hero-container {
+    padding: 0 24px;
+  }
+}
+
+/* ============================================================
+   WordPress Tech Stack Section
+   ============================================================ */
+
+.wp-techstack-section {
+  background: #ffffff;
+  padding: 100px 0 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.techstack-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* --- Header --- */
+.techstack-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 72px;
+}
+
+.techstack-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.techstack-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* --- Main Grid: 55% features | 45% image --- */
+.techstack-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+/* --- Feature List --- */
+.techstack-features {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.ts-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.ts-icon-wrap {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+  background: #ffffff;
+  margin-top: 2px;
+}
+
+.ts-text {
+  flex: 1;
+}
+
+.ts-feature-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #0f172a;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.ts-feature-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #2563eb;
+  line-height: 1.75;
+}
+
+/* --- Image Column --- */
+.techstack-image-col {
+  position: relative;
+}
+
+.techstack-img-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: visible;
+}
+
+.techstack-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* --- Floating Overlay Card --- */
+.ts-floating-card {
+  position: absolute;
+  bottom: -24px;
+  left: -24px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+  min-width: 260px;
+  z-index: 10;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.ts-card-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.ts-card-thumbnails {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.ts-thumb {
+  width: 80px;
+  height: 52px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ts-thumb-slow {
+  background: #1e293b;
+}
+
+.ts-thumb-loader {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: ts-spin 1s linear infinite;
+}
+
+.ts-thumb-fast {
+  background: #f97316;
+  position: relative;
+}
+
+.ts-thumb-glasses {
+  width: 28px;
+  height: 14px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 20px 0 0 -1px #ffffff;
+}
+
+.ts-arrow {
+  font-size: 18px;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.ts-card-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.ts-stat {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.ts-stat-slow strong {
+  color: #ef4444;
+}
+
+.ts-stat-fast strong {
+  color: #10b981;
+}
+
+.ts-check {
+  color: #10b981;
+  font-weight: 700;
+}
+
+.ts-card-badges {
+  display: flex;
+  gap: 8px;
+}
+
+.ts-badge {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #475569;
+  background: #f1f5f9;
+  border-radius: 6px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+.ts-badge strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+@keyframes ts-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Bottom 3 Cards --- */
+.techstack-bottom-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 64px;
+}
+
+.ts-bottom-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 32px 28px;
+}
+
+.ts-bottom-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: #0f172a;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.ts-bottom-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.75;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .techstack-main-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .techstack-image-col {
+    order: -1;
+  }
+
+  .techstack-bottom-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .ts-floating-card {
+    left: 0;
+    bottom: -16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wp-techstack-section {
+    padding: 60px 0;
+  }
+
+  .techstack-title {
+    font-size: 28px;
+  }
+
+  .techstack-header {
+    margin-bottom: 48px;
+  }
+
+  .techstack-bottom-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   24/7 Assistance Section
+   ============================================================ */
+
+.wp-assist-section {
+  background: #ffffff;
+  padding: 100px 0;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.assist-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* --- Left: Text --- */
+.assist-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.assist-heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 42px;
+  font-weight: 500;
+  color: #0f172a;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 36px;
+}
+
+.assist-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.assist-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #334155;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.assist-item strong {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.assist-check {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+/* --- Right: Visual --- */
+.assist-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+}
+
+/* Purple rotated square background shape */
+.assist-bg-shape {
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%) rotate(12deg);
+  width: 320px;
+  height: 320px;
+  background: #7c3aed;
+  border-radius: 32px;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+.assist-bg-shape::before {
+  content: '';
+  position: absolute;
+  inset: -18px;
+  background: #ede9fe;
+  border-radius: 36px;
+  z-index: -1;
+  transform: rotate(-6deg);
+}
+
+/* Chat card */
+.assist-chat-card {
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.14);
+  width: 320px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Top bar */
+.chat-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.chat-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chat-topbar-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.chat-topbar-icon {
+  display: flex;
+  align-items: center;
+  color: #94a3b8;
+}
+
+/* Greeting area */
+.chat-greeting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 12px 0 20px;
+}
+
+.chat-agent-logo {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-hello {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chat-wave {
+  font-size: 20px;
+}
+
+.chat-sub {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+/* Chat suggestion bubbles */
+.chat-bubbles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.chat-bubble {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f1f5f9;
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.chat-bubble:hover {
+  background: #e2e8f0;
+}
+
+.bubble-arrow {
+  font-size: 14px;
+  color: #64748b;
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+/* Cursor */
+.chat-cursor {
+  position: absolute;
+  bottom: -14px;
+  right: -14px;
+  z-index: 5;
+  filter: drop-shadow(0 2px 6px rgba(30, 27, 75, 0.25));
+}
+
+/* The image replacing the AI chat mockup */
+.assist-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .assist-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .assist-visual {
+    justify-content: center;
+    min-height: auto;
+  }
+
+  .assist-bg-shape {
+    right: 50%;
+    transform: translate(50%, -50%) rotate(12deg);
+  }
+
+  .assist-heading {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wp-assist-section {
+    padding: 60px 0;
+  }
+
+  .assist-heading {
+    font-size: 28px;
+  }
+
+  .assist-container {
+    padding: 0 20px;
+  }
+
+  .assist-chat-card {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+/* ============================================================
+   SECTION 1 — Guides & Tutorials
+   ============================================================ */
+
+.wp-guides-section {
+  background: #ffffff;
+  padding: 100px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.guides-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.guides-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 60px;
+}
+
+.guides-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 38px;
+  font-weight: 500;
+  color: #0f172a;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.guides-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.guides-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+/* Guide Card */
+.guide-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.guide-card:hover {
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+  transform: translateY(-4px);
+}
+
+.guide-card-media {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+}
+
+.guide-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.guide-card-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #ffffff;
+  color: #0f172a;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+  letter-spacing: 0.02em;
+}
+
+.guide-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  background: rgba(15, 23, 42, 0.65);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.guide-play-btn:hover {
+  background: rgba(35, 128, 244, 0.85);
+}
+
+.guide-card-body {
+  padding: 28px 28px 32px;
+}
+
+.guide-card-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.guide-card-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.guide-card-link {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2380F4;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.guide-card-link:hover {
+  color: #1d6ed8;
+}
+
+@media (max-width: 768px) {
+  .guides-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guides-title {
+    font-size: 28px;
+  }
+}
+
+/* ============================================================
+   SECTION 2 — Support
+   ============================================================ */
+
+.wp-support-section {
+  background: #ffffff;
+  padding: 100px 0 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.support-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.support-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 72px;
+}
+
+.support-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: #0f172a;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.support-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* Main two-column grid */
+.support-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+  margin-bottom: 64px;
+}
+
+/* Left: Feature items */
+.support-features {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.sf-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.sf-icon-wrap {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+  margin-top: 2px;
+}
+
+.sf-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.sf-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.sf-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sf-checklist li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sf-check {
+  color: #22c55e;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Right: Chat UI */
+.support-chat-col {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+}
+
+.support-chat-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #e0f2fe 0%, #eff6ff 60%, #f0fdf4 100%);
+  border-radius: 24px;
+  z-index: 0;
+}
+
+.support-chat-bg::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 160px;
+  height: 160px;
+  background: linear-gradient(135deg, #bfdbfe, #c7d2fe);
+  border-radius: 20px;
+  transform: rotate(12deg);
+  z-index: -1;
+}
+
+.support-chat-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+}
+
+/* User message row */
+.sc-user-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.sc-user-bubble {
+  background: #1e293b;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  padding: 14px 18px;
+  border-radius: 18px 18px 4px 18px;
+  max-width: 280px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
+}
+
+/* Agent reply card */
+.sc-agent-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.1);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.sc-agent-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.sc-agent-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.sc-agent-badge {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #2380F4;
+  border: 1.5px solid #2380F4;
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+.sc-agent-msg {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.sc-typing-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sc-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.sc-avatar-user {
+  width: 36px;
+  height: 36px;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+}
+
+.sc-typing-input {
+  flex: 1;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #94a3b8;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+
+
+@media (max-width: 1024px) {
+  .support-main-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .support-title {
+    font-size: 30px;
+  }
+}
+
+/* ============================================================
+   SECTION 3 — CTA Banner
+   ============================================================ */
+
+.wp-cta-banner-section {
+  padding: 60px 32px 100px;
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+}
+
+.cta-banner-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(120deg, #1848c8 0%, #2380F4 50%, #3b9eff 100%);
+  border-radius: 28px;
+  padding: 64px 72px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Diagonal stripe pattern */
+.cta-banner-stripes {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 55%;
+  height: 100%;
+  background-image: repeating-linear-gradient(-55deg,
+      rgba(255, 255, 255, 0.04) 0px,
+      rgba(255, 255, 255, 0.04) 2px,
+      transparent 2px,
+      transparent 18px);
+  pointer-events: none;
+}
+
+.cta-banner-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  max-width: 560px;
+}
+
+.cta-banner-tag {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.03em;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.cta-banner-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+
+.cta-banner-btn {
+  display: inline-block;
+  background: #ffffff;
+  color: #1848c8;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 36px;
+  border-radius: 12px;
+  text-decoration: none;
+  margin-bottom: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cta-banner-btn:hover {
+  background: #f0f9ff;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cta-banner-fine {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 768px) {
+  .cta-banner-inner {
+    padding: 44px 28px;
+    border-radius: 20px;
+  }
+
+  .cta-banner-title {
+    font-size: 28px;
+  }
+
+  .wp-cta-banner-section {
+    padding: 40px 16px 60px;
+  }
+}

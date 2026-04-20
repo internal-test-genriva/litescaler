@@ -1,0 +1,116 @@
+---
+import { Store, PenTool, Code, ShoppingCart, UserPlus, ShieldPlus } from 'lucide-react';
+
+const useCases = [
+  {
+    title: "Small Business",
+    desc: "Optimized hosting plans for growing businesses. Secure your local brand with free business email and 100% uptime.",
+    portrait: "/assets/use-cases/small_business.png",
+    icon: Store,
+    color: "#3b82f6",
+    bgColor: "bg-blue-50"
+  },
+  {
+    title: "Bloggers",
+    desc: "Blazing fast performance for your content. Built-in WordPress optimization and caching for zero-latency reading.",
+    portrait: "/assets/use-cases/blogger.png",
+    icon: PenTool,
+    color: "#f97316",
+    bgColor: "bg-orange-50"
+  },
+  {
+    title: "Developers",
+    desc: "Full root access, Git integration, and high-performance NVMe SSDs to deploy complex staging environments.",
+    portrait: "/assets/use-cases/developer.png",
+    icon: Code,
+    color: "#10b981",
+    bgColor: "bg-green-50"
+  },
+  {
+    title: "E-commerce Store",
+    desc: "The best WooCommerce hosting with PCI compliance. Handle massive traffic spikes during sales with ease.",
+    portrait: "/assets/use-cases/ecommerce.png",
+    icon: ShoppingCart,
+    color: "#a855f7",
+    bgColor: "bg-purple-50"
+  },
+  {
+    title: "Agencies",
+    desc: "Manage multiple client projects from a single dashboard. White-label tools to scale your agency operations.",
+    portrait: "/assets/use-cases/agency.png",
+    icon: UserPlus,
+    color: "#6366f1",
+    bgColor: "bg-indigo-50"
+  },
+  {
+    title: "Enterprise",
+    desc: "Custom infrastructure with dedicated 24×7 technical support and high-performance isolated global servers.",
+    portrait: "/assets/use-cases/enterprise.png",
+    icon: ShieldPlus,
+    color: "#eab308",
+    bgColor: "bg-yellow-50"
+  }
+];
+---
+
+<section class="py-24 bg-white w-full relative z-20" id="use-cases" data-scroll>
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Title Re-added -->
+    <div class="text-center mb-20 px-4">
+      <h2 class="text-5xl md:text-[56px] font-medium text-[#0f172a] leading-[1.1] tracking-tight" style="font-family: 'Poppins', sans-serif;">
+        Empowering every stage of your <br class="hidden md:block" /> <span style="color: #2380F4;">digital journey</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {useCases.map((uc) => (
+        <div class="uc-card group bg-white border border-slate-100 rounded-[32px] p-10 transition-all duration-300 cursor-pointer flex flex-col h-full overflow-hidden relative">
+          
+          <!-- Header: Icon and Avatar -->
+          <div class="flex justify-between items-start mb-10 w-full">
+            <div class={`w-14 h-14 rounded-2xl ${uc.bgColor} flex items-center justify-center transition-colors duration-300 group-hover:bg-white/20`}>
+              <uc.icon size={26} style={{ color: uc.color }} strokeWidth={2.5} class="transition-colors duration-300 group-hover:text-white" />
+            </div>
+            
+            <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-sm transition-transform duration-300 group-hover:scale-110">
+              <img src={uc.portrait} alt={uc.title} class="w-full h-full object-cover" />
+            </div>
+          </div>
+
+          <!-- Body -->
+          <div class="space-y-4 flex-grow">
+            <h3 class="text-[26px] font-bold text-[#0f172a] transition-colors duration-300 group-hover:text-white" style="font-family: 'Poppins', sans-serif;">
+              {uc.title}
+            </h3>
+            
+            <p class="text-slate-500 text-[16px] leading-[1.6] font-light transition-colors duration-300 group-hover:text-white/80">
+              {uc.desc}
+            </p>
+          </div>
+
+          <!-- Footer -->
+          <div class="mt-10">
+            <span class="text-[#0f172a] font-semibold text-[15px] flex items-center gap-2 transition-colors duration-300 group-hover:text-white" style="font-family: 'Poppins', sans-serif;">
+               Learn More 
+               <svg class="transition-transform duration-300 group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .uc-card {
+    border-radius: 32px !important;
+  }
+
+  .uc-card:hover {
+    background-color: #2380F4 !important;
+    border-radius: 32px !important;
+    box-shadow: 0 40px 80px -20px rgba(35, 128, 244, 0.4);
+  }
+</style>

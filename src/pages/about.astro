@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Headphones, ShieldCheck, Timer, Rocket, Lock, Users, Lightbulb, Globe, Cpu, Milestone, ArrowLeftRight, MessagesSquare } from 'lucide-react';
+import teamImg from '../assets/litescaler-team.png';
+import mapImg from '../assets/global-map.png';
+import '../styles/pages/about.css';
+
+const title = "About LiteScaler — Powerful Hosting Solutions";
+const description = "Learn about our journey to provide lightning-fast, secure, and reliable hosting services globally. Built with human expertise and enterprise infrastructure.";
+---
+
+<BaseLayout title={title} description={description}>
+
+  <!-- ═══════════════════════════════════════════════════
+       HERO (Matches Reference)
+  ═══════════════════════════════════════════════════ -->
+  <section class="ab-new-hero">
+    <div class="ab-container">
+      <h1 class="ab-main-title">About LiteScaler</h1>
+      <p class="ab-blue-subtitle">Launched in 2012, LiteScaler is among the fast-paced and leading providers of web hosting services globally.</p>
+      <p class="ab-hero-desc">
+        At LiteScaler, we aim to fulfill all business needs with perfectly crafted hosting plans and endless customer service day in, and day out! We promise to deliver above and beyond the expectations of our clients! In our journey, we are accompanied by a talented workforce that helps us stay ahead of the competition. Get started with a trusted and reliable hosting partner for your business!
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       THE STORY (2-Columns)
+  ═══════════════════════════════════════════════════ -->
+  <section class="ab-new-story">
+    <div class="ab-container">
+      <div class="ab-story-grid">
+        <div class="ab-story-content">
+          <h2 class="ab-story-title">The LiteScaler Story</h2>
+          <p>The journey started back in the year 2012, and we're still going strong! The creators of LiteScaler with the vision of becoming the leader in the web hosting industry have taken <span class="ab-txt-blue">LiteScaler to new growth horizons.</span></p>
+          <p>We got through the glitches customers faced in the market and strategically planned <span class="ab-txt-blue">premium hosting plans and domains</span> for small website owners and big businesses alike. We help customers boost their online presence to experience game-changing results! Right from day one, we have aimed to be reliable and deliver solutions at the <span class="ab-txt-blue">best price proposition.</span> With all the benefits, LiteScaler truly stands tall in the industry with the most amazing journey!</p>
+        </div>
+        <div class="ab-story-visual">
+          <div class="ab-image-frame">
+            <img src={teamImg.src} alt="LiteScaler Team" class="ab-team-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       BENEFITS SECTION
+  ═══════════════════════════════════════════════════ -->
+  <section class="ab-new-benefits">
+    <div class="ab-container">
+      <div class="ab-benefits-header">
+        <h2 class="ab-benefits-title">What Do You Get?</h2>
+        <p class="ab-benefits-subtitle">LiteScaler ensures all our users get the most stable hosting solutions, unparalleled features, and rock-solid performance.</p>
+      </div>
+
+      <div class="ab-benefits-grid">
+        <div class="ab-benefit-card">
+          <div class="ab-icon-circle ic-green">
+            <Headphones size={24} />
+          </div>
+          <h3>24/7 Support</h3>
+          <p>We strive to solve all your issues at the earliest.</p>
+        </div>
+
+        <div class="ab-benefit-card">
+          <div class="ab-icon-circle ic-blue">
+            <ShieldCheck size={24} />
+          </div>
+          <h3>99.9% Guaranteed Uptime</h3>
+          <p>We offer you a guaranteed uptime of 99.9%.</p>
+        </div>
+
+        <div class="ab-benefit-card">
+          <div class="ab-icon-circle ic-orange">
+            <Timer size={24} />
+          </div>
+          <h3>30-Days Money-Back Guarantee</h3>
+          <p>Try our hosting services risk-free!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       WHAT DEFINES US (3+2 Modern Grid)
+  ═══════════════════════════════════════════════════ -->
+  <section class="ab-defines">
+    <div class="ab-container">
+      <div class="ab-section-header">
+        <h2 class="ab-section-title">What Defines Us?</h2>
+      </div>
+      
+      <div class="ab-defines-grid">
+        <!-- Card 1 -->
+        <div class="ab-define-card">
+          <div class="ab-define-icon ic-green">
+            <Milestone size={32} />
+          </div>
+          <h4>Roadmap To Online Success</h4>
+          <p>We have the perfect roadmap for all our users – everything that is needed to grow your online presence. Right from domain registration and web hosting to website builders, we have them all.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="ab-define-card">
+          <div class="ab-define-icon ic-blue">
+            <Cpu size={32} />
+          </div>
+          <h4>High-End Server Technology</h4>
+          <p>We do not cut corners when it comes to delivering security, performance, and technology. From basic shared hosting to scalable cloud servers, we adopt the top technology, redefining our hosting culture.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="ab-define-card">
+          <div class="ab-define-icon ic-orange">
+            <ArrowLeftRight size={32} />
+          </div>
+          <h4>Hassle-Free Migrations</h4>
+          <p>Driving your site to LiteScaler is a seamless process. We take care of moving all your website's data from the old host to our server and go live again with zero downtime and no web-aches.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="ab-define-card">
+          <div class="ab-define-icon ic-pink">
+            <MessagesSquare size={32} />
+          </div>
+          <h4>Friendly Customer Support</h4>
+          <p>We love to help every single customer. With our impressive, enthusiastic tech-savvy team you get prompt web hosting solutions for your queries via- email or live chat 24/7/365.</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="ab-define-card">
+          <div class="ab-define-icon ic-teal">
+            <Globe size={32} />
+          </div>
+          <h4>Service With Global Reach</h4>
+          <p>Greatly proud to serve over 75,000+ customers across the globe with our wide range of super-fast web-hosting plans at easy prices and promise to give our best in the future!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       NEW: CORE VALUES
+  ═══════════════════════════════════════════════════ -->
+  <section class="ab-values">
+    <div class="ab-container">
+      <div class="ab-section-header">
+        <h2 class="ab-section-title">Our Core Values</h2>
+        <p class="ab-section-subtitle">The principles that guide our journey and drive clinical execution.</p>
+      </div>
+      
+      <div class="ab-values-grid">
+        <div class="ab-value-card">
+          <div class="ab-value-icon"><Rocket size={24} /></div>
+          <h4>Performance First</h4>
+          <p>We optimize every byte to ensure your site loads at lightning speeds, every time.</p>
+        </div>
+        <div class="ab-value-card">
+          <div class="ab-value-icon"><Lock size={24} /></div>
+          <h4>Privacy Focused</h4>
+          <p>Your data is your own. We implement zero-compromise security protocols by default.</p>
+        </div>
+        <div class="ab-value-card">
+          <div class="ab-value-icon"><Users size={24} /></div>
+          <h4>Customer Obsessed</h4>
+          <p>Decisions are made with our users in mind. Your success is our ultimate metric.</p>
+        </div>
+        <div class="ab-value-card">
+          <div class="ab-value-icon"><Lightbulb size={24} /></div>
+          <h4>Constant Innovation</h4>
+          <p>The web evolves, and so do we. We're always building the next-gen hosting tech.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       NEW: GLOBAL INFRASTRUCTURE
+  ═══════════════════════════════════════════════════ -->
+  <section class="ab-infra">
+    <div class="ab-container">
+      <div class="ab-infra-grid">
+        <div class="ab-infra-content">
+          <h2 class="ab-section-title">Global Infrastructure</h2>
+          <p class="ab-infra-desc">Host your website on a network designed for the future. With 20+ strategic data center locations and a redundant 10Gbps backbone, your visitors experience low latency globally.</p>
+          
+          <div class="ab-infra-stats">
+            <div class="ab-infra-stat">
+              <span class="ab-stat-num">20+</span>
+              <span class="ab-stat-txt">Data Centers</span>
+            </div>
+            <div class="ab-infra-stat">
+              <span class="ab-stat-num">150+</span>
+              <span class="ab-stat-txt">PoP Locations</span>
+            </div>
+            <div class="ab-infra-stat">
+              <span class="ab-stat-num">99.99%</span>
+              <span class="ab-stat-txt">Network Uptime</span>
+            </div>
+          </div>
+        </div>
+        <div class="ab-infra-visual">
+          <img src={mapImg.src} alt="Global Network Map" class="ab-map-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       NEW: CTA BANNER
+  ═══════════════════════════════════════════════════ -->
+  <section class="ab-cta-section">
+    <div class="ab-container">
+      <div class="ab-cta-banner">
+        <h2 class="ab-cta-title">Ready to start your journey with LiteScaler?</h2>
+        <p class="ab-cta-subtitle">Join thousands of businesses already scaling with our enterprise-grade platform.</p>
+        <div class="ab-cta-btns">
+          <a href="/hosting" class="ab-btn-primary">Start Building Now</a>
+          <a href="/contact" class="ab-btn-outline">Talk to Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

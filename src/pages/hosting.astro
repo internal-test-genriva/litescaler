@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MigrationSection from '../components/MigrationSection.astro';
+import FAQ from '../components/FAQ.astro';
+import Pricing from '../components/Pricing.astro';
+import { Zap, Shield, Globe, HardDrive, Cpu, Settings, Headset, Lock } from 'lucide-react';
+import { Image } from 'astro:assets';
+import dashboardImg from '../assets/Dashboard.png';
+import '../styles/pages/hosting.css';
+
+const title = 'High-Performance Web Hosting — LiteScaler';
+const description = 'Fast, secure, and reliable web hosting starting at 82% OFF. Powered by NVMe Gen4 storage and LiteSpeed Enterprise for the ultimate speed.';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="hosting-hero">
+    <div class="hosting-hero-container">
+      <span class="hosting-badge">Limited Time: 82% OFF</span>
+      <h1 class="hosting-hero-title">Web Hosting for the Modern Web</h1>
+      <p class="hosting-hero-subtitle">
+        Deploy your website on India's most advanced hosting infrastructure. Experience the power of NVMe storage and LiteSpeed Enterprise at an unbeatable value.
+      </p>
+      
+      <div class="hosting-hero-cta">
+        <a href="#pricing" class="btn-hosting-primary">Get Started Now</a>
+        <a href="/contact" class="btn-hosting-secondary">Contact Sales</a>
+      </div>
+
+      <div class="hosting-stats-grid">
+        <div class="hosting-stat-card">
+          <span class="stat-value">99.9%</span>
+          <span class="stat-label">Uptime SLA</span>
+        </div>
+        <div class="hosting-stat-card">
+          <span class="stat-value">Gen4</span>
+          <span class="stat-label">NVMe Storage</span>
+        </div>
+        <div class="hosting-stat-card">
+          <span class="stat-value">24/7</span>
+          <span class="stat-label">Expert Support</span>
+        </div>
+      </div>
+      
+      <div style="margin-top: 60px;">
+        <Image src={dashboardImg} alt="Hosting Management Dashboard" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 40px 100px -20px rgba(15, 23, 42, 0.2);" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features Section -->
+  <section class="hosting-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Enterprise Features</span>
+        <h2 class="section-title">Everything you need to succeed online</h2>
+      </div>
+
+      <div class="hosting-features-grid">
+        <div class="hosting-feature-card">
+          <div class="feature-icon-box">
+            <HardDrive size={24} />
+          </div>
+          <h3 class="feature-title">Pure NVMe Storage</h3>
+          <p class="feature-desc">Up to 10x faster than standard SSDs. Read/write speeds that ensure your website and database respond instantly.</p>
+        </div>
+
+        <div class="hosting-feature-card">
+          <div class="feature-icon-box">
+            <Shield size={24} />
+          </div>
+          <h3 class="feature-title">Imunify360 Security</h3>
+          <p class="feature-desc">Comprehensive six-layer security suite that provides real-time protection against malware, brute-force attacks, and vulnerabilities.</p>
+        </div>
+
+        <div class="hosting-feature-card">
+          <div class="feature-icon-box">
+            <Settings size={24} />
+          </div>
+          <h3 class="feature-title">Node.js & Python</h3>
+          <p class="feature-desc">Deploy modern applications with full support for Node.js, Python, and Ruby on Rails directly from your control panel.</p>
+        </div>
+
+        <div class="hosting-feature-card">
+          <div class="feature-icon-box">
+            <Globe size={24} />
+          </div>
+          <h3 class="feature-title">Global CDN</h3>
+          <p class="feature-desc">Automatically distribute your content globally with our built-in CDN integration, ensuring fast loading times for every visitor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support Section -->
+  <section class="hosting-section hosting-section-light">
+    <div class="section-container">
+      <div class="hosting-features-grid" style="align-items: center;">
+        <div class="content-col">
+          <span class="section-tag">Reliability</span>
+          <h2 class="section-title">We've got your back 24/7</h2>
+          <p class="hosting-hero-subtitle" style="margin: 0 0 32px 0; text-align: left;">
+            Our support engineers are available round the clock to help you with migrations, technical issues, or just a quick question about your account.
+          </p>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
+            <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+              <span style="color: #2380F4;"><Headset size={18} /></span> Instant Live Chat Response
+            </li>
+            <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+              <span style="color: #2380F4;"><Headset size={18} /></span> Technical Ticket Support
+            </li>
+            <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+              <span style="color: #2380F4;"><Headset size={18} /></span> Comprehensive Knowledge Base
+            </li>
+          </ul>
+        </div>
+        <div class="image-col">
+          <div style="background: #f8fafc; padding: 60px; border-radius: 40px; display: flex; justify-content: center; align-items: center;">
+             <Cpu size={120} color="#2380F4" opacity={0.2} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Migration Section Integration -->
+  <MigrationSection />
+
+  <!-- Pricing Section Integration -->
+  <Pricing />
+
+  <!-- FAQ Section Integration -->
+  <FAQ />
+  
+</BaseLayout>

@@ -1,0 +1,315 @@
+---
+import { Plus, Box, PlusCircle, MinusCircle, ArrowRight } from 'lucide-react';
+---
+
+<section class="power-features-section" id="power-features">
+  <div class="pf-container">
+    <div class="pf-top-grid">
+      
+      <!-- Left Column -->
+      <div class="pf-col">
+        <div class="pf-icon-box">
+          <Plus size={32} stroke-width={2.5} />
+        </div>
+        <h2 class="pf-col-title">More power & control</h2>
+        
+        <div class="accordion">
+          <div class="accordion-item active">
+            <div class="accordion-header">
+              <h3 class="accordion-title">Automate the busywork</h3>
+              <MinusCircle size={20} class="accordion-icon minus" />
+            </div>
+            <div class="accordion-content">
+              <p>Turn hard work into smart work with Litescaler hosting. Use no-code, AI workflows to swap time-wasting manual tasks for easy, speedy automation. So you can focus on what really matters.</p>
+              <a href="#" class="learn-more">Learn more <ArrowRight size={14} /></a>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h3 class="accordion-title">Performance you can rely on</h3>
+              <PlusCircle size={20} class="accordion-icon plus" />
+            </div>
+            <div class="accordion-content" style="display: none;">
+              <p>Experience unmatched speed and 99.99% uptime with our Gen 4 NVMe infrastructure and LiteSpeed optimized servers.</p>
+              <a href="#" class="learn-more">Learn more <ArrowRight size={14} /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="pf-col">
+        <div class="pf-icon-box">
+          <Box size={32} stroke-width={2.5} />
+        </div>
+        <h2 class="pf-col-title">More flexible growth</h2>
+        
+        <div class="accordion">
+          <div class="accordion-item active">
+            <div class="accordion-header">
+              <h3 class="accordion-title">Hosting that grows with you</h3>
+              <MinusCircle size={20} class="accordion-icon minus" />
+            </div>
+            <div class="accordion-content">
+              <p>Cloud hosting offers scalable resources that ensure you never reach a limit. Keep growing with reliable uptime, powerful performance, enhanced security, and flexible pricing.</p>
+              <a href="#" class="learn-more">Learn more <ArrowRight size={14} /></a>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h3 class="accordion-title">Hosting for agencies</h3>
+              <PlusCircle size={20} class="accordion-icon plus" />
+            </div>
+            <div class="accordion-content" style="display: none;">
+              <p>Manage multiple clients effortlessly from a single dashboard. White-label solutions and priority support built for pros.</p>
+              <a href="#" class="learn-more">Learn more <ArrowRight size={14} /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf-stats-wrapper">
+    <div class="pf-container narrow-container">
+      <!-- Stats Grid -->
+      <div class="pf-stats-grid">
+        <div class="stat-card">
+          <h3 class="pf-stat-num">4M+</h3>
+          <p class="pf-stat-desc">Clients trust Litescaler</p>
+        </div>
+        <div class="stat-card">
+          <h3 class="pf-stat-num">150+</h3>
+          <p class="pf-stat-desc">Countries served</p>
+        </div>
+        <div class="stat-card">
+          <h3 class="pf-stat-num">20+</h3>
+          <p class="pf-stat-desc">Years of experience</p>
+        </div>
+        <div class="stat-card">
+          <h3 class="pf-stat-num">10M+</h3>
+          <p class="pf-stat-desc">Websites created with us</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .power-features-section {
+    padding: 6rem 0 0 0;
+    background-color: #ffffff;
+    width: 100%;
+    position: relative;
+    display: block;
+  }
+
+
+
+  .pf-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pf-top-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 20px; /* Reduced from 80px */
+  }
+
+  @media (max-width: 1024px) {
+    .pf-top-grid {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+  }
+
+  .pf-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pf-icon-box {
+    margin-bottom: 24px;
+    color: #2380F4;
+  }
+
+  .pf-col-title {
+    font-size: 44px;
+    font-weight: 500;
+    color: #0f172a;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+  }
+
+  .accordion {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(15, 23, 42, 0.1);
+  }
+
+  .accordion-item {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+    padding: 24px 0;
+  }
+
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .accordion-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0;
+  }
+
+  .accordion-icon {
+    color: #2380F4;
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-content {
+    margin-top: 16px;
+    padding-right: 40px;
+  }
+
+  .accordion-content p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #475569;
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+
+  .learn-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #2380F4;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+  }
+
+  .learn-more:hover {
+    color: #3730a3;
+  }
+
+  /* Stats Wrapper & Grid */
+  .pf-stats-wrapper {
+    padding: 40px 0 60px; /* Reduced top padding */
+    width: 100%;
+    margin-top: 0; /* Removed top margin to bring closer */
+  }
+
+  .narrow-container {
+    max-width: 1200px; /* Stats grid doesn't need to be as wide as the whole page */
+  }
+
+  .pf-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 1024px) {
+    .pf-stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .pf-stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .stat-card {
+    background: #2380F4; /* Vibrant blue from reference */
+    border: none;
+    border-radius: 32px !important;
+    padding: 32px 24px;
+    box-shadow: none;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(35, 128, 244, 0.4);
+  }
+
+  .pf-stat-num {
+    font-size: 52px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .pf-stat-desc {
+    font-size: 13px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+  }
+
+</style>
+
+<script>
+  // Simple accordion logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const accordions = document.querySelectorAll('.accordion-header');
+    
+    accordions.forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.closest('.accordion-item');
+        const content = item.querySelector('.accordion-content');
+        const icon = header.querySelector('.accordion-icon');
+        const isActive = item.classList.contains('active');
+        
+        // Close siblings within same group
+        const siblings = item.parentElement.querySelectorAll('.accordion-item');
+        siblings.forEach(sib => {
+          sib.classList.remove('active');
+          if(sib.querySelector('.accordion-content')) {
+            (sib.querySelector('.accordion-content') as HTMLElement).style.display = 'none';
+          }
+          const sibIcon = sib.querySelector('.accordion-icon');
+          if(sibIcon) {
+            sibIcon.classList.remove('lucide-minus-circle');
+            sibIcon.classList.add('lucide-plus-circle');
+            sibIcon.innerHTML = '<circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path>'; // Plus SVG
+          }
+        });
+
+        if (!isActive) {
+          item.classList.add('active');
+          (content as HTMLElement).style.display = 'block';
+          if(icon) {
+            icon.classList.remove('lucide-plus-circle');
+            icon.classList.add('lucide-minus-circle');
+            icon.innerHTML = '<circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path>'; // Minus SVG
+          }
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,773 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  getStaticPaths as getPayloadStaticPaths,
+  type PageData,
+  type BlogPost
+} from '../lib/payload';
+
+interface Props {
+  pageData: PageData;
+  type?: 'page' | 'post';
+  relatedPosts?: BlogPost[];
+  categories?: WPCategory[];
+  tags?: WPTag[];
+}
+
+export async function getStaticPaths() {
+  return getPayloadStaticPaths();
+}
+
+const { pageData, type = 'page', tags = [], categories = [] } = Astro.props;
+
+const formattedDate = new Date(pageData.date).toLocaleDateString('en-US', {
+  year: 'numeric', month: 'long', day: 'numeric'
+});
+
+function decodeHtml(html: string): string {
+  if (!html) return '';
+  return html
+    .replace(/&#8217;/g, "'").replace(/&#8216;/g, "'").replace(/&#8218;/g, "'")
+    .replace(/&#8220;/g, '"').replace(/&#8221;/g, '"').replace(/&#8230;/g, '...')
+    .replace(/&#8211;/g, '-').replace(/&#8212;/g, '--').replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+    .replace(/&#x27;/g, "'").replace(/&#x2F;/g, '/').replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'");
+}
+
+function stripHtml(html: string): string {
+  if (!html) return '';
+  return html.replace(/<[^>]*>/g, '');
+}
+
+function cleanContent(html: string): string {
+  if (!html) return '';
+  let c = html;
+
+  // 1. Remove <nav> breadcrumbs entirely
+  c = c.replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, '');
+
+  // 2. Remove any element whose TEXT (with all tags stripped) looks like
+  //    a breadcrumb trail: has pipe chars, short, no real prose content.
+  //    Handles cases where parts are wrapped in <a>, <span>, <strong> etc.
+  c = c.replace(/<(div|p|header|section)[^>]*>([\s\S]*?)<\/\1>/gi, (match, tag, inner) => {
+    const text = inner.replace(/<[^>]*>/g, '').trim();
+    if (text.includes('|') && text.length < 200 && !/[.!?]{1}/.test(text.replace(/\.\s/g, ''))) {
+      return '';
+    }
+    return match;
+  });
+
+  // 3. Remove elements with breadcrumb / meta class names
+  c = c.replace(/<[^>]*class="[^"]*(?:breadcrumb|blog-info-bar|reading-info|post-meta|entry-meta|article-meta)[^"]*"[^>]*>[\s\S]*?<\/[a-z]+>/gi, '');
+
+  // 4. Remove duplicate H1 that matches the post title (WP often injects it)
+  // We'll handle this client-side too
+  return c;
+}
+
+function readingTime(html: string): string {
+  const words = stripHtml(html).split(/\s+/).filter(Boolean).length;
+  return `${Math.ceil(words / 200)} min read`;
+}
+
+const rt = readingTime(pageData.content);
+const pageUrl = Astro.url.href;
+const topTags   = [...tags].sort((a, b) => b.count - a.count).slice(0, 12);
+const topCats   = [...categories].sort((a, b) => b.count - a.count).slice(0, 6);
+const cleanedContent = cleanContent(pageData.content);
+---
+
+<BaseLayout seo={pageData.seo}>
+{type === 'post' ? (
+  <>
+    {/* ── Reading Progress ── */}
+    <div id="rd-prog" aria-hidden="true">
+      <div id="rd-bar"></div>
+    </div>
+
+    {/* ══════════════════════════════════════════════════
+        HERO
+    ══════════════════════════════════════════════════ */}
+    <header class="post-hero">
+      <div class="post-hero__inner">
+
+        <a href="/blog" class="post-back">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+          Back to Blog
+        </a>
+
+        {pageData.categories?.[0] && (
+          <span class="post-cat-pill">{pageData.categories[0]}</span>
+        )}
+
+        <h1 class="post-title">{pageData.title}</h1>
+
+        {pageData.excerpt && (
+          <p class="post-lead">{stripHtml(pageData.excerpt).replace(/\s+/g,' ').trim().slice(0,220)}</p>
+        )}
+
+        <div class="post-meta-row">
+          {pageData.author && (
+            <div class="post-meta-row__author">
+              <div class="post-meta-row__ava">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <span>{pageData.author}</span>
+            </div>
+          )}
+          <div class="post-meta-row__dot"></div>
+          <time class="post-meta-row__date">{formattedDate}</time>
+          <div class="post-meta-row__dot"></div>
+          <span class="post-meta-row__rt">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {rt}
+          </span>
+        </div>
+      </div>
+
+      {pageData.featuredImage && (
+        <div class="post-hero__cover">
+          <img
+            src={pageData.featuredImage}
+            alt={pageData.title}
+            class="post-hero__img"
+            loading="eager"
+          />
+        </div>
+      )}
+    </header>
+
+    {/* ══════════════════════════════════════════════════
+        PAGE BODY  — inline styles on layout containers
+        so the layout CANNOT be overridden by anything.
+    ══════════════════════════════════════════════════ */}
+    <div
+      class="post-layout"
+      style="display:flex;align-items:flex-start;gap:48px;max-width:1180px;width:100%;margin:0 auto;padding:64px 40px 120px;box-sizing:border-box;"
+    >
+
+      {/* ── Article ── */}
+      <main
+        class="post-article"
+        style="flex:1;min-width:0;max-width:740px;"
+      >
+        {/* Actual WP content */}
+        <div
+          class="wp-body"
+          id="article-body"
+          set:html={cleanedContent}
+          style="font-family:'Poppins',system-ui,sans-serif;font-size:17px;line-height:1.9;color:#0f172a;word-break:break-word;overflow-wrap:break-word;"
+        />
+
+        {/* Author card */}
+        <div class="post-author-card">
+          <div class="post-author-card__ava">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <p class="post-author-card__written">Written by</p>
+            <p class="post-author-card__name">{pageData.author || 'LiteScaler Team'}</p>
+            <p class="post-author-card__bio">Sharing expert insights on web hosting, WordPress optimization, and server performance.</p>
+          </div>
+        </div>
+
+        {/* Tags */}
+        {topTags.length > 0 && (
+          <div class="post-tags">
+            <p class="post-tags__label">Topics</p>
+            <div class="post-tags__list">
+              {topTags.map(t => (
+                <a href={`/blog/tag/${t.slug}`} class="post-tag">{t.name}</a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Share strip */}
+        <div class="post-share-strip">
+          <span class="post-share-strip__label">Share this article</span>
+          <div class="post-share-strip__btns">
+            <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(decodeHtml(pageData.title))}`}
+               target="_blank" rel="noopener" class="post-share-btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              Twitter / X
+            </a>
+            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`}
+               target="_blank" rel="noopener" class="post-share-btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+            <button id="main-copy-btn" class="post-share-btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span id="main-copy-label">Copy link</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="post-back-footer">
+          <a href="/blog" class="post-back-footer__link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+            Back to all posts
+          </a>
+        </div>
+      </main>
+
+      {/* ── Sticky Sidebar ── */}
+      <aside
+        class="post-sidebar"
+        id="post-sidebar"
+        style="width:248px;flex-shrink:0;position:sticky;top:90px;display:flex;flex-direction:column;gap:18px;align-self:flex-start;"
+      >
+        {/* Table of Contents */}
+        <div class="sb-card" id="toc-card">
+          <div class="sb-card__head">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            On this page
+          </div>
+          <nav>
+            <ul id="toc-list" class="toc-list"></ul>
+          </nav>
+        </div>
+
+        {/* Share */}
+        <div class="sb-card">
+          <div class="sb-card__head">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            Share
+          </div>
+          <div class="sb-share-icons">
+            <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(decodeHtml(pageData.title))}`}
+               target="_blank" rel="noopener" class="sb-icon-btn" title="Share on X">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`}
+               target="_blank" rel="noopener" class="sb-icon-btn" title="Share on LinkedIn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`}
+               target="_blank" rel="noopener" class="sb-icon-btn" title="Share on Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <button id="sb-copy-btn" class="sb-icon-btn" title="Copy link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Categories */}
+        {topCats.length > 0 && (
+          <div class="sb-card">
+            <div class="sb-card__head">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Categories
+            </div>
+            <ul class="sb-cat-list">
+              {topCats.map(cat => (
+                <li>
+                  <a href={`/blog/category/${cat.slug}`} class="sb-cat-link">
+                    <span>{cat.name}</span>
+                    <span class="sb-cat-count">{cat.count}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </aside>
+
+    </div>
+  </>
+) : (
+  <main style="padding:80px 24px;background:#fff;">
+    <div style="max-width:760px;margin:0 auto;">
+      {pageData.title && pageData.slug !== '/' && (
+        <h1 style="font-family:'Poppins',sans-serif;font-size:36px;font-weight:800;color:#0f172a;margin:0 0 40px;letter-spacing:-.025em;padding-bottom:28px;border-bottom:1px solid rgba(15,23,42,.08);"
+            set:html={decodeHtml(pageData.title)} />
+      )}
+      <div style="font-family:'Poppins',sans-serif;font-size:17px;line-height:1.8;color:#475569;"
+           set:html={pageData.content} />
+    </div>
+  </main>
+)}
+</BaseLayout>
+
+<script is:inline>
+/* ── Progress bar ── */
+(function(){
+  const bar=document.getElementById('rd-bar'),wrap=document.getElementById('rd-prog');
+  if(!bar||!wrap)return;
+  window.addEventListener('scroll',function(){
+    const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+    bar.style.width=Math.min(100,Math.max(0,pct))+'%';
+    wrap.style.opacity=window.scrollY>80?'1':'0';
+  },{passive:true});
+})();
+
+/* ── TOC builder ── */
+(function(){
+  const content=document.getElementById('article-body');
+  const list=document.getElementById('toc-list');
+  const card=document.getElementById('toc-card');
+  if(!content||!list||!card)return;
+
+  /* Remove duplicate H1 that matches the hero title */
+  const heroTitle=document.querySelector('.post-title');
+  if(heroTitle){
+    const heroText=heroTitle.textContent.trim().toLowerCase().replace(/\s+/g,' ');
+    content.querySelectorAll('h1').forEach(function(h){
+      if(h.textContent.trim().toLowerCase().replace(/\s+/g,' ')===heroText) h.remove();
+    });
+  }
+
+  /* Note: Removed overly aggressive pruning that was hiding valid content */
+  content.querySelectorAll('.wp-block-buttons').forEach(el => el.style.marginBottom = '32px');
+
+  const heads=Array.from(content.querySelectorAll('h2,h3')).filter(function(h){
+    const t=h.textContent.trim();
+    return t.length>3&&!/^[\|\-\s]+$/.test(t);
+  });
+
+  if(heads.length<2){card.style.display='none';return;}
+
+  heads.forEach(function(h,i){
+    if(!h.id) h.id='s'+i;
+    h.style.scrollMarginTop='96px';
+    const li=document.createElement('li');
+    li.className='toc-item'+(h.tagName==='H3'?' toc-sub':'');
+    li.innerHTML='<a href="#'+h.id+'">'+h.textContent.trim()+'</a>';
+    list.appendChild(li);
+  });
+
+  const links=list.querySelectorAll('a');
+  const io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting)
+        links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});
+    });
+  },{rootMargin:'-8% 0px -76% 0px'});
+  heads.forEach(function(h){io.observe(h);});
+})();
+
+/* ── Copy buttons ── */
+(function(){
+  function makeCopy(btnId,labelId){
+    var btn=document.getElementById(btnId);
+    if(!btn)return;
+    btn.addEventListener('click',async function(){
+      try{await navigator.clipboard.writeText(location.href);}catch(e){}
+      if(labelId){var l=document.getElementById(labelId);if(l){l.textContent='Copied!';setTimeout(function(){l.textContent='Copy link';},2200);}}
+      btn.style.color='#10b981';btn.style.borderColor='rgba(16,185,129,.3)';
+      setTimeout(function(){btn.style.color='';btn.style.borderColor='';},2200);
+    });
+  }
+  makeCopy('main-copy-btn','main-copy-label');
+  makeCopy('sb-copy-btn',null);
+})();
+
+/* ── Image zoom ── */
+(function(){
+  document.querySelectorAll('#article-body img').forEach(function(img){
+    img.style.cursor='zoom-in';
+    img.addEventListener('click',function(){
+      var ov=document.createElement('div');
+      ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;z-index:9999;padding:32px;cursor:zoom-out;backdrop-filter:blur(4px)';
+      ov.innerHTML='<img src="'+img.src+'" alt="'+(img.alt||'')+'" style="max-width:100%;max-height:90vh;object-fit:contain;border-radius:12px;">';
+      ov.addEventListener('click',function(){ov.remove();});
+      document.body.appendChild(ov);
+    });
+  });
+})();
+</script>
+
+<style is:global>
+/* ================================================================
+   BLOG POST — Premium Reading Layout  (full rewrite)
+   #fff bg · #0f172a text · #2380F4 accent · Poppins
+   ================================================================ */
+
+/* Tokens */
+:root{
+  --p-bg:#ffffff; --p-surf:#f8fafc; --p-bord:rgba(15,23,42,.09);
+  --p-txt:#0f172a; --p-sub:#475569; --p-mute:#94a3b8;
+  --p-acc:#2380F4; --p-acc2:#1b6fd4; --p-acc-bg:rgba(35,128,244,.07);
+  --p-r:12px; --p-tr:.2s ease; --p-font:'Poppins',system-ui,sans-serif;
+}
+
+/* ── Progress ───────────────────────────────────────────────── */
+#rd-prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:9999;background:var(--p-bord);opacity:0;transition:opacity .3s;pointer-events:none;}
+#rd-bar{height:100%;width:0;background:linear-gradient(90deg,var(--p-acc),var(--p-acc2));transition:width .12s linear;}
+
+/* ── Hero ───────────────────────────────────────────────────── */
+.post-hero{background:var(--p-bg);border-bottom:1px solid var(--p-bord);}
+.post-hero__inner{max-width:760px;margin:0 auto;padding:128px 32px 52px;}
+
+.post-back{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--p-font);font-size:13px;font-weight:600;color:var(--p-sub);
+  text-decoration:none;padding:7px 16px;
+  background:var(--p-surf);border:1px solid var(--p-bord);border-radius:50px;
+  transition:all var(--p-tr);margin-bottom:32px;
+}
+.post-back:hover{color:var(--p-acc);background:var(--p-acc-bg);border-color:rgba(35,128,244,.25);}
+
+.post-cat-pill{
+  display:inline-block;
+  font-family:var(--p-font);font-size:11px;font-weight:700;
+  color:var(--p-acc);text-transform:uppercase;letter-spacing:.08em;
+  background:var(--p-acc-bg);border:1px solid rgba(35,128,244,.2);
+  border-radius:50px;padding:5px 14px;margin-bottom:18px;
+}
+
+.post-title{
+  font-family:var(--p-font);
+  font-size:clamp(1.85rem,3.6vw,2.9rem);
+  font-weight:800;line-height:1.18;
+  color:var(--p-txt);margin:0 0 18px;letter-spacing:-.03em;
+}
+
+.post-lead{
+  font-family:var(--p-font);font-size:1.08rem;font-weight:400;
+  line-height:1.75;color:var(--p-sub);margin:0 0 32px;
+}
+
+.post-meta-row{
+  display:flex;align-items:center;flex-wrap:wrap;gap:12px;
+  padding-top:22px;border-top:1px solid var(--p-bord);
+}
+.post-meta-row__author{display:flex;align-items:center;gap:9px;}
+.post-meta-row__ava{
+  width:32px;height:32px;border-radius:50%;
+  background:linear-gradient(135deg,var(--p-acc),var(--p-acc2));
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.post-meta-row__author span,
+.post-meta-row__date,
+.post-meta-row__rt{font-family:var(--p-font);font-size:13px;font-weight:600;color:var(--p-sub);}
+.post-meta-row__rt{display:flex;align-items:center;gap:5px;}
+.post-meta-row__rt svg{color:var(--p-acc);}
+.post-meta-row__dot{width:4px;height:4px;border-radius:50%;background:var(--p-mute);flex-shrink:0;}
+
+.post-hero__cover{max-width:1100px;margin:0 auto;padding:40px 40px 0;}
+.post-hero__img{
+  width:100%;max-height:520px;object-fit:cover;display:block;
+  border-radius:16px 16px 0 0;
+  box-shadow:0 -1px 0 var(--p-bord);
+}
+
+/* ── Layout wrapper (also set inline — belt & braces) ─────── */
+.post-layout{background:var(--p-bg);}
+
+/* ── Article column ─────────────────────────────────────────── */
+.post-article{background:var(--p-bg);}
+
+/* ── WP Content body ─────────────────────────────────────────
+   Nuclear color override — WP themes inject inline styles.
+   We reset EVERY child to our text colour and transparent bg.
+   ─────────────────────────────────────────────────────────── */
+/* Use slightly more targeted overrides since nuclear selectors caused visibility issues */
+.wp-body p, .wp-body li, .wp-body span:not([class*="badge"]), .wp-body div:not([class*="widget"]) {
+  color: var(--p-txt) !important;
+  background-color: transparent !important;
+}
+.wp-body a,.wp-body a *{color:var(--p-acc) !important;}
+.wp-body code{color:var(--p-acc) !important;background:var(--p-acc-bg) !important;}
+.wp-body pre,.wp-body pre *{background:#1e293b !important;color:#e2e8f0 !important;}
+.wp-body th,.wp-body th *{background:var(--p-surf) !important;color:var(--p-txt) !important;}
+
+/* Hide WP-injected navigation / breadcrumb elements */
+.wp-body nav,
+.wp-body [class*="breadcrumb"],
+.wp-body .post-header,.wp-body .entry-header,
+.wp-body .blog-info-bar,.wp-body .reading-info,
+.wp-body .post-meta,.wp-body .entry-meta{display:none !important;}
+
+/* Headings */
+.wp-body h1,.wp-body h2,.wp-body h3,
+.wp-body h4,.wp-body h5,.wp-body h6{
+  font-family:var(--p-font) !important;
+  color:var(--p-txt) !important;font-weight:700 !important;
+  line-height:1.25 !important;letter-spacing:-.02em !important;
+  margin:0 !important;
+}
+.wp-body h1{font-size:1.95rem !important;margin-top:52px !important;margin-bottom:16px !important;}
+.wp-body h2{
+  font-size:1.45rem !important;margin-top:52px !important;margin-bottom:14px !important;
+  padding-bottom:12px;border-bottom:1px solid var(--p-bord);
+}
+.wp-body h3{font-size:1.2rem !important;margin-top:40px !important;margin-bottom:12px !important;}
+.wp-body h4{font-size:1.05rem !important;margin-top:30px !important;margin-bottom:10px !important;font-weight:600 !important;}
+
+/* Paragraphs */
+.wp-body p{margin:0 0 24px;font-size:17px;line-height:1.9;color:var(--p-txt);}
+
+/* Links */
+.wp-body a{
+  color:var(--p-acc);text-decoration:none;
+  border-bottom:1px solid rgba(35,128,244,.3);
+  transition:color var(--p-tr),border-color var(--p-tr);
+}
+.wp-body a:hover{color:var(--p-acc2);border-bottom-color:var(--p-acc2);}
+
+/* Lists */
+.wp-body ul,.wp-body ol{margin:0 0 24px;padding-left:28px;}
+.wp-body li{margin-bottom:9px;line-height:1.75;}
+.wp-body ul li::marker{color:var(--p-acc);}
+.wp-body ol li::marker{color:var(--p-acc);font-weight:600;}
+
+/* Blockquote */
+.wp-body blockquote{
+  margin:44px 0;padding:22px 26px 22px 32px;
+  background:rgba(35,128,244,.04);
+  border-left:4px solid var(--p-acc);
+  border-radius:0 var(--p-r) var(--p-r) 0;
+}
+.wp-body blockquote p{
+  margin:0;font-size:1.05rem;font-style:italic;
+  line-height:1.8;color:var(--p-sub) !important;
+}
+
+/* HR */
+.wp-body hr{border:none;border-top:1px solid var(--p-bord);margin:48px 0;}
+
+/* Images */
+.wp-body img{
+  max-width:100%;height:auto;display:block;
+  border-radius:var(--p-r);margin:32px auto;
+  box-shadow:0 8px 28px rgba(15,23,42,.1);
+  transition:transform .3s,box-shadow .3s;
+}
+.wp-body img:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(15,23,42,.14);}
+.wp-body figure,.wp-body .wp-block-image{max-width:100% !important;margin:32px 0 !important;}
+.wp-body figcaption{text-align:center;font-size:13px;color:var(--p-mute) !important;margin-top:8px;}
+
+/* Code / Pre */
+.wp-body pre{
+  background:#1e293b;border:1px solid #334155;
+  border-radius:var(--p-r);padding:20px 24px;
+  overflow-x:auto;margin:28px 0;
+}
+.wp-body pre code{
+  background:transparent !important;padding:0;
+  font-size:13.5px;line-height:1.65;
+  color:#e2e8f0 !important;border:none;
+}
+.wp-body code{
+  background:var(--p-acc-bg);color:var(--p-acc);
+  padding:2px 7px;border-radius:5px;
+  font-size:.875em;border:1px solid rgba(35,128,244,.2);
+}
+
+/* Tables */
+.wp-body table{
+  width:100%;border-collapse:collapse;margin:36px 0;
+  border-radius:var(--p-r);overflow:hidden;
+  border:1px solid var(--p-bord);font-size:14px;
+}
+.wp-body th,.wp-body td{
+  padding:12px 18px;text-align:left;
+  border-bottom:1px solid var(--p-bord);
+  font-family:var(--p-font);vertical-align:top;
+}
+.wp-body th{
+  font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;background:var(--p-surf);
+}
+.wp-body td{color:var(--p-sub);}
+.wp-body tr:last-child td{border-bottom:none;}
+.wp-body tbody tr:hover td{background:rgba(35,128,244,.025);}
+
+/* WP callout boxes */
+.wp-body .accent-box,.wp-body .benefit-card,.wp-body .step-box{
+  background:var(--p-surf) !important;border:1px solid var(--p-bord) !important;
+  border-left:4px solid var(--p-acc) !important;border-radius:var(--p-r) !important;
+  padding:20px 24px !important;margin:28px 0 !important;
+}
+.wp-body .caution-box{
+  background:rgba(251,191,36,.06) !important;border-left:4px solid #f59e0b !important;
+  border-radius:var(--p-r) !important;padding:20px 24px !important;margin:28px 0 !important;
+}
+.wp-body .cta-section{
+  background:linear-gradient(135deg,var(--p-acc),var(--p-acc2)) !important;
+  border-radius:16px !important;padding:44px 36px !important;margin:60px 0 !important;text-align:center !important;
+}
+.wp-body .cta-section *{color:#fff !important;background:transparent !important;}
+.wp-body .cta-section h2,.wp-body .cta-section h3{border-bottom:none !important;padding-bottom:0 !important;}
+.wp-body .cta-button{
+  display:inline-block !important;background:#fff !important;color:var(--p-acc) !important;
+  padding:13px 32px !important;border-radius:50px !important;font-weight:700 !important;
+  font-size:15px !important;text-decoration:none !important;margin-top:20px !important;
+  border-bottom:none !important;
+}
+
+/* ── Author card ──────────────────────────────────────────── */
+.post-author-card{
+  display:flex;gap:18px;align-items:flex-start;
+  margin-top:60px;padding:26px;
+  background:var(--p-surf);border:1px solid var(--p-bord);border-radius:16px;
+}
+.post-author-card__ava{
+  width:56px;height:56px;flex-shrink:0;border-radius:50%;
+  background:linear-gradient(135deg,var(--p-acc),var(--p-acc2));
+  display:flex;align-items:center;justify-content:center;
+}
+.post-author-card__written{
+  font-family:var(--p-font);font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.07em;color:var(--p-mute);margin:0 0 4px;
+}
+.post-author-card__name{
+  font-family:var(--p-font);font-size:15px;font-weight:700;
+  color:var(--p-txt);margin:0 0 7px;
+}
+.post-author-card__bio{
+  font-family:var(--p-font);font-size:13.5px;
+  color:var(--p-sub);line-height:1.65;margin:0;
+}
+
+/* ── Tags ─────────────────────────────────────────────────── */
+.post-tags{margin-top:32px;padding-top:28px;border-top:1px solid var(--p-bord);}
+.post-tags__label{
+  font-family:var(--p-font);font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.07em;color:var(--p-mute);margin:0 0 12px;
+}
+.post-tags__list{display:flex;flex-wrap:wrap;gap:8px;}
+.post-tag{
+  padding:5px 13px;font-family:var(--p-font);font-size:12px;font-weight:500;
+  color:var(--p-sub);text-decoration:none;
+  background:var(--p-surf);border:1px solid var(--p-bord);border-radius:50px;
+  transition:all var(--p-tr);
+}
+.post-tag:hover{color:var(--p-acc);background:var(--p-acc-bg);border-color:rgba(35,128,244,.22);}
+
+/* ── Share strip ──────────────────────────────────────────── */
+.post-share-strip{
+  margin-top:32px;padding:22px 26px;
+  background:var(--p-surf);border:1px solid var(--p-bord);border-radius:16px;
+  display:flex;align-items:center;flex-wrap:wrap;gap:14px;
+}
+.post-share-strip__label{
+  font-family:var(--p-font);font-size:13px;font-weight:700;
+  color:var(--p-txt);white-space:nowrap;
+}
+.post-share-strip__btns{display:flex;gap:9px;flex-wrap:wrap;}
+.post-share-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 16px;font-family:var(--p-font);font-size:12.5px;font-weight:600;
+  color:var(--p-sub);text-decoration:none;
+  background:var(--p-bg);border:1px solid var(--p-bord);border-radius:50px;
+  cursor:pointer;transition:all var(--p-tr);
+}
+.post-share-btn:hover{color:var(--p-acc);background:var(--p-acc-bg);border-color:rgba(35,128,244,.25);}
+
+/* ── Back footer ──────────────────────────────────────────── */
+.post-back-footer{
+  margin-top:44px;padding-top:28px;
+  border-top:1px solid var(--p-bord);
+}
+.post-back-footer__link{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:11px 24px;font-family:var(--p-font);font-size:13.5px;font-weight:600;
+  color:var(--p-sub);text-decoration:none;
+  background:var(--p-surf);border:1px solid var(--p-bord);border-radius:50px;
+  transition:all var(--p-tr);
+}
+.post-back-footer__link:hover{color:var(--p-acc);background:var(--p-acc-bg);border-color:rgba(35,128,244,.22);}
+
+/* ════════════════════════════════════════════════════════════
+   SIDEBAR CARDS
+   ════════════════════════════════════════════════════════════ */
+.sb-card{
+  background:var(--p-surf);border:1px solid var(--p-bord);
+  border-radius:14px;overflow:hidden;
+  font-family:var(--p-font);
+}
+.sb-card__head{
+  display:flex;align-items:center;gap:8px;
+  padding:13px 16px;
+  border-bottom:1px solid var(--p-bord);
+  font-size:10.5px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--p-sub);
+}
+.sb-card__head svg{color:var(--p-acc);flex-shrink:0;}
+
+/* TOC */
+.toc-list{list-style:none;margin:0;padding:6px 0;}
+.toc-item{margin:0;}
+.toc-item a{
+  display:block;padding:7px 14px;
+  font-family:var(--p-font);font-size:12.5px;font-weight:500;
+  color:var(--p-sub);text-decoration:none;line-height:1.5;
+  border-left:2px solid transparent;
+  transition:all var(--p-tr);
+}
+.toc-item a:hover,.toc-item a.active{
+  color:var(--p-acc);background:var(--p-acc-bg);
+  border-left-color:var(--p-acc);
+}
+.toc-sub a{padding-left:26px;font-size:11.5px;color:var(--p-mute);}
+.toc-sub a:hover,.toc-sub a.active{color:var(--p-acc);}
+
+/* Share icons */
+.sb-share-icons{display:flex;gap:8px;padding:14px 16px;}
+.sb-icon-btn{
+  width:34px;height:34px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--p-bg);border:1px solid var(--p-bord);
+  border-radius:9px;color:var(--p-sub);
+  text-decoration:none;cursor:pointer;
+  transition:all var(--p-tr);
+}
+.sb-icon-btn:hover{color:var(--p-acc);background:var(--p-acc-bg);border-color:rgba(35,128,244,.22);}
+
+/* Categories */
+.sb-cat-list{list-style:none;margin:0;padding:6px 0;}
+.sb-cat-link{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:9px 14px;
+  font-family:var(--p-font);font-size:12.5px;font-weight:500;
+  color:var(--p-sub);text-decoration:none;
+  transition:all var(--p-tr);border-radius:8px;margin:1px 6px;
+}
+.sb-cat-link:hover{color:var(--p-acc);background:var(--p-acc-bg);transform:translateX(2px);}
+.sb-cat-count{
+  font-size:10px;font-weight:700;
+  padding:2px 8px;background:var(--p-bg);
+  border:1px solid var(--p-bord);border-radius:50px;color:var(--p-mute);
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════════ */
+
+/* 1100px: tighten gap a bit */
+@media(max-width:1100px){
+  .post-layout{padding:56px 32px 100px !important;gap:36px !important;}
+  .post-sidebar{width:220px !important;}
+}
+
+/* 960px: hide sidebar, full-width article */
+@media(max-width:960px){
+  .post-layout{display:block !important;padding:48px 28px 80px !important;}
+  .post-sidebar{display:none !important;}
+  .post-article{max-width:680px !important;margin:0 auto !important;}
+}
+
+/* 680px: mobile */
+@media(max-width:680px){
+  .post-hero__inner{padding:96px 20px 40px !important;}
+  .post-hero__cover{padding:28px 0 0 !important;}
+  .post-hero__img{border-radius:0 !important;}
+  .post-layout{padding:36px 18px 60px !important;}
+  .post-article{max-width:100% !important;}
+  .wp-body{font-size:16px !important;line-height:1.82 !important;}
+  .post-author-card{flex-direction:column;gap:14px;}
+  .post-share-strip{flex-direction:column;align-items:flex-start;gap:10px;}
+  .post-title{letter-spacing:-.025em;}
+}
+
+@media(max-width:400px){
+  .post-hero__inner{padding:88px 16px 32px !important;}
+  .post-layout{padding:28px 14px 48px !important;}
+  .wp-body{font-size:15.5px !important;}
+}
+</style>

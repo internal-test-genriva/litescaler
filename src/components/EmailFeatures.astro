@@ -1,0 +1,549 @@
+---
+import { Check } from 'lucide-react';
+---
+
+<section class="email-section">
+  <div class="container">
+    <!-- Center Aligned Title Section with Inline Styles to Guarantee Rendering -->
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%; margin-bottom: 80px; position: relative; z-index: 50; padding-top: 20px;">
+      <span style="display: inline-block; background-color: #ede9fe; color: #4c1d95; font-size: 14px; font-weight: 600; padding: 6px 16px; border-radius: 9999px; margin-bottom: 24px;">
+        Smarter email
+      </span>
+      <h2 style="font-size: 44px; font-weight: 500; font-family: poppins, sans-serif; line-height: 1.1; letter-spacing: -0.03em; color: #0f172a; margin: 0; display: block; opacity: 1; visibility: visible;">
+        Email your audience with<br/>confidence
+      </h2>
+    </div>
+
+    <div class="unified-card">
+      <div class="card-grid">
+        
+        <!-- Left Side: Business -->
+        <div class="col left-col">
+          <div class="content-wrapper">
+            <span class="badge">Business</span>
+            <h3 class="col-headline">Build trust with a <span class="highlight-strip">professional business email</span></h3>
+            <p class="col-desc">Polish your brand, protect your inbox, and grow your business with tools that keep you in the driver's seat.</p>
+            
+            <ul class="checklist">
+              <li><span class="icon-wrap"><Check size={16} strokeWidth={3} /></span> Build trust with a branded business email</li>
+              <li><span class="icon-wrap"><Check size={16} strokeWidth={3} /></span> Seamless email access across all apps and devices</li>
+              <li><span class="icon-wrap"><Check size={16} strokeWidth={3} /></span> Private, protected, and always online</li>
+            </ul>
+            
+            <a href="#" class="cta-link">Set up business email</a>
+          </div>
+
+          <div class="visual-wrapper left-visual">
+            <div class="mockup-container webmail-mockup">
+              <!-- Sidebar -->
+              <div class="w-sidebar">
+                <div class="w-logo">
+                  <div class="logo-box"></div>
+                  <div class="logo-text"></div>
+                </div>
+                <div class="w-button">
+                  <span class="btn-icon">✎</span> New message
+                </div>
+                <div class="w-nav">
+                  <div class="nav-item active"><span class="n-icon">📥</span> Inbox</div>
+                  <div class="nav-item"><span class="n-icon">⭐</span> Starred</div>
+                  <div class="nav-item"><span class="n-icon">📄</span> Drafts</div>
+                </div>
+              </div>
+              <!-- Main Content -->
+              <div class="w-main">
+                <div class="w-header">
+                  <h4>Inbox</h4>
+                  <div class="w-tabs">
+                    <span class="w-tab active">All mail</span>
+                    <span class="w-tab">Unread</span>
+                    <span class="w-tab">Read</span>
+                    <span class="w-tab">Has attachment</span>
+                  </div>
+                </div>
+                <div class="w-list">
+                  <div class="w-list-item"></div>
+                  <div class="w-list-item"></div>
+                  <div class="w-list-item"></div>
+                </div>
+              </div>
+              
+              <!-- Floating Element -->
+              <div class="floating-pill email-pill">
+                <span class="globe-icon">🌐</span> <span class="pill-text">you@yourbrand.com</span>
+              </div>
+
+              <!-- Accent badges as seen in mockup -->
+              <div class="accent-badges">
+                <div class="badge-icon shield">🛡️</div>
+                <div class="badge-icon refresh">🔄</div>
+              </div>
+            </div>
+            <div class="purple-glow"></div>
+          </div>
+        </div>
+
+        <!-- Divider Line between columns -->
+        <div class="divider"></div>
+
+        <!-- Right Side: Marketing -->
+        <div class="col right-col">
+          <div class="content-wrapper">
+            <span class="badge">Marketing</span>
+            <h3 class="col-headline">Grow your business with AI-powered email marketing</h3>
+            <p class="col-desc">With Reach, you can schedule emails, automate sequences to save time, and maintain brand consistency.</p>
+            
+            <ul class="checklist">
+              <li><span class="icon-wrap"><Check size={16} strokeWidth={3} /></span> Design and write emails with AI</li>
+              <li><span class="icon-wrap"><Check size={16} strokeWidth={3} /></span> Your logo and colors, auto-applied</li>
+              <li><span class="icon-wrap"><Check size={16} strokeWidth={3} /></span> No coding required</li>
+            </ul>
+            
+            <a href="#" class="cta-link">Start email marketing with Reach</a>
+          </div>
+
+          <div class="visual-wrapper right-visual">
+            <div class="mockup-container reach-mockup">
+               <div class="r-sidebar">
+                 <div class="r-item-text">W</div>
+                 <div class="r-item-text">E</div>
+                 <div class="r-item-text">M</div>
+               </div>
+               <div class="r-main">
+                 <div class="r-head">
+                    <div class="r-icon">✨</div>
+                    <div class="r-input-fake">Welcome email <span class="cursor">|</span></div>
+                 </div>
+                 <div class="r-image-area">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="People smiling" class="human-image" />
+                 </div>
+               </div>
+               
+               <!-- Floating Email Compose Card -->
+               <div class="floating-card compose-card">
+                 <h5>Welcome campaign</h5>
+                 <p class="c-desc">Create a simple welcome email for our email campaign</p>
+                 <div class="c-bottom-branding">
+                   <div class="brand-dots">•••</div>
+                 </div>
+               </div>
+            </div>
+            <div class="purple-glow right-glow"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Reset and Base */
+.email-section {
+  padding: 100px 24px;
+  background-color: #FAFAFB; /* Off-white / light gray */
+  font-family: 'Poppins', 'Inter', sans-serif;
+  color: #0f172a;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.ef-section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.ef-top-badge {
+  display: inline-block;
+  background-color: #ede9fe;
+  color: #4c1d95;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  margin-bottom: 24px;
+  line-height: 1;
+}
+.ef-main-title {
+  font-size: 56px !important;
+  font-weight: 500 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.03em !important;
+  color: #0f172a !important;
+  margin: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Card Container */
+.unified-card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0,0,0,0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grid Layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  background: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Columns */
+.col {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 50px;
+}
+@media (max-width: 900px) {
+  .col {
+    padding: 40px 24px;
+  }
+}
+
+.divider {
+  background: #f1f5f9;
+  width: 1px;
+}
+@media (max-width: 900px) {
+  .divider {
+    width: 100%;
+    height: 1px;
+  }
+}
+
+/* Content Area */
+.content-wrapper {
+  margin-bottom: 50px;
+  flex-grow: 1;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+
+.col-headline {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.highlight-strip {
+  position: relative;
+  display: inline-block;
+  color: #0f172a;
+  z-index: 1;
+}
+.highlight-strip::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: -2px;
+  right: -2px;
+  height: 14px;
+  background: rgba(88, 101, 242, 0.15); /* Soft periwinkle/blue */
+  z-index: -1;
+  transform: skewX(-10deg);
+  border-radius: 2px;
+}
+
+.col-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #64748b;
+  margin-bottom: 32px;
+  max-width: 95%;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px 0;
+}
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: #334155;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5865F2; /* Modern purple/blue, like the CTA */
+  margin-top: 1px;
+}
+
+.cta-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5865F2; /* Main highlight color */
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+.cta-link:hover {
+  color: #4752c4;
+  text-decoration: underline;
+}
+
+/* Visual Mockups Area */
+.visual-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  border-radius: 16px;
+  background: #f8fafc;
+  overflow: visible;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: auto;
+}
+
+/* Background glows inside visuals */
+.purple-glow {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(139, 92, 246, 0.4) 0%, rgba(255, 255, 255, 0) 60%);
+  filter: blur(30px);
+  z-index: 0;
+}
+.right-glow {
+  background: radial-gradient(ellipse, rgba(79, 70, 229, 0.35) 0%, rgba(255, 255, 255, 0) 60%);
+}
+
+.mockup-container {
+  width: 92%;
+  height: 240px;
+  background: #ffffff;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-bottom: none;
+  position: relative;
+  z-index: 1;
+  display: flex;
+}
+
+/* ----------- Left Webmail UI ----------- */
+.webmail-mockup .w-sidebar {
+  width: 32%;
+  border-right: 1px solid #f1f5f9;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #ffffff;
+  border-radius: 16px 0 0 0;
+}
+.w-logo { display:flex; gap:8px; align-items:center; }
+.logo-box { width:16px; height:16px; background:#0f172a; border-radius:4px; }
+.logo-text { width:60px; height:8px; background:#cbd5e1; border-radius:4px; }
+
+.w-button {
+  background: #6366f1;
+  color: white;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+.w-nav { display: flex; flex-direction: column; gap: 8px; }
+.nav-item {
+  font-size: 11px; color: #475569; display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 6px;
+}
+.nav-item.active { background: #f8fafc; color: #0f172a; font-weight: 600; }
+
+.webmail-mockup .w-main {
+  width: 68%;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 0 16px 0 0;
+}
+.w-header h4 { margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #0f172a; }
+.w-tabs { display: flex; gap: 12px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 16px; }
+.w-tab { font-size: 10px; color: #64748b; padding: 4px 8px; border-radius: 20px; border: 1px solid #e2e8f0; }
+.w-tab.active { background: #0f172a; color: #ffffff; border-color: #0f172a; }
+
+.w-list { display: flex; flex-direction: column; gap: 10px; }
+.w-list-item { height: 20px; background: #f8fafc; border-radius: 4px; border: 1px solid #f1f5f9; }
+.w-list-item:nth-child(2) { width: 80%; }
+.w-list-item:nth-child(3) { width: 90%; }
+
+.floating-pill {
+  position: absolute;
+  top: -24px;
+  right: 24px;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 30px;
+  box-shadow: 0 12px 24px -6px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.accent-badges {
+  position: absolute;
+  bottom: 10px;
+  right: -10px;
+  display: flex;
+  gap: 8px;
+}
+.badge-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: white;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border: 1px solid #f1f5f9;
+  font-size: 14px;
+}
+.badge-icon.shield { color: white; background: #6366f1; border: none; }
+.badge-icon.refresh { color: white; background: #4f46e5; border: none; }
+
+
+/* ----------- Right Marketing UI ----------- */
+.reach-mockup {
+  display: flex;
+}
+.r-sidebar {
+  width: 44px;
+  border-right: 1px solid #f1f5f9;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: #ffffff;
+  border-radius: 16px 0 0 0;
+}
+.r-item-text {
+  font-size: 10px;
+  font-weight: 600;
+  color: #94a3b8;
+  transform: rotate(-90deg);
+  margin-top: 10px;
+}
+
+.r-main {
+  padding: 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #fafaf9; /* Subtle warm */
+  border-radius: 0 16px 0 0;
+}
+.r-head { display: flex; gap: 12px; align-items: center;}
+.r-icon {
+  background: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.r-input-fake {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #0f172a;
+  background: #ffffff;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+.cursor { color: #cbd5e1; margin-left: 4px; font-weight: 400;}
+
+.r-image-area {
+  flex-grow: 1;
+  background: #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.human-image { width: 100%; height: 100%; object-fit: cover; }
+
+.compose-card {
+  position: absolute;
+  left: -20px;
+  bottom: 24px;
+  background: white;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0.05);
+  width: 170px;
+  z-index: 5;
+}
+.compose-card h5 { margin: 0 0 8px 0; font-size: 11px; font-weight: 600; color: #0f172a; }
+.c-desc {
+  font-size: 9px; color: #64748b; line-height: 1.5; margin: 0 0 16px 0;
+}
+.c-bottom-branding {
+  display: flex; align-items: center; justify-content: flex-end;
+}
+.brand-dots { font-size: 12px; letter-spacing: 2px; color: #0f172a; font-weight: 700; height: 10px; line-height: 10px; }
+
+/* Soft shadows and subtle gradient overlay as requested */
+.visual-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(248, 250, 252, 0.8) 0%, rgba(248, 250, 252, 0) 25%);
+  pointer-events: none;
+  z-index: 2;
+  border-radius: 16px;
+}
+
+</style>

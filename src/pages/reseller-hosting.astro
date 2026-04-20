@@ -1,0 +1,513 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ResellerPricing from '../components/ResellerPricing.astro';
+import MigrationSection from '../components/MigrationSection.astro';
+import CustomerReviews from '../components/CustomerReviews.astro';
+import '../styles/pages/reseller-hosting.css';
+
+const title       = 'Reseller Hosting — LiteScaler | Start Your Hosting Business';
+const description = 'Launch your own hosting brand with LiteScaler reseller hosting. Full WHM/cPanel access, white-label branding, WHMCS billing, and enterprise LiteSpeed infrastructure. Set your own prices and keep 100% of the profits.';
+
+const faqItems = [
+  {
+    q: "What is reseller hosting and how does it work?",
+    a: "Reseller hosting allows you to purchase server resources from LiteScaler and re-sell them to your own clients under your own brand. You get WHM (Web Host Manager) access to create and manage individual cPanel accounts for each of your clients. You set the pricing, they pay you — we stay invisible in the background."
+  },
+  {
+    q: "Do I need technical knowledge to start a reseller business?",
+    a: "Not at all. Our WHM control panel is designed to be beginner-friendly, and our 24/7 support team is here to help you every step of the way. Most resellers are up and running within a few hours of signing up. We also provide documentation and onboarding guides specifically for new resellers."
+  },
+  {
+    q: "Can I set my own prices and keep 100% of the profits?",
+    a: "Absolutely. You buy hosting from us at our wholesale rates and sell to your clients at any price you choose. There are no revenue-sharing arrangements. Every rupee your clients pay above your plan cost goes straight into your pocket."
+  },
+  {
+    q: "What is WHM and why do I need it as a reseller?",
+    a: "WHM (Web Host Manager) is the administrative control panel that sits above cPanel. It lets you create new hosting accounts for clients, set resource limits (disk space, bandwidth, email accounts), monitor usage, manage packages, and reset passwords — all without clients ever needing to contact LiteScaler."
+  },
+  {
+    q: "Can I fully white-label the hosting service?",
+    a: "Yes. From the NOVA plan upwards you get custom nameservers (ns1.yourbrand.com, ns2.yourbrand.com), full white-label branding in the client area, and your own logo and colour scheme throughout. Your clients will only ever see your brand — LiteScaler remains completely invisible."
+  },
+  {
+    q: "What is WHMCS and does it come included?",
+    a: "WHMCS is the industry-standard billing and client-management platform for hosting businesses. It handles invoicing, payment gateways, automated account provisioning, support tickets, and a client self-service portal. WHMCS is included from the NOVA plan (25 clients) and as unlimited on the APEX plan."
+  },
+  {
+    q: "Is there a limit on how many clients I can host?",
+    a: "The ORBIT plan supports up to 20 cPanel accounts. The NOVA and APEX plans both offer unlimited cPanel accounts, so you can grow your client base as large as your storage and bandwidth allow. You can always upgrade your plan as you scale."
+  },
+  {
+    q: "Is there a money-back guarantee?",
+    a: "Yes. All our reseller plans come with a 30-day money-back guarantee. If you're not completely satisfied for any reason within the first 30 days, contact our support team and we'll process a full refund — no questions asked."
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+
+  <!-- ═══════════════════════════════════════════════════
+       HERO  — dark navy, two-column
+  ═══════════════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════════════════
+       HERO  — Agency Dark Theme
+  ═══════════════════════════════════════════════════ -->
+  <section class="rh-hero">
+    <div class="rh-hero__container">
+      <div class="rh-hero__grid">
+
+        <!-- Left: Content Block -->
+        <div class="rh-hero__content">
+          <p class="rh-hero__tag">Up to 60% off agency hosting</p>
+
+          <h1 class="rh-hero__title">
+            Professional hosting<br/>built for agencies
+          </h1>
+
+          <ul class="rh-hero__list">
+            <li>
+              <svg class="rh-hero__check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Keep sites protected with full website isolation
+            </li>
+            <li>
+              <svg class="rh-hero__check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Access sharing per site for smooth collaboration
+            </li>
+            <li>
+              <svg class="rh-hero__check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Up to 40% increased website speed
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.6; margin-left: 4px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </li>
+          </ul>
+
+          <div class="rh-hero__cta-row">
+            <a href="#pricing" class="rh-btn-primary">Start now</a>
+          </div>
+
+          <p class="rh-hero__guarantee">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            30-day money-back guarantee
+          </p>
+
+          <div class="rh-hero__trust-strip">
+            <div class="rh-trust-item rh-trustpilot">
+              <span class="rh-trust-label">Excellent</span>
+              <div class="rh-trust-stars">
+                {[1, 2, 3, 4, 5].map(() => (
+                  <div class="rh-star-box">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  </div>
+                ))}
+              </div>
+              <span class="rh-trust-reviews"><u>65,279</u> reviews on</span>
+              <div class="rh-trustpilot-logo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#00b67a"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <span>Trustpilot</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Visual Column -->
+        <div class="rh-hero__visual">
+          <div class="rh-hero__grid-bg"></div>
+          <div class="rh-hero__visual-inner">
+            <div class="rh-hero__bg-glow"></div>
+            <!-- Dashboard Mockup Photo -->
+            <img src="/src/assets/reseller1.png" alt="Reseller Hosting Dashboard" class="rh-hero__dash-img" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ═══════════════════════════════════════════════════
+       PRICING
+  ═══════════════════════════════════════════════════ -->
+  <ResellerPricing />
+
+  <!-- ═══════════════════════════════════════════════════
+       FEATURES GRID — "Everything you need…"
+  ═══════════════════════════════════════════════════ -->
+  <section class="rh-features-section">
+    <div class="rh-section-container">
+      <div class="rh-section-header">
+        <span class="rh-eyebrow">Platform Features</span>
+        <h2 class="rh-section-title">Everything you need to run<br/>a hosting business</h2>
+        <p class="rh-section-subtitle">Enterprise-grade infrastructure, professional tools, and a fully automated workflow — all under your brand.</p>
+      </div>
+
+      <div class="rh-features-grid">
+
+        <div class="rh-feat-card">
+          <div class="rh-feat-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3 class="rh-feat-card__title">WHM Control Panel</h3>
+          <p class="rh-feat-card__desc">Full Web Host Manager access to create, manage, and monitor all your clients' cPanel accounts from a single admin dashboard.</p>
+        </div>
+
+        <div class="rh-feat-card">
+          <div class="rh-feat-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          </div>
+          <h3 class="rh-feat-card__title">White-label Branding</h3>
+          <p class="rh-feat-card__desc">Your logo, your nameservers (ns1.yourbrand.com), your client area — clients never see LiteScaler. 100% your brand identity.</p>
+        </div>
+
+        <div class="rh-feat-card">
+          <div class="rh-feat-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <h3 class="rh-feat-card__title">WHMCS Billing</h3>
+          <p class="rh-feat-card__desc">Automated invoicing, payment collection, account provisioning, and a self-service client portal — all handled by WHMCS.</p>
+        </div>
+
+        <div class="rh-feat-card">
+          <div class="rh-feat-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3 class="rh-feat-card__title">LiteSpeed + NVMe Gen4</h3>
+          <p class="rh-feat-card__desc">Every client account runs on enterprise LiteSpeed web server with NVMe Gen4 SSD storage — the fastest stack available.</p>
+        </div>
+
+        <div class="rh-feat-card">
+          <div class="rh-feat-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="rh-feat-card__title">Free SSL for All Clients</h3>
+          <p class="rh-feat-card__desc">Auto-provisioned and auto-renewed Let's Encrypt SSL certificates for every cPanel account you create — zero manual effort.</p>
+        </div>
+
+        <div class="rh-feat-card">
+          <div class="rh-feat-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="rh-feat-card__title">Instant Provisioning</h3>
+          <p class="rh-feat-card__desc">New client accounts go live in under 60 seconds. Automated provisioning through WHMCS means no manual setup on your end.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       TOOLS / CONTROL PANEL SECTION
+  ═══════════════════════════════════════════════════ -->
+  <section class="rh-tools-section">
+    <div class="rh-section-container">
+
+      <div class="rh-tools-header rh-section-header">
+        <span class="rh-eyebrow">Full Control</span>
+        <h2 class="rh-section-title">Powerful tools for<br/>managing your business</h2>
+        <p class="rh-section-subtitle">The same professional-grade tools used by major hosting providers — built right into your reseller dashboard.</p>
+      </div>
+
+      <div class="rh-tools-grid">
+        <!-- Left: feature list -->
+        <div class="rh-tools-features">
+          <div class="rh-tool-item">
+            <div class="rh-tool-item__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <h3 class="rh-tool-item__title">One-click account creation</h3>
+              <p class="rh-tool-item__desc">Spin up a new cPanel hosting account for any client in seconds via WHM or automatically through WHMCS when they sign up and pay.</p>
+            </div>
+          </div>
+          <div class="rh-tool-item">
+            <div class="rh-tool-item__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <div>
+              <h3 class="rh-tool-item__title">Custom hosting packages</h3>
+              <p class="rh-tool-item__desc">Define your own hosting packages with specific disk quotas, bandwidth limits, email accounts, and databases. Apply them to clients in one click.</p>
+            </div>
+          </div>
+          <div class="rh-tool-item">
+            <div class="rh-tool-item__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div>
+              <h3 class="rh-tool-item__title">Reseller toolkit &amp; API access</h3>
+              <p class="rh-tool-item__desc">Integrate our platform directly into your own website or billing system via our reseller API. Automate anything — from provisioning to suspension.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: control panel visual -->
+        <div class="rh-tools-visual">
+          <img src="/src/assets/reseller2.png" alt="Powerful tools for managing your business" class="rh-tools-img" />
+        </div>
+      </div>
+
+      <!-- 3 bottom highlight cards -->
+      <div class="rh-tools-cards">
+        <div class="rh-tool-card">
+          <div class="rh-tool-card__num">01</div>
+          <h3 class="rh-tool-card__title">Unlimited client accounts</h3>
+          <p class="rh-tool-card__desc">On NOVA and APEX plans, create as many cPanel accounts as your storage allows. No per-account fees — ever.</p>
+        </div>
+        <div class="rh-tool-card">
+          <div class="rh-tool-card__num">02</div>
+          <h3 class="rh-tool-card__title">Custom hosting packages</h3>
+          <p class="rh-tool-card__desc">Define Starter, Pro, and Business packages with your own resource limits. Apply to new clients with a single click in WHM.</p>
+        </div>
+        <div class="rh-tool-card">
+          <div class="rh-tool-card__num">03</div>
+          <h3 class="rh-tool-card__title">Automated provisioning</h3>
+          <p class="rh-tool-card__desc">WHMCS automatically creates cPanel accounts the moment a client pays. No manual work — your business runs while you sleep.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       BUSINESS GROWTH SECTION
+  ═══════════════════════════════════════════════════ -->
+  <section class="rh-grow-section">
+    <div class="rh-section-container">
+      <div class="rh-grow-grid">
+
+        <!-- Left: content -->
+        <div class="rh-grow__content">
+          <span class="rh-eyebrow">Build Your Business</span>
+          <h2 class="rh-grow__heading">Everything you need to run a profitable hosting business</h2>
+          <ul class="rh-grow__checklist">
+            <li class="rh-grow__check-item">
+              <span class="rh-grow__check-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Set your own pricing — you decide the margins and keep 100% of profit
+            </li>
+            <li class="rh-grow__check-item">
+              <span class="rh-grow__check-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Full white-label — clients never know who powers their hosting
+            </li>
+            <li class="rh-grow__check-item">
+              <span class="rh-grow__check-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Automated billing with WHMCS handles invoicing and renewals
+            </li>
+            <li class="rh-grow__check-item">
+              <span class="rh-grow__check-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              24/7 partner support — for you, and hands-off for your clients
+            </li>
+            <li class="rh-grow__check-item">
+              <span class="rh-grow__check-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Scale from 5 clients to 500+ without changing providers
+            </li>
+          </ul>
+          <a href="#pricing" class="rh-grow__cta">
+            Start Your Hosting Business
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Right: revenue calculator card -->
+        <div>
+          <img src="/src/assets/reseller4.png" alt="Build Your Business" class="rh-tools-img" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       MIGRATION SECTION
+  ═══════════════════════════════════════════════════ -->
+  <MigrationSection />
+
+  <!-- ═══════════════════════════════════════════════════
+       CUSTOMER REVIEWS
+  ═══════════════════════════════════════════════════ -->
+  <CustomerReviews />
+
+  <!-- ═══════════════════════════════════════════════════
+       GUIDES / RESOURCES
+  ═══════════════════════════════════════════════════ -->
+  <section class="rh-guides-section">
+    <div class="rh-section-container">
+      <div class="rh-section-header">
+        <span class="rh-eyebrow">Resources</span>
+        <h2 class="rh-section-title">Reseller guides to help<br/>you grow faster</h2>
+        <p class="rh-section-subtitle">Step-by-step documentation, business tips, and video walkthroughs — everything to get your hosting business profitable.</p>
+      </div>
+
+      <div class="rh-guides-grid">
+        <div class="rh-guide-card">
+          <div class="rh-guide-card__media">
+            <div class="rh-guide-card__media-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <span class="rh-guide-card__tag">Documentation</span>
+          </div>
+          <div class="rh-guide-card__body">
+            <h3 class="rh-guide-card__title">Setup Guides</h3>
+            <p class="rh-guide-card__desc">Complete step-by-step guides for setting up WHM, configuring WHMCS, creating your first client accounts, and white-labelling your brand.</p>
+            <a href="/blog" class="rh-guide-card__link">
+              Read guides
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="rh-guide-card">
+          <div class="rh-guide-card__media">
+            <div class="rh-guide-card__media-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            </div>
+            <span class="rh-guide-card__tag">Video Tutorials</span>
+            <div style="position:absolute;bottom:16px;right:16px;width:44px;height:44px;border-radius:50%;background:rgba(35,128,244,.9);display:flex;align-items:center;justify-content:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="rh-guide-card__body">
+            <h3 class="rh-guide-card__title">Video Walkthroughs</h3>
+            <p class="rh-guide-card__desc">Watch hands-on video tutorials covering everything from first WHM login to setting up WHMCS, customising your billing portal, and adding your first client.</p>
+            <a href="/blog" class="rh-guide-card__link">
+              Watch videos
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SUPPORT SECTION
+  ═══════════════════════════════════════════════════ -->
+  <section class="rh-support-section">
+    <div class="rh-section-container">
+
+      <div class="rh-support-header">
+        <span class="rh-eyebrow">Partner Support</span>
+        <h2 class="rh-section-title">World-class support,<br/>every step of the way</h2>
+        <p class="rh-section-subtitle">Our reseller support team is on standby 24/7. We handle technical issues so you can focus on growing your client base.</p>
+      </div>
+
+      <div class="rh-support-grid">
+
+        <!-- Left: features -->
+        <div>
+          <div class="rh-sf-item">
+            <div class="rh-sf-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z"/></svg>
+            </div>
+            <div>
+              <h3 class="rh-sf-title">24/7 reseller-dedicated support</h3>
+              <p class="rh-sf-desc">Live chat, email, and ticket support answered by real server engineers — not bots. Always in English and Hindi.</p>
+            </div>
+          </div>
+
+          <div class="rh-sf-item">
+            <div class="rh-sf-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <h3 class="rh-sf-title">Sub-30-second response on chat</h3>
+              <p class="rh-sf-desc">Average first response under 30 seconds on live chat. Critical issues are escalated immediately to senior engineers.</p>
+            </div>
+          </div>
+
+          <div class="rh-sf-item">
+            <div class="rh-sf-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <h3 class="rh-sf-title">What our partner support team handles</h3>
+              <ul class="rh-sf-list">
+                <li><span class="rh-sf-chk">✓</span> WHM / cPanel configuration and troubleshooting</li>
+                <li><span class="rh-sf-chk">✓</span> WHMCS setup, modules, and payment gateways</li>
+                <li><span class="rh-sf-chk">✓</span> White-label nameserver configuration</li>
+                <li><span class="rh-sf-chk">✓</span> Client site performance and security issues</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: chat UI -->
+        <div class="rh-chat-col">
+          <img src="/src/assets/wordpress3.png" alt="World-class support" class="rh-tools-img" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       VIBRANT CTA BANNER
+  ═══════════════════════════════════════════════════ -->
+  <section class="rh-vibrant-cta">
+    <div class="rh-section-container">
+      <div class="rh-vibrant-cta__card">
+        <span class="rh-vibrant-cta__tag">No Renewal Price Hikes — Ever</span>
+        <h2 class="rh-vibrant-cta__title">Get 75% Off Reseller Hosting<br/>+ Free Domain</h2>
+        <div class="rh-vibrant-cta__actions">
+          <a href="#pricing" class="rh-vibrant-cta__btn">Claim This Deal</a>
+        </div>
+        <p class="rh-vibrant-cta__fine">30-day money-back guarantee • No hidden charges • Cancel anytime</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       FAQ
+  ═══════════════════════════════════════════════════ -->
+  <section class="rh-faq-section">
+    <div class="rh-faq-container">
+      <div class="rh-faq-header">
+        <span class="rh-eyebrow">FAQ</span>
+        <h2 class="rh-section-title" style="margin-bottom:12px;">Frequently asked questions</h2>
+        <p class="rh-section-subtitle">Everything you need to know about reseller hosting with LiteScaler.</p>
+      </div>
+
+      <div class="rh-faq-list">
+        {faqItems.map((item, i) => (
+          <div class={`rh-faq-item${i === 0 ? ' open' : ''}`} data-faq>
+            <button class="rh-faq-trigger" aria-expanded={i === 0 ? 'true' : 'false'}>
+              <p class="rh-faq-question">{item.q}</p>
+              <div class="rh-faq-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
+            </button>
+            <div class="rh-faq-body">
+              <div class="rh-faq-body-inner">
+                <p class="rh-faq-answer">{item.a}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script is:inline>
+  /* FAQ accordion */
+  document.addEventListener('DOMContentLoaded', function() {
+    var items = document.querySelectorAll('[data-faq]');
+    items.forEach(function(item) {
+      var btn = item.querySelector('.rh-faq-trigger');
+      btn.addEventListener('click', function() {
+        var isOpen = item.classList.contains('open');
+        items.forEach(function(i) { i.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  });
+</script>

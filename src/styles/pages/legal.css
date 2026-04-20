@@ -1,0 +1,366 @@
+/* ================================================================
+   LEGAL PAGE — Modern Minimalist UI
+   ================================================================ */
+
+:root {
+  --lg-primary: #0f172a;
+  --lg-accent: #2380F4;
+  --lg-text-sec: #475569;
+  --lg-bg-alt: #f8fafc;
+  --lg-border: rgba(15, 23, 42, 0.08);
+  --lg-container-w: 1200px;
+  --lg-sidebar-w: 280px;
+}
+
+/* ── Container ── */
+.lg-container {
+  max-width: var(--lg-container-w);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .lg-container {
+    padding: 0 24px;
+  }
+}
+
+/* ================================================================
+   1. HERO SECTION
+   ================================================================ */
+.lg-hero {
+  padding: 170px 0 60px;
+  background: #fff;
+  text-align: center;
+}
+
+.lg-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #eff6ff;
+  color: var(--lg-accent);
+  padding: 6px 16px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+
+.lg-pill-dot {
+  width: 6px;
+  height: 6px;
+  background: #10b981;
+  border-radius: 50%;
+}
+
+.lg-main-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--lg-primary);
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+}
+
+.lg-subline {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: var(--lg-text-sec);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ================================================================
+   2. LAYOUT WRAPPER
+   ================================================================ */
+.lg-layout-wrapper {
+  display: grid;
+  grid-template-columns: var(--lg-sidebar-w) 1fr;
+  gap: 60px;
+  padding: 60px 0 120px;
+}
+
+/* ================================================================
+   3. SIDEBAR NAVIGATION
+   ================================================================ */
+.lg-sidebar-sticky {
+  position: sticky;
+  top: 120px;
+  padding-right: 20px;
+}
+
+.lg-sidebar-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+.lg-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lg-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: var(--lg-text-sec);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.lg-sidebar-link:hover {
+  background: var(--lg-bg-alt);
+  color: var(--lg-primary);
+}
+
+.lg-sidebar-link.active {
+  background: #eff6ff;
+  color: var(--lg-accent);
+}
+
+/* ================================================================
+   4. CONTENT CARDS
+   ================================================================ */
+.lg-content {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.lg-card {
+  scroll-margin-top: 140px;
+}
+
+.lg-card-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--lg-border);
+}
+
+.lg-card-icon {
+  width: 56px;
+  height: 56px;
+  background: #eff6ff;
+  color: var(--lg-accent);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lg-card-title h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--lg-primary);
+  margin: 0 0 4px 0;
+}
+
+.lg-last-updated {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.lg-intro-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--lg-text-sec);
+  margin-bottom: 40px;
+}
+
+.lg-policy-section {
+  margin-bottom: 40px;
+}
+
+.lg-policy-section h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--lg-primary);
+  margin-bottom: 16px;
+}
+
+.lg-policy-section p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--lg-text-sec);
+  margin-bottom: 16px;
+}
+
+.lg-policy-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lg-policy-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: var(--lg-text-sec);
+  line-height: 1.6;
+}
+
+.lg-policy-list li span {
+  flex: 1;
+}
+
+.lg-check-icon { color: #10b981; flex-shrink: 0; }
+.lg-cross-icon { color: #ef4444; flex-shrink: 0; }
+
+/* ── Grids & Boxes ── */
+.lg-info-grid, .lg-cookie-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 24px 0;
+}
+
+.lg-info-item, .lg-cookie-item {
+  padding: 24px;
+  border-radius: 20px;
+  background: var(--lg-bg-alt);
+  border: 1px solid var(--lg-border);
+  display: flex;
+  gap: 16px;
+}
+
+.lg-hi-icon {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  color: var(--lg-accent);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.lg-info-content h4, .lg-cookie-item h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--lg-primary);
+  margin-bottom: 6px;
+}
+
+.lg-info-content p, .lg-cookie-item p {
+  font-size: 14px;
+  color: var(--lg-text-sec);
+  margin: 0;
+}
+
+.lg-highlight-box {
+  display: flex;
+  gap: 20px;
+  padding: 30px;
+  background: #eff6ff;
+  border-radius: 24px;
+  margin: 40px 0;
+}
+
+.lg-hi-blue {
+  color: var(--lg-accent);
+  flex-shrink: 0;
+}
+
+.lg-hi-content h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--lg-primary);
+  margin-bottom: 10px;
+}
+
+.lg-hi-content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--lg-text-sec);
+  margin: 0;
+}
+
+/* ── Contact Options ── */
+.lg-contact-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.lg-contact-option {
+  padding: 24px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid var(--lg-border);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.2s ease;
+}
+
+.lg-contact-option:hover {
+  border-color: var(--lg-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+.lg-contact-info-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.lg-contact-info-value {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--lg-primary);
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 1024px) {
+  .lg-layout-wrapper { grid-template-columns: 1fr; }
+  .lg-sidebar-sticky { position: relative; top: 0; margin-bottom: 40px; padding: 0; }
+  .lg-sidebar-nav { flex-direction: row; flex-wrap: wrap; }
+  .lg-sidebar-link { padding: 10px 14px; font-size: 14px; }
+  .lg-contact-options { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .lg-main-title { font-size: 36px; }
+  .lg-info-grid, .lg-cookie-grid { grid-template-columns: 1fr; }
+  .lg-card-header { flex-direction: column; text-align: center; }
+}

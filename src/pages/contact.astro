@@ -1,0 +1,324 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import contactSupportImg from '../assets/contact-support.png';
+import '../styles/pages/contact.css';
+---
+
+<BaseLayout title="Contact LiteScaler — Get in Touch">
+
+  <!-- Premium Contact Hero -->
+  <section class="contact-hero-premium">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <h1 class="hero-heading">Instant answers, <br/> whenever you need us.</h1>
+        <p class="hero-subline">
+          Get back to scaling faster. LiteScaler's specialized support team is here 24/7 to help you move faster and focus on what matters most — your growth.
+        </p>
+        <div class="hero-actions">
+          <a href="#" class="btn-chat-premium">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <span>Chat <span>with AI</span></span>
+          </a>
+          <a href="#" class="btn-secondary-premium">View Documentation →</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-glow-sphere"></div>
+        <div class="portrait-container">
+          <img 
+            src={contactSupportImg.src} 
+            alt="LiteScaler Support Lead" 
+            class="support-portrait"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Help Categories Section -->
+  <section id="help-categories" class="section">
+    <div class="container container--medium">
+      <div class="section-header">
+        <h2 class="section-title">How can we help?</h2>
+        <p class="section-subtitle">
+          If you're not already a LiteScaler customer, or your question relates to something different, here are some alternative options.
+        </p>
+      </div>
+
+      <div class="help-grid">
+        <!-- Account Recovery -->
+        <a href="#" class="help-card">
+          <div class="help-card-header">
+            <h3 class="help-card-title">Account recovery</h3>
+            <span class="help-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            </span>
+          </div>
+          <p class="help-card-desc">Email our Account Recovery team.</p>
+        </a>
+
+        <!-- Security & Spam -->
+        <a href="#" class="help-card">
+          <div class="help-card-header">
+            <h3 class="help-card-title">Security, spam, phishing, and malware</h3>
+            <span class="help-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            </span>
+          </div>
+          <p class="help-card-desc">Report any security issues, spam, phishing or malware.</p>
+        </a>
+
+        <!-- Knowledge Base -->
+        <a href="#" class="help-card">
+          <div class="help-card-header">
+            <h3 class="help-card-title">Knowledge Base</h3>
+            <span class="help-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            </span>
+          </div>
+          <p class="help-card-desc">Find answers to our most frequently asked questions covering everything from domains to DNS.</p>
+        </a>
+
+        <!-- Academy -->
+        <a href="#" class="help-card">
+          <div class="help-card-header">
+            <h3 class="help-card-title">LiteScaler Academy</h3>
+            <span class="help-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            </span>
+          </div>
+          <p class="help-card-desc">Enjoy over 500+ videos, explaining and exploring how to achieve success online.</p>
+        </a>
+
+        <!-- Tutorials -->
+        <a href="#" class="help-card">
+          <div class="help-card-header">
+            <h3 class="help-card-title">Tutorials</h3>
+            <span class="help-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            </span>
+          </div>
+          <p class="help-card-desc">Learn how to do everything from building a website with AI to 20 ways to make money online.</p>
+        </a>
+
+        <!-- Success Stories & Blog -->
+        <a href="#" class="help-card">
+          <div class="help-card-header">
+            <h3 class="help-card-title">Customer success stories and blog</h3>
+            <span class="help-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            </span>
+          </div>
+          <p class="help-card-desc">Learn how our customers have found success and catch up on our latest articles.</p>
+        </a>
+      </div>
+    </div>
+  </section>  <!-- Correspondence Section -->
+ 
+
+  <!-- Quick Links Section (Redesigned) -->
+  <section id="quick-links" class="section" data-scroll-section>
+    <div class="ql-wrapper">
+
+      <!-- Section Label -->
+      <div class="ql-header">
+        <span class="ql-eyebrow">Knowledge Base</span>
+        <h2 class="ql-title">Quick links</h2>
+        <p class="ql-subtitle">Find answers to the most common questions — organized by topic for fast access.</p>
+      </div>
+
+      <!-- Split Layout -->
+      <div class="ql-layout">
+
+        <!-- Left Sidebar: Vertical Category Nav -->
+        <aside class="ql-sidebar">
+          <button class="ql-cat-btn active" data-ql-tab="ql-client-area" type="button">
+            <span class="ql-cat-text">
+              <strong>Client Area</strong>
+              <small>Login, billing & tickets</small>
+            </span>
+          </button>
+
+          <button class="ql-cat-btn" data-ql-tab="ql-hosting" type="button">
+            <span class="ql-cat-text">
+              <strong>Web Hosting</strong>
+              <small>Servers, DNS & plans</small>
+            </span>
+          </button>
+
+          <button class="ql-cat-btn" data-ql-tab="ql-cpanel" type="button">
+            <span class="ql-cat-text">
+              <strong>cPanel</strong>
+              <small>Files, DB & SSL</small>
+            </span>
+          </button>
+
+          <button class="ql-cat-btn" data-ql-tab="ql-wordpress" type="button">
+            <span class="ql-cat-text">
+              <strong>WordPress</strong>
+              <small> themes & speed</small>
+            </span>
+          </button>
+
+          <button class="ql-cat-btn" data-ql-tab="ql-email" type="button">
+            <span class="ql-cat-text">
+              <strong>Email</strong>
+              <small>Outlook, filters & quota</small>
+            </span>
+          </button>
+        </aside>
+
+        <!-- Right Panel: Link Cards -->
+        <div class="ql-panel">
+
+          <div id="ql-client-area" class="ql-pane active">
+            <div class="ql-links-group">
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to Login to Litescaler Client Area?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to Reset Litescaler Client Area Password?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to Contact Litescaler Support or Billing?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to Open a Ticket in Litescaler Client Area?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to Check the Status of your Tickets?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to Pay an Invoice from Litescaler Client Area?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+            </div>
+          </div>
+
+          <div id="ql-hosting" class="ql-pane">
+            <div class="ql-links-group">
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to set up Litescaler nameservers?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to manage Litescaler file manager?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to upgrade your Litescaler hosting plan?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to configure cron jobs in Litescaler?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to renew your Litescaler hosting?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to access Litescaler webmail?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+            </div>
+          </div>
+
+          <div id="ql-cpanel" class="ql-pane">
+            <div class="ql-links-group">
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to create Litescaler email accounts?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to manage Litescaler databases?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to change Litescaler PHP versions?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to install free SSL on Litescaler?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to backup a Litescaler account?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to create FTP accounts on Litescaler?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+            </div>
+          </div>
+
+          <div id="ql-wordpress" class="ql-pane">
+            <div class="ql-links-group">
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to install WordPress on Litescaler?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to update plugins in Litescaler WordPress?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to install a theme on Litescaler?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to fix common WordPress errors?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to improve Litescaler site speed?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to manage WordPress backups on Litescaler?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+            </div>
+          </div>
+
+          <div id="ql-email" class="ql-pane">
+            <div class="ql-links-group">
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to configure Litescaler in Outlook?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to change Litescaler email quota?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to set auto-responders in Litescaler?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to access Litescaler webmail portals?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to set Litescaler email filters?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+              <a href="#" class="ql-link-card"><span class="ql-link-text">How to fix Litescaler email delivery issues?</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <section id="correspondence" class="section" data-scroll-section>
+    <div class="container">
+      <div class="correspondence-grid">
+        <!-- Visual Map Container -->
+        <div class="correspondence-visual">
+          <div class="blueprint-box">
+            <div class="blueprint-grid"></div>
+            <div class="map-wrapper">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.9967268804364!2d77.05432577630467!3d28.629851675666336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d04c2b9795555%3A0xe1f92ba441b89a8c!2sOm%20Vihar%2C%20Uttam%20Nagar%2C%20New%20Delhi%2C%20Delhi%20110059!5e0!3m2!1sen!2sin!4v1712239000000!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                class="location-map">
+              </iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address Content -->
+        <div class="correspondence-content">
+          <h2 class="correspondence-title">Address for correspondence</h2>
+          
+          <div class="address-details-wrapper">
+            <div class="address-block">
+              <h3 class="address-entity">Genriva Systems Pvt Ltd</h3>
+              <p class="address-text">
+                D-43, Om Vihar, Uttam Nagar, New Delhi 110059<br />
+                Near Aggarwal Store, Delhi, India
+              </p>
+            </div>
+
+            <div class="contact-hours-grid">
+              <div class="info-block">
+                <span class="info-label">Contact Details</span>
+                <p class="info-text">
+                  <a href="mailto:support@litescaler.com">support@litescaler.com</a><br />
+                  <a href="tel:+911145678910">+91 114 567 8910</a>
+                </p>
+              </div>
+
+              <div class="info-block">
+                <span class="info-label">Operating Hours</span>
+                <p class="info-text">
+                  Monday - Saturday<br />
+                  10:00 AM - 07:00 PM (IST)
+                </p>
+              </div>
+            </div>
+
+            <a href="https://maps.app.goo.gl/3501.9967" target="_blank" class="directions-btn">
+              Get Directions 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    function initQuickLinks() {
+      const catBtns = document.querySelectorAll('.ql-cat-btn');
+      const qlPanes = document.querySelectorAll('.ql-pane');
+
+      catBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-ql-tab');
+
+          // Update sidebar buttons
+          catBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          // Update panels
+          qlPanes.forEach(pane => {
+            pane.classList.remove('active');
+            if (pane.id === targetId) {
+              pane.classList.add('active');
+            }
+          });
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initQuickLinks);
+    document.addEventListener('astro:page-load', initQuickLinks);
+  </script>
+</BaseLayout>

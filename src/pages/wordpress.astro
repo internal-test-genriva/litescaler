@@ -1,0 +1,385 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MigrationSection from '../components/MigrationSection.astro';
+import FAQ from '../components/FAQ.astro';
+import Pricing from '../components/WordPressPricing.astro';
+import CustomerReviews from '../components/CustomerReviews.astro';
+import { Zap, Shield, RefreshCw, Layers, Layout, MousePointer2, Smartphone, Globe, Lock, Terminal } from 'lucide-react';
+import { Image } from 'astro:assets';
+import wpLogo from '../assets/wordpress.png';
+import litespeedImg from '../assets/litespeed.png';
+import dashboardImg from '../assets/Dashboard.png';
+import wordpress2Img from '../assets/wordpress2.png';
+import wordpress3Img from '../assets/wordpress3.png';
+import guideImg from '../assets/img1.png';
+import tutorialImg from '../assets/img2.png';
+import agentAvatarImg from '../assets/avatars/jaison.png';
+import userAvatarImg from '../assets/avatars/aarav.png';
+import '../styles/pages/wordpress-hosting.css';
+
+const title = 'Managed WordPress Hosting — LiteScaler';
+const description = 'Experience unrivaled WordPress performance with LiteSpeed Enterprise, NVMe storage, and expert management. Fast, secure, and ready to scale.';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="wp-hero">
+    <div class="wp-hero-container">
+      <div class="hero-grid">
+        <!-- Left: Content -->
+        <div class="hero-content">
+          <span class="discount-badge">Up to 75% off Web hosting</span>
+          <h1 class="wp-hero-title">Web hosting as it should <br/> be Fast and secure</h1>
+          
+          <ul class="feature-checklist">
+            <li class="feature-item">
+              <span class="check-icon"><Zap size={16} fill="currentColor" /></span>
+              <span>Free domain and website migration</span>
+              <span class="info-icon"><Globe size={14} /></span>
+            </li>
+            <li class="feature-item">
+              <span class="check-icon"><Zap size={16} fill="currentColor" /></span>
+              <span>Run WordPress or any other CMS</span>
+              <span class="info-icon"><Globe size={14} /></span>
+            </li>
+            <li class="feature-item">
+              <span class="check-icon"><Zap size={16} fill="currentColor" /></span>
+              <span>Fully Managed Web Hosting</span>
+              <span class="info-icon"><Globe size={14} /></span>
+            </li>
+            <li class="feature-item">
+              <span class="check-icon"><Zap size={16} fill="currentColor" /></span>
+              <span>24/7 customer support</span>
+            </li>
+          </ul>
+
+          <a href="#pricing" class="btn-start-now">Start now</a>
+          
+          <div class="guarantee-text">
+            <span>30-day money-back guarantee</span>
+          </div>
+        </div>
+
+        <!-- Right: Visual -->
+        <div class="hero-visual">
+          <div class="visual-bg-shape"></div>
+          
+          <div class="main-subject-wrapper">
+            <Image src={import('../assets/wordpress-hero.png')} alt="Built for performance" class="person-img" />
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Trust Strip -->
+  <div class="hero-trust-strip">
+    <div class="trust-inner">
+      <div class="trust-item trust-tp" style="display: flex; align-items: center; gap: 10px;">
+        <span class="tp-label" style="color: #0f172a; font-weight: 700; font-size: 16px;">Excellent</span>
+        <div class="tp-stars-container" style="display: flex; gap: 3px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="22" height="22"><rect width="40" height="40" rx="3" fill="#00b67a"/><path fill="#fff" d="M20 28.7 12.1 33l1.5-8.9L7 18l8.9-1.3 4.1-8.2 4.1 8.2L33 18l-6.6 6.1 1.5 8.9z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="22" height="22"><rect width="40" height="40" rx="3" fill="#00b67a"/><path fill="#fff" d="M20 28.7 12.1 33l1.5-8.9L7 18l8.9-1.3 4.1-8.2 4.1 8.2L33 18l-6.6 6.1 1.5 8.9z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="22" height="22"><rect width="40" height="40" rx="3" fill="#00b67a"/><path fill="#fff" d="M20 28.7 12.1 33l1.5-8.9L7 18l8.9-1.3 4.1-8.2 4.1 8.2L33 18l-6.6 6.1 1.5 8.9z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="22" height="22"><rect width="40" height="40" rx="3" fill="#00b67a"/><path fill="#fff" d="M20 28.7 12.1 33l1.5-8.9L7 18l8.9-1.3 4.1-8.2 4.1 8.2L33 18l-6.6 6.1 1.5 8.9z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="22" height="22"><rect width="40" height="40" rx="3" fill="#00b67a"/><path fill="#fff" d="M20 28.7 12.1 33l1.5-8.9L7 18l8.9-1.3 4.1-8.2 4.1 8.2L33 18l-6.6 6.1 1.5 8.9z"/></svg>
+        </div>
+        <span class="tp-reviews" style="color: #475569; font-size: 14px;"><u>65,279 reviews on</u></span>
+        <div class="tp-logo-branded" style="display: flex; align-items: center; gap: 4px; color: #0f172a; font-weight: 700;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="20 248 146 148" width="20" height="20"><path fill="#00b67a" d="M164.2 300.7h-54.9l-16.9-52.2-17 52.2-54.9-.1 44.4 32.3-17 52.2 44.4-32.3 44.4 32.3-16.9-52.2z"/></svg>
+          <span>Trustpilot</span>
+        </div>
+      </div>
+      <div class="trust-divider" style="width: 1px; height: 20px; background: #e2e8f0; margin: 0 20px;"></div>
+      <div class="trust-item trust-wp" style="display: flex; align-items: center; gap: 8px;">
+        <Image src={wpLogo} alt="WordPress" style="width: 20px; height: 20px;" />
+        <span style="color: #475569; font-size: 14px;">Recommended by <strong>WordPress.org</strong></span>
+      </div>
+    </div>
+  </div>
+
+    <Pricing />
+
+  <!-- WordPress Tech Stack Section -->
+  <section class="wp-techstack-section">
+    <div class="techstack-container">
+
+      <!-- Section Header -->
+      <div class="techstack-header">
+        <h2 class="techstack-title">Everything You Need in a <br/> WordPress Tech Stack</h2>
+        <p class="techstack-subtitle">Stage, clone, copy, and update your WordPress site with a single click. Our best WordPress hosting has got you covered with this and a lot more.</p>
+      </div>
+
+      <!-- Main Grid: Features + Image -->
+      <div class="techstack-main-grid">
+
+        <!-- Left: Feature List -->
+        <div class="techstack-features">
+          <div class="ts-feature-item">
+            <div class="ts-icon-wrap">
+              <Terminal size={20} />
+            </div>
+            <div class="ts-text">
+              <h3 class="ts-feature-title">SSH, SFTP access, and WP-CLI</h3>
+              <p class="ts-feature-desc">Access your sites via SSH and SFTP protocols. Streamline admin with WP-CLI, command line tool for WordPress. A further benefit of enhanced productivity!</p>
+            </div>
+          </div>
+
+          <div class="ts-feature-item">
+            <div class="ts-icon-wrap">
+              <Layers size={20} />
+            </div>
+            <div class="ts-text">
+              <h3 class="ts-feature-title">WordPress optimized stack</h3>
+              <p class="ts-feature-desc">Apache with LiteSpeed server to deliver powerful performance. Our WordPress hosting plans also come with SSD NVMes and RAID 10, delivering record results.</p>
+            </div>
+          </div>
+
+          <div class="ts-feature-item">
+            <div class="ts-icon-wrap">
+              <RefreshCw size={20} />
+            </div>
+            <div class="ts-text">
+              <h3 class="ts-feature-title">Automatic WordPress updates</h3>
+              <p class="ts-feature-desc">With our WordPress hosting platform, you don't need to check for updates manually. We keep your WordPress up to date with the latest version every day.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Image with floating card -->
+        <div class="techstack-image-col">
+          <div class="techstack-img-wrapper">
+            <Image src={wordpress2Img} alt="WordPress Tech Stack" class="techstack-img" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom 3 Cards -->
+      <div class="techstack-bottom-cards">
+        <div class="ts-bottom-card">
+          <h3 class="ts-bottom-title">WordPress staging</h3>
+          <p class="ts-bottom-desc">Streamline your development workflow and build with confidence. Clone your existing WordPress website &amp; test changes before pushing it live online to visitors.</p>
+        </div>
+        <div class="ts-bottom-card">
+          <h3 class="ts-bottom-title">Advanced management</h3>
+          <p class="ts-bottom-desc">You can install plugins or themes directly from WordPress.org; activate, deactivate, manage, or delete them per website or in bulk across your entire network.</p>
+        </div>
+        <div class="ts-bottom-card">
+          <h3 class="ts-bottom-title">WordPress preconfigured</h3>
+          <p class="ts-bottom-desc">Upon purchase of your WordPress hosting plan, we install WordPress for you. It reduces the efforts to set up and configure WordPress to run optimally.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 24/7 Assistance Section -->
+  <section class="wp-assist-section">
+    <div class="assist-container">
+
+      <!-- Left: Text Content -->
+      <div class="assist-content">
+        <h2 class="assist-heading">24/7 assistance to ensure<br />your website success</h2>
+
+        <ul class="assist-checklist">
+          <li class="assist-item">
+            <span class="assist-check">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5.5L5 9.5L13 1" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>Expert help is at your fingertips with our <strong>live chat and email support</strong>.</span>
+          </li>
+          <li class="assist-item">
+            <span class="assist-check">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5.5L5 9.5L13 1" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>No more waiting – we commit to resolving issues within <strong>a few minutes</strong>.</span>
+          </li>
+          <li class="assist-item">
+            <span>Effective communication is our priority – our agents speak <strong>8+ global languages</strong>.</span>
+          </li>
+          <li class="assist-item">
+            <span class="assist-check">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5.5L5 9.5L13 1" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>Connect you with our customer support if you need additional help</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="assist-visual">
+        <Image src={wordpress3Img} alt="24/7 WordPress Hosting Support" class="assist-image" />
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Migration Section Integration -->
+  <MigrationSection />
+
+  <!-- Customer Reviews Section -->
+  <CustomerReviews />
+
+  <!-- ===== SECTION 1: Guides & Tutorials ===== -->
+  <section class="wp-guides-section">
+    <div class="guides-container">
+      <div class="guides-header">
+        <h2 class="guides-title">WordPress resources to help <br> you grow faster</h2>
+        <p class="guides-subtitle">Everything you need to master WordPress hosting — step-by-step guides, tips, and video walkthroughs all in one place.</p>
+      </div>
+
+      <div class="guides-grid">
+        <!-- Guides Card -->
+        <div class="guide-card">
+          <div class="guide-card-media">
+            <Image src={guideImg} alt="WordPress Guides" class="guide-card-img" />
+            <span class="guide-card-tag">Knowledge Base</span>
+          </div>
+          <div class="guide-card-body">
+            <h3 class="guide-card-title">Guides</h3>
+            <p class="guide-card-desc">Deep-dive articles covering WordPress setup, caching with LiteSpeed, security hardening, and plugin management — written by our experts.</p>
+            <a href="/blog" class="guide-card-link">Read full article</a>
+          </div>
+        </div>
+
+        <!-- Tutorials Card -->
+        <div class="guide-card">
+          <div class="guide-card-media">
+            <Image src={tutorialImg} alt="WordPress Tutorials" class="guide-card-img" />
+            <div class="guide-play-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="guide-card-body">
+            <h3 class="guide-card-title">Tutorials</h3>
+            <p class="guide-card-desc">Hands-on video walkthroughs that take you from first login to fully optimised WordPress site — at your own pace.</p>
+            <a href="/blog" class="guide-card-link">Watch video</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 2: Support ===== -->
+  <section class="wp-support-section">
+    <div class="support-container">
+
+      <!-- Header -->
+      <div class="support-header">
+        <h2 class="support-title">World-class support, every <br> step of the way</h2>
+        <p class="support-subtitle">Our expert team is on standby 24/7 to solve problems before they ever affect your WordPress site.</p>
+      </div>
+
+      <!-- Main grid -->
+      <div class="support-main-grid">
+
+        <!-- Left: Features -->
+        <div class="support-features">
+          <div class="sf-item">
+            <div class="sf-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z"/>
+              </svg>
+            </div>
+            <div class="sf-text">
+              <h3 class="sf-title">24/7 support in English &amp; Hindi</h3>
+              <p class="sf-desc">Live chat, email, and ticket assistance — always answered by real WordPress specialists.</p>
+            </div>
+          </div>
+
+          <div class="sf-item">
+            <div class="sf-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <div class="sf-text">
+              <h3 class="sf-title">Lightning-fast response times</h3>
+              <p class="sf-desc">Average first response under 30 seconds on live chat. No bots, no waiting in queues.</p>
+            </div>
+          </div>
+
+          <div class="sf-item">
+            <div class="sf-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="sf-text">
+              <h3 class="sf-title">What our support team helps you with</h3>
+              <ul class="sf-checklist">
+                <li><span class="sf-check">✓</span> Plugin &amp; theme conflict resolution</li>
+                <li><span class="sf-check">✓</span> Hacked or broken site recovery</li>
+                <li><span class="sf-check">✓</span> Performance tuning &amp; LiteSpeed cache setup</li>
+                <li><span class="sf-check">✓</span> Free hands-on migration assistance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Chat UI -->
+        <div class="support-chat-col">
+          <div class="support-chat-bg"></div>
+
+          <div class="support-chat-wrap">
+            <!-- User message -->
+            <div class="sc-user-row">
+              <div class="sc-user-bubble">Can you migrate my existing WordPress site for free?</div>
+              <Image src={userAvatarImg} alt="User" class="sc-avatar sc-avatar-user" />
+            </div>
+
+            <!-- Agent reply card -->
+            <div class="sc-agent-card">
+              <div class="sc-agent-card-header">
+                <span class="sc-agent-name">Rahul</span>
+                <span class="sc-agent-badge">Support</span>
+              </div>
+              <p class="sc-agent-msg">Absolutely! We'll handle the complete migration for you — zero downtime, zero cost. Just share your login details and we'll take it from here.</p>
+              <div class="sc-typing-row">
+                <Image src={agentAvatarImg} alt="Agent" class="sc-avatar sc-avatar-agent" />
+                <div class="sc-typing-input">Rahul is typing...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3: CTA Banner ===== -->
+  <section class="wp-cta-banner-section">
+    <div class="cta-banner-inner">
+      <div class="cta-banner-content">
+        <span class="cta-banner-tag">No Renewal Price Hikes — Ever</span>
+        <h2 class="cta-banner-title">Get 75% Off WordPress Hosting<br />+ Free Domain</h2>
+        <a href="#pricing" class="cta-banner-btn">Claim This Deal</a>
+        <p class="cta-banner-fine">30-day money-back guarantee &bull; No hidden charges &bull; Cancel anytime</p>
+      </div>
+      <div class="cta-banner-stripes" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- FAQ Section Integration -->
+  <FAQ />
+  
+</BaseLayout>
+
+<style>
+  .dashboard-img {
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    box-shadow: 0 40px 100px -20px rgba(15, 23, 42, 0.2);
+  }
+</style>

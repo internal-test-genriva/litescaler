@@ -1,0 +1,151 @@
+---
+import { Zap, LayoutDashboard, Terminal, ShieldCheck } from 'lucide-react';
+import { Image } from 'astro:assets';
+
+// --- Assets ---
+import litespeedImg from '../assets/litespeed.png';
+import wpImg from '../assets/wordpress.png';
+import nodeImg from '../assets/nodejs.png';
+import cloudflareImg from '../assets/cloudfare.png';
+---
+
+<section class="tech-section">
+  <div class="container">
+    <div class="header">
+      <span class="eyebrow">Enterprise Infrastructure</span>
+      <h2 class="title">Powered by the <span class="accent">fastest tech on earth</span></h2>
+      <p class="subtitle">Our stack is built with industry-leading technologies to ensure your applications stay online and lightning-fast.</p>
+    </div>
+
+    <div class="tech-grid">
+      
+      <div class="tech-item large">
+        <div class="visual-area">
+          <Image src={litespeedImg} alt="LiteSpeed Enterprise Server" class="stack-img" />
+        </div>
+        <div class="content-area">
+          <div class="icon-box"><Zap size={20} /></div>
+          <h3>LiteSpeed Enterprise</h3>
+          <p>Ditch Apache for 12x faster performance. Includes LSCache for WordPress, reducing TTFB significantly.</p>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="visual-area">
+          <Image src={wpImg} alt="WordPress Dashboard Management" class="stack-img" />
+        </div>
+        <div class="content-area">
+          <div class="icon-box"><LayoutDashboard size={20} /></div>
+          <h3>Elite WP Management</h3>
+          <p>Staging environments and one-click security hardening from a central dashboard.</p>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="visual-area">
+          <Image src={nodeImg} alt="Node.js App Selector" class="stack-img" />
+        </div>
+        <div class="content-area">
+          <div class="icon-box"><Terminal size={20} /></div>
+          <h3>Full Node.js Selector</h3>
+          <p>Deploy modern apps with ease. Support for multiple Node.js versions and NPM packages.</p>
+        </div>
+      </div>
+
+      <div class="tech-item wide">
+        <div class="visual-area">
+          <Image src={cloudflareImg} alt="Cloudflare Security Integration" class="stack-img" />
+        </div>
+        <div class="content-area">
+          <div class="icon-box"><ShieldCheck size={20} /></div>
+          <h3>One-Click Cloudflare</h3>
+          <p>Activate Enterprise-level DDoS protection and global CDN caching in a single click.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .tech-section {
+    background-color: transparent;
+    color: var(--color-text-primary);
+    padding: 100px 24px;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; }
+  .header { text-align: center; margin-bottom: 80px; }
+  .eyebrow { color: var(--color-accent); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
+  .title { font-size: 48px; font-weight: 800; margin: 20px 0; letter-spacing: -1px; }
+  .accent { color: var(--color-accent); }
+  .subtitle { color: var(--color-text-secondary); max-width: 650px; margin: 0 auto; line-height: 1.6; }
+
+  /* BENTO GRID (WITHOUT CARD CONTAINERS) */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(300px, auto);
+    gap: 48px; /* Increased gap for a cleaner, open look */
+  }
+
+  .tech-item {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease;
+  }
+
+  .tech-item:hover {
+    transform: translateY(-8px);
+  }
+
+  /* GRID SPANS */
+  .large { grid-row: span 2; }
+  .wide { grid-column: span 2; flex-direction: row; align-items: center; gap: 32px; }
+
+  .visual-area {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .large .visual-area { height: auto; }
+  .wide .visual-area { width: 50%; margin-bottom: 0; }
+  .wide .content-area { width: 50%; }
+
+  .stack-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.3));
+  }
+
+  .content-area { padding: 8px; }
+
+  .icon-box {
+    width: 40px;
+    height: 40px;
+    background: var(--color-success-soft);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-success);
+    margin-bottom: 16px;
+  }
+
+  h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; color: var(--color-text-primary); }
+  p { color: var(--color-text-secondary); font-size: 16px; line-height: 1.6; }
+
+  @media (max-width: 1024px) {
+    .tech-grid { grid-template-columns: 1fr; gap: 64px; }
+    .large, .wide { grid-column: auto; grid-row: auto; flex-direction: column; }
+    .wide .visual-area, .wide .content-area { width: 100%; }
+    .wide .visual-area { margin-bottom: 24px; }
+  }
+
+</style>

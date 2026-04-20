@@ -1,0 +1,323 @@
+---
+import { ArrowRight, Command, Server } from 'lucide-react';
+import DashboardImg from '../assets/Dashboard.png';
+import SecondaryImg from '../assets/eimg1.png'; // Using eimg1 as the secondary "mining/rack" image
+---
+
+<section class="dashboard-preview" id="dashboard-section">
+  <div class="dp-container">
+    <div class="dp-layout">
+      <!-- Left Column: Heading and Main Image -->
+      <div class="dp-main-col">
+        <div class="dp-header">
+          <div class="dp-icon-wrapper">
+            <Command size={28} />
+          </div>
+          <h2 class="dp-title">A <span class="accent-text">Unified Dashboard</span> for <br> Complete Control </h2>
+
+        </div>
+        
+        <div class="dp-image-container main-img">
+          <img src={DashboardImg.src} alt="LiteScaler Platform" class="main-dashboard-img" />
+        </div>
+      </div>
+
+      <!-- Right Column: Secondary Image and Content -->
+      <div class="dp-side-col">
+        <div class="dp-image-container side-img">
+          <div class="img-border-frame"></div>
+          <img src={SecondaryImg.src} alt="Infrastructure Detail" class="secondary-img" />
+        </div>
+
+        <div class="dp-content-block">
+          <div class="side-icon-wrapper">
+            <Server size={24} />
+          </div>
+          <h3 class="block-title">POWERED BY LITESCALER</h3>
+          <p class="block-desc">
+            Through strategic infrastructure partnerships and next-generation architecture, 
+            LiteScaler leverages institutional-grade systems and shared services 
+            to enable rapid, cost-efficient expansion for your business.
+          </p>
+          
+          <a href="/about" class="dp-cta-btn">
+            <span>ABOUT LITESCALER</span>
+            <div class="btn-icon">
+              <ArrowRight size={18} />
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<style>
+  .dashboard-preview {
+    padding: 10rem 0;
+    background-color: #ffffff;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: block;
+  }
+
+  .dp-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .dp-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) !important;
+    gap: 80px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .dp-main-col, .dp-side-col {
+    min-width: 0;
+    width: 100%;
+  }
+
+  @media (max-width: 1024px) {
+    .dp-layout {
+      grid-template-columns: 1fr !important;
+      gap: 60px;
+    }
+  }
+
+  /* Header Styles */
+  .dp-header {
+    margin-bottom: 4rem;
+    text-align: left;
+  }
+
+  .dp-icon-wrapper {
+    display: inline-flex;
+    color: #2380F4;
+    margin-bottom: 8px; /* adjusted margin since the big box is gone */
+  }
+
+  .side-icon-wrapper {
+    display: inline-flex;
+    color: #2380F4;
+    margin-bottom: 12px;
+  }
+
+  .dp-title {
+    font-size: 44px;
+    font-weight: 500; /* Matching premium reference */
+    color: #000000ff;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .accent-text { color: var(--color-accent); }
+
+  .dp-description {
+    font-size: 18px;
+    font-weight: 300;
+    color: #475569;
+    line-height: 1.8;
+    margin-top: 1.5rem;
+    max-width: 600px;
+  }
+
+  @media (max-width: 768px) {
+    .dp-title {
+      font-size: 42px;
+    }
+    .dp-description {
+      font-size: 16px;
+    }
+  }
+
+  /* Image Containers */
+  .dp-image-container {
+    position: relative;
+    border-radius: 12px;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+  }
+
+  .dp-image-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 50px 120px rgba(15, 23, 42, 0.15);
+  }
+
+  .main-img {
+    z-index: 2;
+    box-shadow: 0 40px 100px rgba(15, 23, 42, 0.08);
+    background: #ffffff;
+    padding: 12px;
+    border: 1px solid rgba(15, 23, 42, 0.05);
+  }
+
+  .main-dashboard-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid rgba(15, 23, 42, 0.05);
+  }
+
+  .side-img {
+    margin-bottom: 3.5rem;
+    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+    background: #ffffff;
+    padding: 10px;
+    border: 1px solid rgba(15, 23, 42, 0.05);
+  }
+
+  .img-border-frame {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: 15px;
+    bottom: 15px;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 12px;
+    z-index: -1;
+    transition: transform 0.5s ease;
+  }
+
+  .dp-image-container:hover .img-border-frame {
+    transform: translate(5px, -5px);
+  }
+
+  .secondary-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+  }
+
+  /* Content Block */
+  .dp-content-block {
+    max-width: 440px;
+    padding-left: 2rem;
+    border-left: 1px solid rgba(15, 23, 42, 0.1);
+    position: relative;
+  }
+
+  .block-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .block-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #475569;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  /* CTA Button */
+  .dp-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 28px;
+    background-color: #0f172a;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .dp-cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .dp-cta-btn:hover::before {
+    transform: translateX(100%);
+  }
+
+  .dp-cta-btn:hover {
+    background-color: #1e293b;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
+  }
+
+  .btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .dp-cta-btn:hover .btn-icon {
+    transform: translateX(4px);
+  }
+
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Set initial states hidden to prevent flash before animation
+    gsap.set(['.dp-icon-wrapper', '.dp-header .dp-title', '.dp-header .dp-description', '.main-img', '.side-img', '.dp-content-block'], {
+      opacity: 0,
+      y: 30
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+          
+          if (target.classList.contains('dp-header')) {
+            gsap.to(target.querySelector('.dp-icon-wrapper'), { opacity: 1, y: 0, duration: 1, ease: 'power4.out' });
+            gsap.to(target.querySelector('.dp-title'), { opacity: 1, y: 0, duration: 1, delay: 0.1, ease: 'power4.out' });
+            gsap.to(target.querySelector('.dp-description'), { opacity: 1, y: 0, duration: 1, delay: 0.2, ease: 'power4.out' });
+          } 
+          else if (target.classList.contains('main-img')) {
+            gsap.to(target, { opacity: 1, y: 0, duration: 1.2, delay: 0.1, ease: 'power4.out' });
+          }
+          else if (target.classList.contains('dp-side-col')) {
+            gsap.to(target.querySelector('.side-img'), { opacity: 1, y: 0, duration: 1, ease: 'power4.out' });
+            gsap.to(target.querySelector('.dp-content-block'), { opacity: 1, y: 0, duration: 1, delay: 0.2, ease: 'power4.out' });
+          }
+          
+          observer.unobserve(target);
+        }
+      });
+    }, { 
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px" // Trigger slightly before it hits the very bottom
+    });
+
+    // Observe the main blocks
+    const elementsToObserve = document.querySelectorAll('.dp-header, .main-img, .dp-side-col');
+    elementsToObserve.forEach(el => {
+      if (el) observer.observe(el);
+    });
+  });
+</script>

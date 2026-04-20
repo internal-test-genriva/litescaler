@@ -1,0 +1,267 @@
+---
+import logo from '../assets/icon.png';
+const currentPath = Astro.url.pathname;
+
+const primaryNav = [
+  { path: '/about', label: 'About us' },
+  { path: '/blog', label: 'Blogs' },
+  { path: '/contact', label: 'Contact us' },
+  { path: '/legal', label: 'Legal' },
+];
+---
+
+<header id="site-header" class="header-fixed">
+  <div class="header-inner">
+    <div class="logo-section">
+      <a href="/" class="logo-link">
+        <img src={logo.src} alt="LiteScaler logo" class="logo-img" />
+        <span class="logo-text">LiteScaler</span>
+      </a>
+    </div>
+
+    <nav class="desktop-nav">
+      <div class="nav-item group" id="services-dropdown">
+        <button type="button" class="nav-btn">
+          Services <span class="arrow">▾</span>
+        </button>
+        <div class="mega-menu">
+          <div class="mega-menu-grid">
+            <div class="menu-links">
+              <a href="/" class="menu-link-item">
+                <div class="link-title">Web Hosting <span class="badge-green">82% OFF</span></div>
+                <div class="link-desc">Fast and reliable shared hosting for blogs and business websites</div>
+              </a>
+              <a href="/wordpress" class="menu-link-item">
+                <div class="link-title">WordPress Hosting <span class="badge-indigo">PREMIUM</span></div>
+                <div class="link-desc">Managed WordPress with performance and security optimizations</div>
+              </a>
+              <a href="/reseller-hosting" class="menu-link-item">
+                <div class="link-title">Reseller Hosting</div>
+                <div class="link-desc">Package and resell hosting to clients with white-label tools</div>
+              </a>
+            </div>
+            <div class="menu-visual">
+              <img src="/src/assets/eimg1.png" alt="Services preview" class="preview-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {primaryNav.map((item) => (
+        <a href={item.path} class={`nav-btn ${currentPath === item.path ? 'active' : ''}`}>
+          {item.label}
+        </a>
+      ))}
+
+      <div class="nav-item group" id="explore-dropdown">
+        <button type="button" class="nav-btn">
+          Explore <span class="arrow">▾</span>
+        </button>
+        <div class="mega-menu">
+          <div class="mega-menu-grid">
+            <div class="menu-links">
+              <a href="#" class="menu-link-item">
+                <div class="link-title">Speed Test <span class="badge-green">NEW</span></div>
+                <div class="link-desc">Test your website performance and loading speed</div>
+              </a>
+              <a href="#" class="menu-link-item">
+                <div class="link-title">Uptime Monitor</div>
+                <div class="link-desc">Monitor your website availability 24/7</div>
+              </a>
+              <a href="#" class="menu-link-item">
+                <div class="link-title">SSL Checker</div>
+                <div class="link-desc">Verify your SSL certificate installation</div>
+              </a>
+              <a href="#" class="menu-link-item">
+                <div class="link-title">DNS Lookup</div>
+                <div class="link-desc">Check DNS records and configurations</div>
+              </a>
+            </div>
+            <div class="menu-visual">
+              <img src="/src/assets/eimg1.png" alt="Explore tools preview" class="preview-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="actions-section">
+      <a href="/account" class="account-link">
+        <svg class="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 20a9 9 0 0118 0" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>My Account</span>
+      </a>
+      
+      <div class="country-badge">
+        <svg width="24" height="16" viewBox="0 0 28 18" class="flag">
+          <rect width="28" height="6" fill="#FF9933" />
+          <rect y="6" width="28" height="6" fill="#FFFFFF" />
+          <rect y="12" width="28" height="6" fill="#138808" />
+          <circle cx="14" cy="9" r="1.8" fill="#054A91" />
+        </svg>
+        <span class="country-name">India</span>
+      </div>
+    </div>
+  </div>
+</header>
+<script>
+  import { gsap } from 'gsap';
+
+  function animateHeader() {
+    const header = document.getElementById('site-header');
+    if (!header) return;
+    
+    // Explicitly maintain xPercent: -50 to prevent horizontal shift
+    // because GSAP's transform manipuates both X and Y
+    gsap.fromTo(header, 
+      { 
+        y: -100, 
+        xPercent: -50
+      },
+      {
+        y: 0,
+        xPercent: -50,
+        duration: 0.8,
+        delay: 0.3,
+        ease: 'power3.out',
+        clearProps: 'transform' // Clean up inline styles after animation to fallback to CSS translateX(-50%)
+      }
+    );
+  }
+
+  // Execute animation robustly
+  function initAnimation() {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(animateHeader);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initAnimation();
+    });
+  } else {
+    initAnimation();
+  }
+  
+  // Re-run animation when Astro swaps the page
+  document.addEventListener('astro:page-load', () => {
+    initAnimation();
+  });
+</script>
+
+<style>
+  .header-fixed {
+    position: fixed;
+    top: var(--timer-bar-height, 0px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    background: #ffffff; 
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+    width: 100%;
+    max-width: 1600px;
+    border: 1px solid var(--color-border);
+  }
+
+  .logo-section, .logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-img { width: 48px; height: 48px; object-fit: contain; }
+  .logo-text { font-size: 18px; font-weight: 600; color: #000000ff; font-family: 'Poppins', sans-serif; }
+
+  .header-inner {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .desktop-nav { display: flex; align-items: center; gap: 8px; }
+  .nav-btn {
+    background: transparent;
+    color: var(--color-text-primary);
+    opacity: 0.85;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.2s;
+  }
+  .nav-btn:hover { background: rgba(15, 23, 42, 0.05); opacity: 1; }
+  .nav-btn.active { color: var(--color-info); font-weight: 600; opacity: 1; }
+
+  /* Dropdown Logic */
+  .nav-item { position: relative; }
+  .mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: var(--shadow-xl);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s;
+    border: 1px solid var(--color-border);
+    width: 700px;
+    padding: 24px;
+  }
+
+  .group:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .mega-menu-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; }
+  .menu-link-item { display: block; text-decoration: none; padding: 12px; border-radius: 8px; transition: 0.2s; }
+  .menu-link-item:hover { background: #f8fafc; }
+  .menu-link-item:hover .link-title { color: #2380F4; }
+
+  .link-title { font-weight: 600; font-size: 16px; color: var(--color-text-primary); display: flex; align-items: center; gap: 8px; }
+  .link-desc { font-size: 13px; color: var(--color-text-secondary); margin-top: 4px; }
+
+  .badge-green {
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    letter-spacing: 0.02em;
+  }
+
+  .badge-indigo {
+    background: rgba(35, 128, 244, 0.1);
+    color: #2380F4;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    border: 1px solid rgba(35, 128, 244, 0.2);
+    letter-spacing: 0.02em;
+  }
+
+  /* Right Section */
+  .actions-section { display: flex; align-items: center; gap: 16px; }
+  .account-link { display: flex; align-items: center; gap: 8px; color: var(--color-text-primary); text-decoration: none; font-weight: 600; font-size: 14px; }
+  .icon-user { width: 18px; height: 18px; color: currentColor; }
+
+  .country-badge { display: flex; align-items: center; gap: 8px; color: var(--color-text-secondary); font-size: 14px; }
+  .preview-img { width: 100%; border-radius: 8px; height: 160px; object-fit: cover; }
+  .arrow { font-size: 10px; margin-left: 4px; transition: transform 0.2s ease; display: inline-block; }
+  .nav-item:hover .arrow { transform: rotate(180deg); }
+</style>

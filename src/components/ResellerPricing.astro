@@ -1,0 +1,589 @@
+---
+import { Check, ChevronDown, TrendingUp } from 'lucide-react';
+
+const plans = [
+  {
+    name: "ORBIT",
+    version: "(Starter Reseller)",
+    price: "499",
+    originalPrice: "999",
+    discount: "50% OFF",
+    earn: "Earn up to ₹15,000/mo",
+    description: "Perfect for freelancers and agencies building their first hosting business with a handful of clients.",
+    features: [
+      "30 GB NVMe Gen4 Storage",
+      "20 cPanel Hosting Accounts",
+      "Unmetered Bandwidth",
+      "Free SSL for All Accounts",
+      "WHM Control Panel Access",
+      "Basic White-label Branding",
+      "LiteSpeed + LSCache",
+      "Softaculous Auto-installer",
+      "Daily Backups (7-day retention)",
+      "Email Hosting Included",
+      "DDoS Protection (Basic)",
+      "One-click WordPress Install",
+      "MySQL Databases (Unlimited)",
+      "PHP 7.4 – 8.3 Support",
+      "SSH + SFTP Access",
+      "Cron Jobs & FTP Accounts",
+      "Spam Filter (Basic)",
+      "30-day Money-back Guarantee",
+      "24/7 Ticket Support",
+    ],
+    buttonText: "Start Reselling",
+    highlight: false,
+  },
+  {
+    name: "NOVA",
+    version: "(Professional Reseller)",
+    price: "1,249",
+    originalPrice: "2,499",
+    discount: "50% OFF",
+    earn: "Earn up to ₹50,000/mo",
+    description: "Our most popular plan — scale your hosting business with unlimited accounts, WHMCS, and full white-labelling.",
+    features: [
+      "80 GB NVMe Gen4 Storage",
+      "Unlimited cPanel Accounts",
+      "Unmetered Bandwidth",
+      "Free SSL for All Accounts",
+      "WHM + Custom Nameservers",
+      "Full White-label Branding",
+      "WHMCS Billing (25 clients)",
+      "LiteSpeed Enterprise",
+      "Advanced Malware Scanner",
+      "Priority Support (6hr SLA)",
+      "Free Domain Reselling",
+      "1 Dedicated IP Address",
+      "Cloudflare CDN Integration",
+      "Imunify360 Security",
+      "JetBackup (Daily + Weekly)",
+      "PHP Config Per Account",
+      "ModSecurity WAF",
+      "WordPress Manager",
+      "API Access (Basic)",
+      "30-day Money-back Guarantee",
+    ],
+    buttonText: "Start Reselling",
+    highlight: true,
+    badge: "MOST POPULAR",
+  },
+  {
+    name: "APEX",
+    version: "(Business Reseller)",
+    price: "2,499",
+    originalPrice: "4,999",
+    discount: "50% OFF",
+    earn: "Earn up to ₹1,20,000/mo",
+    description: "Enterprise-grade reseller hosting with full business tools, dedicated IPs, and a dedicated account manager.",
+    features: [
+      "160 GB NVMe Gen4 Storage",
+      "Unlimited cPanel Accounts",
+      "Unmetered Bandwidth",
+      "Free SSL for All Accounts",
+      "Complete White-label Suite",
+      "WHMCS Unlimited",
+      "2 Dedicated IP Addresses",
+      "Enterprise LiteSpeed",
+      "Real-time Malware Removal",
+      "Dedicated Account Manager",
+      "Full API Access",
+      "Custom Billing Portal",
+      "KernelCare+ Live Patching",
+      "Cloudflare Enterprise CDN",
+      "JetBackup Hourly Snapshots",
+      "Node.js / Python Support",
+      "Git Integration",
+      "Softaculous Teams",
+      "Priority DDoS Mitigation",
+      "99.9% Uptime SLA (Written)",
+      "Dedicated 24/7 Phone Support",
+    ],
+    buttonText: "Start Reselling",
+    highlight: false,
+  },
+];
+---
+
+<section class="rsp-section" id="pricing">
+  <div class="rsp-container">
+
+    <div class="rsp-header">
+      <span class="rsp-eyebrow">Transparent Pricing</span>
+      <h2 class="rsp-title">Choose your <span class="rsp-accent">Reseller Plan</span></h2>
+      <p class="rsp-subtitle">
+        Every plan includes WHM access, white-label branding, and our LiteSpeed enterprise infrastructure.
+        No setup fees. No hidden charges. You set the prices — we power the platform.
+      </p>
+      <div class="rsp-trust-pills">
+        <span class="rsp-pill"><Check size={14} color="#2380F4" /> Monthly billing</span>
+        <span class="rsp-pill"><Check size={14} color="#2380F4" /> WHM included on all plans</span>
+        <span class="rsp-pill"><Check size={14} color="#2380F4" /> 99.9% uptime SLA</span>
+      </div>
+    </div>
+
+    <div class="rsp-grid">
+      {plans.map((plan, index) => (
+        <div class={`rsp-card ${plan.highlight ? 'rsp-card--highlight' : ''}`} data-index={index}>
+          {plan.badge && <div class="rsp-badge">{plan.badge}</div>}
+
+          <div class="rsp-card-top">
+            <h3 class="rsp-plan-name">{plan.name}</h3>
+            <p class="rsp-plan-ver">{plan.version}</p>
+          </div>
+
+          <div class="rsp-earn-row">
+            <TrendingUp size={13} color="#10b981" />
+            <span>{plan.earn}</span>
+          </div>
+
+          <div class="rsp-price-block">
+            <div class="rsp-discount-row">
+              <span class="rsp-discount-pill">{plan.discount}</span>
+              <span class="rsp-old-price">₹{plan.originalPrice}</span>
+            </div>
+            <div class="rsp-price">
+              <span class="rsp-currency">₹</span>
+              <span class="rsp-amount">{plan.price}</span>
+              <span class="rsp-period">/mo</span>
+            </div>
+            {plan.highlight && <div class="rsp-deal-tag">Limited time deal</div>}
+          </div>
+
+          <p class="rsp-plan-desc">{plan.description}</p>
+
+          <button class={`rsp-btn ${plan.highlight ? 'rsp-btn--primary' : 'rsp-btn--secondary'}`}>
+            {plan.buttonText}
+          </button>
+
+          <div class="rsp-expand js-rsp-expand">
+            <div class="rsp-expand-inner">
+              <ul class="rsp-features">
+                {plan.features.map((f) => (
+                  <li class="rsp-feat">
+                    <span class="rsp-feat-check"><Check size={13} color="#2380F4" /></span>
+                    <span class="rsp-feat-text">{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <button class="rsp-see-all js-rsp-toggle">
+            <span class="rsp-see-label">See all features</span>
+            <ChevronDown size={14} class="rsp-chevron" />
+          </button>
+        </div>
+      ))}
+    </div>
+
+    <p class="rsp-gst">*Prices shown exclude GST (18%). Renews at regular price after introductory period.</p>
+  </div>
+</section>
+
+<style>
+  .rsp-section {
+    background: #fff;
+    padding: 140px 0 100px;
+    position: relative;
+  }
+
+  .rsp-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  .rsp-header {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 80px;
+  }
+
+  .rsp-eyebrow {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #2380F4;
+    background: rgba(35,128,244,.08);
+    border: 1px solid rgba(35,128,244,.18);
+    border-radius: 50px;
+    padding: 6px 16px;
+    margin-bottom: 20px;
+  }
+
+  .rsp-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: #0f172a;
+    letter-spacing: -.03em;
+    line-height: 1.15;
+    margin: 0 0 20px;
+  }
+
+  .rsp-accent { color: #2380F4; }
+
+  .rsp-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #475569;
+    margin: 0 0 28px;
+  }
+
+  .rsp-trust-pills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .rsp-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #f8fafc;
+    border: 1px solid rgba(15,23,42,.06);
+    border-radius: 50px;
+    padding: 7px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #475569;
+  }
+
+  /* Grid */
+  .rsp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: start;
+    padding-top: 20px;
+  }
+
+  /* Card */
+  .rsp-card {
+    background: #fff;
+    border: 1px solid rgba(15,23,42,.09);
+    border-radius: 28px;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 8px 28px rgba(15,23,42,.05);
+    transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s cubic-bezier(.16,1,.3,1);
+  }
+
+  .rsp-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 28px 56px rgba(35,128,244,.11);
+  }
+
+  .rsp-card--highlight {
+    border: 2px solid #2380F4;
+    box-shadow: 0 24px 56px rgba(35,128,244,.12);
+  }
+
+  .rsp-badge {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #2380F4, #1558c4);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .09em;
+    padding: 5px 18px;
+    border-radius: 50px;
+    white-space: nowrap;
+    box-shadow: 0 8px 18px rgba(35,128,244,.3);
+  }
+
+  .rsp-card-top {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .rsp-plan-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 3px;
+    letter-spacing: -.01em;
+  }
+
+  .rsp-plan-ver {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12.5px;
+    color: #64748b;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  /* Earn row */
+  .rsp-earn-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: rgba(16,185,129,.07);
+    border: 1px solid rgba(16,185,129,.2);
+    border-radius: 8px;
+    padding: 7px 14px;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #059669;
+  }
+
+  /* Price block */
+  .rsp-price-block {
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed rgba(15,23,42,.1);
+  }
+
+  .rsp-discount-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .rsp-discount-pill {
+    background: rgba(16,185,129,.1);
+    color: #059669;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 7px;
+  }
+
+  .rsp-old-price {
+    font-family: 'Poppins', sans-serif;
+    color: #94a3b8;
+    text-decoration: line-through;
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+
+  .rsp-price {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3px;
+    color: #0f172a;
+  }
+
+  .rsp-currency {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .rsp-amount {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    font-weight: 500;
+    color: #0f172a;
+    line-height: 1;
+    letter-spacing: -.02em;
+  }
+
+  .rsp-period {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: #64748b;
+    margin-top: 4px;
+  }
+
+  .rsp-deal-tag {
+    font-family: 'Poppins', sans-serif;
+    color: #ef4444;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-top: 8px;
+  }
+
+  /* Description */
+  .rsp-plan-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #475569;
+    text-align: center;
+    margin-bottom: 28px;
+    padding: 0 6px;
+  }
+
+  /* CTA button */
+  .rsp-btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    margin-bottom: 22px;
+    cursor: pointer;
+    border: none;
+    transition: all .3s cubic-bezier(.16,1,.3,1);
+    letter-spacing: .01em;
+  }
+
+  .rsp-btn--primary {
+    background: #2380F4;
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(35,128,244,.25);
+  }
+  .rsp-btn--primary:hover {
+    background: #1a6de0;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(35,128,244,.35);
+  }
+
+  .rsp-btn--secondary {
+    background: #f8fafc;
+    color: #0f172a;
+    border: 1px solid rgba(15,23,42,.1);
+  }
+  .rsp-btn--secondary:hover {
+    background: #f1f5f9;
+    transform: translateY(-2px);
+  }
+
+  /* Expandable features */
+  .rsp-expand {
+    overflow: hidden;
+    max-height: 1800px;
+    transition: max-height .6s cubic-bezier(.4,0,.2,1);
+  }
+
+  .rsp-expand.collapsed {
+    max-height: 360px;
+    mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  }
+
+  .rsp-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .rsp-feat {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-bottom: 14px;
+  }
+
+  .rsp-feat-check {
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .rsp-feat-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #475569;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* See all button */
+  .rsp-see-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 20px 0 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    transition: color .2s;
+    width: 100%;
+    margin-top: auto;
+  }
+  .rsp-see-all:hover { color: #2380F4; }
+  .rsp-chevron { transition: transform .35s ease; }
+
+  /* Disclaimer */
+  .rsp-gst {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 12.5px;
+    margin-top: 56px;
+    font-weight: 500;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .rsp-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .rsp-title { font-size: 36px; }
+  }
+
+  @media (max-width: 640px) {
+    .rsp-title { font-size: 28px; }
+    .rsp-amount { font-size: 44px; }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    /* Expand / collapse all */
+    const toggleBtns = document.querySelectorAll('.js-rsp-toggle');
+    const expanders  = document.querySelectorAll('.js-rsp-expand');
+
+    toggleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const collapsed = expanders[0]?.classList.contains('collapsed') ?? true;
+        expanders.forEach(e => e.classList.toggle('collapsed', !collapsed));
+        toggleBtns.forEach(b => {
+          const lbl    = b.querySelector('.rsp-see-label') as HTMLElement;
+          const chev   = b.querySelector('.rsp-chevron')  as HTMLElement;
+          if (lbl)  lbl.textContent = collapsed ? 'Show less' : 'See all features';
+          if (chev) chev.style.transform = collapsed ? 'rotate(180deg)' : 'rotate(0deg)';
+        });
+        ScrollTrigger.refresh();
+      });
+    });
+
+    /* Initial state: collapsed */
+    expanders.forEach(e => e.classList.add('collapsed'));
+
+    /* Entrance animations */
+    gsap.from('.rsp-header', {
+      scrollTrigger: { trigger: '.rsp-section', start: 'top 80%' },
+      y: 36, opacity: 0, duration: .9, ease: 'power3.out'
+    });
+    gsap.from('.rsp-card', {
+      scrollTrigger: { trigger: '.rsp-grid', start: 'top 80%' },
+      opacity: 0, y: 28, duration: .75, stagger: .14, ease: 'power3.out'
+    });
+  });
+</script>

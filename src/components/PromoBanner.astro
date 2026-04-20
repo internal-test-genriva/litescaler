@@ -1,0 +1,71 @@
+---
+// Strict 50/50 Grid-based Promo CTA Banner.
+---
+
+<section class="py-24 px-6 bg-slate-50 w-full relative z-[20]" id="promo-offer" data-scroll>
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Explicitly Rounded Container (60px) -->
+    <div class="promo-container grid grid-cols-1 lg:grid-cols-2 overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.2)] min-h-[550px]" 
+         style="background: linear-gradient(135deg, #2380F4 0%, #1e40af 100%); border-radius: 60px;">
+      
+      <!-- Left Content (Strict 50%, Top-Left Aligned) -->
+      <div class="p-10 md:p-16 lg:p-20 flex flex-col justify-start items-start text-left bg-white/5 space-y-12 h-full">
+        
+        <div class="space-y-6 w-full">
+          <span class="inline-block text-white/50 text-sm font-semibold tracking-[0.25em] uppercase" style="font-family: 'Poppins', sans-serif;">
+            Exclusive Discovery
+          </span>
+          <h2 class="text-white text-4xl md:text-5xl lg:text-[56px] font-medium leading-[1.1] tracking-tight" style="font-family: 'Poppins', sans-serif;">
+            Save up to 80% today — pay the same at renewal.
+          </h2>
+          <p class="text-white/60 text-lg md:text-xl font-medium leading-relaxed max-w-xl" style="font-family: 'Poppins', sans-serif;">
+            High-performance hosting infrastructure designed for scale. Experience zero renewal surprises with our transparent pricing model.
+          </p>
+        </div>
+
+        <div class="w-full flex flex-col items-start gap-8">
+          <a href="#" class="inline-block px-12 py-5 bg-white text-[#2380F4] font-bold text-xl rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-xl">
+            Claim Offer Now
+          </a>
+          
+          <div class="flex items-center gap-3">
+             <div class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.5)]"></div>
+             <span class="text-white/60 text-base font-medium" style="font-family: 'Poppins', sans-serif;">
+               30-day money-back guarantee
+             </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Image (Strict 50%) -->
+      <div class="relative bg-slate-900/10 flex items-center justify-center overflow-hidden h-full min-h-[400px] lg:min-h-[550px]">
+        <img 
+          src="/assets/promo-portrait.png" 
+          alt="Litescaler Brand Representative" 
+          class="w-full h-full object-cover object-center"
+        />
+        
+        <!-- Highly Structured Labels -->
+        <div class="absolute inset-0 p-10 flex flex-col justify-between pointer-events-none">
+           <div class="flex justify-end">
+              <div class="bg-white/15 backdrop-blur-xl border border-white/20 px-6 py-2.5 rounded-2xl shadow-xl shadow-black/10">
+                 <span class="text-white font-medium text-sm md:text-base" style="font-family: 'Poppins', sans-serif;">Verified Infrastructure</span>
+              </div>
+           </div>
+           
+           <div class="flex gap-4">
+              <div class="bg-[#2380F4]/30 backdrop-blur-xl border border-white/20 px-5 py-2.5 rounded-2xl shadow-xl shadow-black/10 text-white font-medium text-sm" style="font-family: 'Poppins', sans-serif;">
+                ★ Top Rated
+              </div>
+               <div class="bg-[#2380F4]/30 backdrop-blur-xl border border-white/20 px-5 py-2.5 rounded-2xl shadow-xl shadow-black/10 text-white font-medium text-sm" style="font-family: 'Poppins', sans-serif;">
+                100% Secure
+              </div>
+           </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

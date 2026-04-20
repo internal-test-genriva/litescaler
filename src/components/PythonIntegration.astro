@@ -1,0 +1,67 @@
+---
+import { runPythonScript } from '../lib/runPython.js';
+
+// This runs at build time or on the server
+let integrationResult = null;
+let error = null;
+
+try {
+  // We cache the result so it only runs once per build/session
+  if (import.meta.env.PROD || !Astro.locals.cache?.pythonResult) {
+      integrationResult = await runPythonScript();
+      if (!Astro.locals) Astro.locals = {};
+      Astro.locals.cache = { pythonResult: integrationResult };
+  } else {
+      integrationResult = Astro.locals.cache.pythonResult;
+  }
+} catch (e) {
+  error = e.message;
+}
+---
+
+<section class="integration-section">
+  <h2>Python Integration Status</h2>
+
+  {error && (
+    <div class="error-message">
+      <p>⚠️ Integration Failed: {error}</p>
+    </div>
+  )}
+
+  {!error && integrationResult && (
+    <div class="success-message">
+      <p>✅ {integrationResult.message}</p>
+      <small>Executed at: {new Date(integrationResult.timestamp * 1000).toLocaleString()}</small>
+    </div>
+  )}
+
+  <div class="details">
+    <pre>{JSON.stringify(integrationResult, null, 2)}</pre>
+  </div>
+</section>
+
+<style>
+  .integration-section {
+    border: 1px solid var(--color-border);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+  }
+  .success-message {
+    color: var(--color-success);
+    font-weight: bold;
+  }
+  .error-message {
+    color: var(--color-error);
+    font-weight: bold;
+  }
+  pre {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-secondary);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+</style>

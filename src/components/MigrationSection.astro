@@ -1,0 +1,386 @@
+---
+import { Check, ShieldCheck } from 'lucide-react';
+import { Image } from 'astro:assets';
+import migrationImg from '../assets/migration-professional.png';
+---
+
+<section class="migration-section">
+  <div class="migration-container">
+    <div class="migration-grid">
+      
+      <!-- Content Column -->
+      <div class="content-col">
+        <h2 class="title">Switch to Litescaler with zero downtime</h2>
+        <p class="subtitle">Our experts migrate your site for free — no data loss, no hassle.</p>
+        
+        <div class="benefits-section">
+          <h3 class="benefits-title">Why you can migrate with confidence</h3>
+          <ul class="benefits-list">
+            <li>
+              <span class="check-icon"><Check size={16} strokeWidth={3} /></span>
+              Free website migrations by qualified experts
+            </li>
+            <li>
+              <span class="check-icon"><Check size={16} strokeWidth={3} /></span>
+              No downtime during the actual transfer
+            </li>
+            <li>
+              <span class="check-icon"><Check size={16} strokeWidth={3} /></span>
+              No data lost or links broken during the migration
+            </li>
+            <li>
+              <span class="check-icon"><Check size={16} strokeWidth={3} /></span>
+              Support for WordPress and CMS
+            </li>
+            <li>
+              <span class="check-icon"><Check size={16} strokeWidth={3} /></span>
+              Comprehensive post-migration testing
+            </li>
+          </ul>
+        </div>
+
+        <div class="cta-wrapper">
+          <a href="#" class="btn-primary">Migrate Now</a>
+          <p class="cta-note">Free migration • Zero downtime</p>
+        </div>
+      </div>
+
+      <!-- Image Column -->
+      <div class="image-col">
+        <div class="image-wrapper">
+          <Image 
+            src={migrationImg} 
+            alt="Migration Expert" 
+            class="expert-portrait"
+            quality="high"
+          />
+
+          <!-- Top Floating Card -->
+          <div class="floating-card top-card">
+            <div class="card-header">
+              <span class="card-title">Site Migration</span>
+              <span class="card-value">90%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill"></div>
+            </div>
+          </div>
+
+          <!-- Bottom Floating Card -->
+          <div class="floating-card bottom-card">
+            <span class="card-title">Site Migration</span>
+            <div class="val-row">
+              <span class="big-val">356</span>
+              <span class="val-label">Active</span>
+            </div>
+            <!-- Simplified abstract chart logic with SVG -->
+            <div class="chart-container">
+              <svg viewBox="0 0 100 40" class="mini-chart">
+                <!-- Abstract grid lines -->
+                <path d="M0 10 H100 M0 20 H100 M0 30 H100" stroke="rgba(0,255,100,0.1)" stroke-width="0.5" fill="none" />
+                <path d="M10 0 V40 M30 0 V40 M50 0 V40 M70 0 V40 M90 0 V40" stroke="rgba(0,255,100,0.1)" stroke-width="0.5" fill="none" />
+                <!-- Chart curve -->
+                <path d="M0 35 Q 20 35, 40 30 T 60 20 T 80 5 L 100 0 L 100 40 L 0 40 Z" fill="url(#grad)" />
+                <path d="M0 35 Q 20 35, 40 30 T 60 20 T 80 5 L 100 0" fill="none" stroke="#00e676" stroke-width="1.5" />
+                <defs>
+                  <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(0, 230, 118, 0.2)" />
+                    <stop offset="100%" stop-color="rgba(0, 230, 118, 0)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="guarantee-text">
+          <ShieldCheck size={16} strokeWidth={2} class="shield-icon" />
+          <span>30-day money-back guarantee</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .migration-section {
+    background-color: #030712;
+    color: #ffffff;
+    padding: 100px 24px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle background glow effect if needed */
+  .migration-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(35, 128, 244, 0.1) 0%, rgba(35, 128, 244, 0) 70%);
+    transform: translateY(-50%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .migration-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .migration-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 60px;
+    align-items: center;
+  }
+
+  /* --- LEFT COLUMN --- */
+  .content-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 46px;
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+    color: #ffffff !important;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85) !important;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .benefits-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    line-height: 1.5;
+  }
+
+  .check-icon {
+    color: #00e676; /* Vibrant Green */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .cta-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .btn-primary {
+    background: #2380F4;
+    color: #ffffff;
+    padding: 16px 36px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(35, 128, 244, 0.4);
+  }
+
+  .btn-primary:hover {
+    background: #1d6ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(35, 128, 244, 0.5);
+  }
+
+  .cta-note {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+  }
+
+  /* --- RIGHT COLUMN --- */
+  .image-col {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 40px !important;
+  }
+
+  .expert-portrait {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 40px !important;
+    object-fit: cover;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Float cards over image */
+  .floating-card {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 32px !important;
+    padding: 18px 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+  }
+
+  .top-card {
+    top: 50px;
+    left: -60px;
+    width: 240px;
+  }
+
+  .bottom-card {
+    bottom: 20px;
+    left: -80px;
+    width: 260px;
+  }
+
+  /* Card Inner Elements */
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .card-value {
+    font-size: 13px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  .progress-bar-bg {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    width: 90%;
+    background: #00e676;
+    border-radius: 10px;
+  }
+
+  .val-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+
+  .big-val {
+    font-size: 32px;
+    font-weight: 300;
+    color: #0f172a;
+    line-height: 1;
+  }
+
+  .val-label {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 500;
+  }
+
+  .chart-container {
+    width: 100%;
+    height: 48px;
+  }
+
+  .mini-chart {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .guarantee-text {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+  }
+
+  .shield-icon {
+    color: #00e676;
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 1024px) {
+    .migration-grid {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+    
+    .top-card {
+      top: 30px;
+      left: 10px;
+    }
+
+    .bottom-card {
+      bottom: 20px;
+      left: 10px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .title {
+      font-size: 32px;
+    }
+  }
+</style>
