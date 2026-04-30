@@ -8,10 +8,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
 
+    steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@master
         with:
@@ -20,7 +18,19 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
+            # Load nvm (IMPORTANT)
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+            # Use correct Node version
+            nvm use 20 || nvm install 20
+
+            # Go to project folder
             cd ~/public_html/Litescaler
+
+            # Pull latest code
             git pull origin main
+
+            # Install & build
             npm install
             npm run build
