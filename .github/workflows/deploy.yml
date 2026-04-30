@@ -18,7 +18,7 @@ jobs:
           host: 103.124.172.98
           username: web_lite1
           key: ${{ secrets.SERVER_SSH_KEY }}
-          port: 21
+          port: 22
           script: |
             cd ~/public_html/Litescaler
             git pull origin main
