@@ -6,6 +6,9 @@ import node from '@astrojs/node';
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: ['web.litescaler.work']
+    }
   },
 
   output: 'static',

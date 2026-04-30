@@ -57,6 +57,13 @@ export interface PageData {
 }
 
 const API_URL = import.meta.env.PAYLOAD_POSTS_API_URL;
+const PAYLOAD_SERVER_URL = import.meta.env.PAYLOAD_PUBLIC_SERVER_URL || 'https://payload.litescaler.work';
+
+function getFullUrl(url?: string): string {
+  if (!url) return '';
+  if (url.startsWith('http')) return url;
+  return `${PAYLOAD_SERVER_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+}
 
 /**
  * Convert Lexical JSON to HTML
@@ -94,7 +101,7 @@ export function lexicalToHtml(json: any): string {
         return `<blockquote>${children}</blockquote>`;
       case 'upload':
         if (node.value && node.value.url) {
-          return `<figure><img src="${node.value.url}" alt="${node.value.alt || ''}" />${node.value.caption ? `<figcaption>${node.value.caption}</figcaption>` : ''}</figure>`;
+          return `<figure><img src="${getFullUrl(node.value.url)}" alt="${node.value.alt || ''}" />${node.value.caption ? `<figcaption>${node.value.caption}</figcaption>` : ''}</figure>`;
         }
         return '';
       case 'table':
@@ -136,7 +143,7 @@ export function transformPost(post: PayloadPost): BlogPost {
     excerpt: post.excerpt || '',
     date: post.publishedAt || post.createdAt,
     modified: post.updatedAt,
-    featuredImage: post.featuredImage?.url,
+    featuredImage: getFullUrl(post.featuredImage?.url),
     categories,
     readingTime,
     seo: {
