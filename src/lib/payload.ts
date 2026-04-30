@@ -146,28 +146,42 @@ export function transformPost(post: PayloadPost): BlogPost {
   };
 }
 
+// In-process cache: each build / dev session only hits the slow upstream once.
+let _postsCache: Promise<BlogPost[]> | null = null;
+let _categoriesCache: Promise<any[]> | null = null;
+let _tagsCache: Promise<any[]> | null = null;
+
 /**
  * Fetch all posts from Payload
  */
-export async function getBlogPosts(): Promise<BlogPost[]> {
-  try {
-    const response = await fetch(`${API_URL}?limit=1000`);
-    if (!response.ok) throw new Error(`Payload API error: ${response.status}`);
-    const data = await response.json();
-    const docs = data.docs || [];
-    return docs.map(transformPost);
-  } catch (error) {
-    console.error('Error fetching blog posts:', error);
-    return [];
-  }
+export function getBlogPosts(): Promise<BlogPost[]> {
+  if (_postsCache) return _postsCache;
+  _postsCache = (async () => {
+    try {
+      const response = await fetch(`${API_URL}?limit=1000&depth=1`);
+      if (!response.ok) throw new Error(`Payload API error: ${response.status}`);
+      const data = await response.json();
+      const docs = data.docs || [];
+      return docs.map(transformPost);
+    } catch (error) {
+      console.error('Error fetching blog posts:', error);
+      _postsCache = null;
+      return [];
+    }
+  })();
+  return _postsCache;
 }
 
 /**
  * Fetch a single post by slug
  */
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+  // If the full post list is already in memory, reuse it instead of hitting the API again.
+  if (_postsCache) {
+    const all = await _postsCache;
+    return all.find(p => p.slug === slug) ?? null;
+  }
   try {
-    // Standard Payload filter for slug
     const url = `${API_URL}?where[slug][equals]=${slug}&limit=1`;
     const response = await fetch(url);
     if (!response.ok) throw new Error(`Payload API error: ${response.status}`);
@@ -186,42 +200,51 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 /**
  * Fetch all categories
  */
-export async function getCategories() {
-  try {
-    // Assuming categories endpoint is relative to sites
-    const catUrl = `${API_URL.replace('/posts', '/categories')}?limit=1000`;
-    const response = await fetch(catUrl);
-    const data = await response.json();
-    const docs = data.docs || [];
-    return docs.map((c: any) => ({
-      id: c.id,
-      name: c.title,
-      slug: c.slug,
-      count: 0 
-    }));
-  } catch {
-    return [];
-  }
+export function getCategories() {
+  if (_categoriesCache) return _categoriesCache;
+  _categoriesCache = (async () => {
+    try {
+      const catUrl = `${API_URL.replace('/posts', '/categories')}?limit=1000`;
+      const response = await fetch(catUrl);
+      const data = await response.json();
+      const docs = data.docs || [];
+      return docs.map((c: any) => ({
+        id: c.id,
+        name: c.title,
+        slug: c.slug,
+        count: 0
+      }));
+    } catch {
+      _categoriesCache = null;
+      return [];
+    }
+  })();
+  return _categoriesCache;
 }
 
 /**
  * Fetch all tags
  */
-export async function getTags() {
-  try {
-    const tagUrl = `${API_URL.replace('/posts', '/tags')}?limit=1000`;
-    const response = await fetch(tagUrl);
-    const data = await response.json();
-    const docs = data.docs || [];
-    return docs.map((t: any) => ({
-      id: t.id,
-      name: t.title,
-      slug: t.slug,
-      count: 0
-    }));
-  } catch {
-    return [];
-  }
+export function getTags() {
+  if (_tagsCache) return _tagsCache;
+  _tagsCache = (async () => {
+    try {
+      const tagUrl = `${API_URL.replace('/posts', '/tags')}?limit=1000`;
+      const response = await fetch(tagUrl);
+      const data = await response.json();
+      const docs = data.docs || [];
+      return docs.map((t: any) => ({
+        id: t.id,
+        name: t.title,
+        slug: t.slug,
+        count: 0
+      }));
+    } catch {
+      _tagsCache = null;
+      return [];
+    }
+  })();
+  return _tagsCache;
 }
 
 /**

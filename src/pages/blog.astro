@@ -4,12 +4,13 @@ import { getBlogPosts, getCategories, getTags, type BlogPost } from '../lib/payl
 
 // Configuration
 const POSTS_PER_PAGE = 12;
-const INITIAL_LOAD = 12;
 
-// Fetch all data from WordPress
-const allPosts = await getBlogPosts();
-const categories = await getCategories();
-const tags = await getTags();
+// Fetch all data in parallel — upstream is slow, sequential awaits triple the time.
+const [allPosts, categories, tags] = await Promise.all([
+  getBlogPosts(),
+  getCategories(),
+  getTags(),
+]);
 
 // Sort posts by date
 const sortedPosts = [...allPosts].sort((a, b) =>
@@ -18,8 +19,6 @@ const sortedPosts = [...allPosts].sort((a, b) =>
 
 // Get featured post (most recent)
 const featuredPost = sortedPosts[0];
-const initialPosts = sortedPosts.slice(1, INITIAL_LOAD + 1);
-const remainingPosts = sortedPosts.slice(INITIAL_LOAD + 1);
 
 const popularPosts = sortedPosts
   .filter(post => post.seo?.focusKeyword)
@@ -123,19 +122,23 @@ function formatArchiveDate(dateStr: string): string {
   return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 }
 
-// Serialize posts data for client-side
-// We slice(1) to skip the featured post showing in the hero, meaning
-// postsData contains exactly what should be paginated in the grid below.
-const postsData = sortedPosts.slice(1).map(post => ({
+// Serialize posts data for client-side pagination.
+// IMPORTANT: do NOT include `content` — full HTML for every post would bloat the
+// page by ~2 MB. readingTime is precomputed here, and excerpt is what cards render.
+const paginatedPosts = sortedPosts.slice(1).map(post => ({
   slug: post.slug,
   title: post.title,
-  content: post.content,
-  excerpt: post.excerpt,
+  excerpt: getExcerpt(post.content, post.excerpt, post.title, 160),
   date: post.date,
   featuredImage: getFeaturedImage(post),
   categories: getCategoryNames(post),
   readingTime: getReadingTime(post.content)
 }));
+
+// Pre-render the first page server-side so users see content instantly
+// and search engines see real markup. JS only re-renders on pagination clicks.
+const firstPagePosts = paginatedPosts.slice(0, POSTS_PER_PAGE);
+const postsData = paginatedPosts;
 ---
 
 <BaseLayout title="Blog - LiteScaler">
@@ -229,9 +232,47 @@ const postsData = sortedPosts.slice(1).map(post => ({
         </div>
       </header>
 
-      <!-- Posts Grid -->
+      <!-- Posts Grid — first page pre-rendered server-side for instant paint. -->
       <div class="posts-grid" id="posts-grid">
-        <!-- The posts will be rendered by client-side JS immediately on load to support pagination accurately -->
+        {firstPagePosts.map((post, index) => (
+          <article class="post-card" style={`--card-index: ${index}; animation-delay: ${(index % 3) * 0.1}s`}>
+            <a href={`/blog/${post.slug}`} class="card-image-link">
+              <div class="card-image-wrapper">
+                {post.featuredImage ? (
+                  <img src={post.featuredImage} alt="" loading={index < 3 ? 'eager' : 'lazy'} class="card-image" />
+                ) : (
+                  <div class="card-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width: 48px; height: 48px; opacity: 0.5;">
+                      <rect x="3" y="3" width="18" height="18" rx="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                  </div>
+                )}
+                <div class="image-overlay"></div>
+              </div>
+            </a>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-category">{post.categories[0] || 'Article'}</span>
+                <time datetime={post.date}>{formatDate(post.date)}</time>
+              </div>
+              <h3 class="card-title">
+                <a href={`/blog/${post.slug}`}><span set:html={decodeHtml(post.title)} /></a>
+              </h3>
+              <p class="card-excerpt">{post.excerpt}</p>
+              <div class="card-footer">
+                <span class="card-readtime">{post.readingTime}</span>
+                <a href={`/blog/${post.slug}`} class="card-link">
+                  Read more
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
       
       <!-- Loading Skeleton -->
@@ -560,45 +601,28 @@ const postsData = sortedPosts.slice(1).map(post => ({
       return card;
     }
     
-    // Load a specific page
-    async function loadPage(page) {
-      if (page < 1 || page > totalPages) return;
-      
+    // Load a specific page (only invoked on Prev/Next clicks — page 1 is pre-rendered)
+    function loadPage(page) {
+      if (page < 1 || page > totalPages || page === currentPage) return;
+
       currentPage = page;
       updatePaginationUI();
-      
-      // Clear grid and show skeleton
-      postsGrid.innerHTML = '';
-      skeletonGrid.style.display = 'grid';
-      window.scrollTo({ top: document.querySelector('.main-content').offsetTop - 100, behavior: 'smooth' });
-      
-      // Simulate network delay for UX
-      await new Promise(resolve => setTimeout(resolve, 300));
-      skeletonGrid.style.display = 'none';
-      
-      // The array 'postsData' actually has all posts minus the hero post.
-      // E.g., if there are 15 total posts, postsData has 14.
-      // So page 1 showed index 0..11, but wait! The server generated the first initialPosts block (up to 12).
-      // Let's use postsData directly since it contains everything in the grid.
+
       const start = (currentPage - 1) * POSTS_PER_PAGE;
       const end = start + POSTS_PER_PAGE;
       const pagePosts = postsData.slice(start, end);
-      
-      pagePosts.forEach((post, index) => {
-        const card = createPostCard(post, index);
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        postsGrid.appendChild(card);
-        
-        requestAnimationFrame(() => {
-          card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        });
+
+      // Build the new grid off-DOM, then swap in one paint — no skeleton flash needed.
+      const frag = document.createDocumentFragment();
+      pagePosts.forEach((post, index) => frag.appendChild(createPostCard(post, index)));
+      postsGrid.replaceChildren(frag);
+
+      window.scrollTo({
+        top: document.querySelector('.main-content').offsetTop - 100,
+        behavior: 'smooth'
       });
     }
-    
-    // Attach event listeners using delegated document events to be absolutely sure they bind
+
     document.addEventListener('click', (e) => {
       const target = e.target;
       if (target.closest('#prev-btn')) {
@@ -607,9 +631,6 @@ const postsData = sortedPosts.slice(1).map(post => ({
         loadPage(currentPage + 1);
       }
     });
-    
-    // Initial Render of First Page
-    loadPage(1);
   });
 </script>
 
